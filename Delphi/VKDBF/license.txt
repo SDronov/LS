@@ -1,0 +1,100 @@
+VK DBF License Agreement
+
+Copyright:
+The VK DBF components (Software) and everything that comes with it is
+copyrighted by (C) 2002-2004 by Vladislav V. Karpov. All rights reserved.
+
+BEFORE PROCEEDING WITH THE INSTALLATION AND/OR USE OF THIS SOFTWARE, CAREFULLY
+READ THE FOLLOWING TERMS AND CONDITIONS OF THIS LICENSE AGREEMENT AND LIABILITY
+DISCLAIMER (The "Agreement").
+
+BY INSTALLING OR USING THIS SOFTWARE YOU INDICATE YOUR ACCEPTANCE OF THIS
+AGREEMENT. IF YOU DO NOT ACCEPT OR AGREE WITH THESE TERMS, YOU MAY NOT INSTALL
+OR USE THIS SOFTWARE!
+
+Preamble:
+
+The terms and conditions of the VK DBF components Software License Agreement
+have one major goal in mind; to foster a development community based around
+the VK DBF components and associated source code. VK DBF components does
+however reserve the right as the sole distributor of the library source code.
+Hence although i encourage you to change and modify the library to suit your
+needs, you may not distribute derivative works based on the library source
+code without express written permission from VK DBF components author.
+Worthwhile changes and modifications to the VK DBF components may be submitted
+to VK DBF components author for integration into a future release of the
+product.
+
+License:
+
+This software, including documentation, source code, object code and/or
+additional materials (the "Software") is owned by VK DBF components author.
+This Agreement does not provide you with title or ownership of Product, but
+only a right of limited use as outlined in this license agreement. VK DBF
+author hereby grant you a non-exclusive, royalty free license with with pay
+for support to use the Software as set forth below:
+
+	- integrate the Software with your Applications, subject to the
+   	redistribution terms below.
+	- modify or adapt the Software in whole or in part for the development
+	  of Applications based on the Software.
+	- use portions of the VK DBF components source code or VK DBF Demo
+	  Programs in your own products and libraries.
+
+Redistribution rights:
+
+You are granted a non-exclusive, royalty-free right to reproduce and
+redistribute executable files created using the Software (the "Executable Code")
+in conjunction with software products that you develop and/or market (the
+"Applications").
+
+Restrictions:
+
+You may not:
+	- remove or modify any Copyright notice or the method
+	  by which it may be invoked.
+	- distribute modified versions of the Software, in whole or in part.
+	- rent or lease the Software.
+	- sell any portion of the Software on its own, without integrating
+	  it into your Applications as Executable Code.
+For your commerce software products created using the Software you must
+include VK DBF copyright and reference to the author homepage.
+
+Selection and use:
+
+You assume full responsibility for the selection of the Software to achieve
+your intended results and for the installation, use and results obtained from
+the Software.
+
+Liability disclaimer:
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ''AS IS'' AND ANY EXPRESS
+OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Technical support:
+  - Technical support is paid;
+  - Addititional features is paid;
+  - The ammount of pay is contractual and depends of effort;
+  - Fix bugs is free of paymant;
+  - Author reserve to oneself rights to decide to fix bugs or not;
+  - Author reserve to oneself rights to decide to make technical support
+    in each concrete case or not;
+
+If you have any questions regarding this agreement, please contact VK DBF
+components author at their e-mail addresses:
+
+Author mail:
+  karpovvv@protek.ru
+Author homepage:
+  http://vlad-karpov.narod.ru
+Author ICQ#:
+  ICQ#136489711

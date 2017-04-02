@@ -1,0 +1,27 @@
+SET SERVEROUTPUT ON SIZE 100000 
+ALTER TRIGGER FDC#TRG#TMP#DEDUCT#R_AIUD DISABLE;
+
+BEGIN
+  
+   FOR q IN (SELECT cl.*
+                FROM mrg_columns cl, mrg_table tb
+               WHERE cl.is_dict in (-1,1)
+                 AND tb.table_name = cl.table_name
+                 AND tb.actual = 1
+                 AND cl.column_name <> 'ID'
+                 ORDER BY cl.table_name
+                 ) 
+    LOOP
+      --dbms_output.put_line( 
+      EXECUTE IMMEDIATE  
+       'UPDATE '||q.table_name||' t '||
+       ' SET t.mrg_'||q.column_name||' = (select o.mrg_id from fdc_object o  where o.id = t.'||q.column_name||')'||
+       ' WHERE t.'||q.column_name||' is not null'
+      --)
+      ;  
+    END LOOP;
+    COMMIT;
+END;
+/
+
+exit

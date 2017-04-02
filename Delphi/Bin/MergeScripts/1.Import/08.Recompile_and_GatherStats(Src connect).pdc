@@ -1,0 +1,15 @@
+prompt Компиляция объектов БД... 
+execute fdc_service.Recompile
+
+prompt Обновление статистики...
+BEGIN
+  dbms_stats.gather_schema_stats( ownname => USER, cascade => TRUE );
+  dbms_stats.gather_table_stats(ownname => user,tabname => 'FDC_OBJECT',cascade => true,method_opt => 'FOR ALL COLUMNS SIZE AUTO');
+  dbms_stats.gather_table_stats(ownname => user,tabname => 'FDC_OBJECT_TYPE',cascade => true,method_opt => 'FOR ALL COLUMNS SIZE AUTO');
+  dbms_stats.gather_table_stats(ownname => user,tabname => 'FDC_VALUE',cascade => true,method_opt => 'FOR ALL COLUMNS SIZE AUTO');
+END;
+/
+prompt завершено.
+prompt
+
+exit

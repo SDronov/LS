@@ -1,0 +1,110 @@
+-- Create table
+create table FDC_FILE
+(
+  ID         NUMBER(15) not null,
+  SOURCENAME VARCHAR2(1500) not null,
+  BODY       BLOB
+);
+-- Add comments to the table 
+comment on table FDC_FILE
+  is 'Используется для хранения различных файлов';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table FDC_FILE
+  add constraint FDC_FILE_PK primary key (ID)
+  using INDEX;
+
+
+
+-- Create table
+create table FDC_UPDATE_LOG
+(
+  ID                   VARCHAR2(150) not null,
+  START_TIME           DATE not null,
+  FINISH_TIME          DATE,
+  UPDATE_TYPE          NUMBER(15),
+  UPDATE_FILE          VARCHAR2(250),
+  VER_BEFORE           VARCHAR2(150),
+  VER_AFTER            VARCHAR2(150),
+  DESCRIPTION          VARCHAR2(2000),
+  INVALID_LIST_BEFORE  CLOB,
+  INVALID_COUNT_BEFORE INTEGER,
+  INVALID_LIST_AFTER   CLOB,
+  INVALID_COUNT_AFTER  INTEGER,
+  LOG_FILE             CLOB
+);
+-- Add comments to the table 
+comment on table FDC_UPDATE_LOG
+  is 'Журнал обновлений(изменений) БД';
+-- Add comments to the columns 
+comment on column FDC_UPDATE_LOG.ID
+  is 'Идентификатор журнала';
+comment on column FDC_UPDATE_LOG.START_TIME
+  is 'Дата и время начала обновления';
+comment on column FDC_UPDATE_LOG.FINISH_TIME
+  is 'Дата и время окончания обновления';
+comment on column FDC_UPDATE_LOG.UPDATE_TYPE
+  is 'Тип обновления';
+comment on column FDC_UPDATE_LOG.UPDATE_FILE
+  is 'Имя файла обновления';
+comment on column FDC_UPDATE_LOG.VER_BEFORE
+  is 'Версия БД до обновления';
+comment on column FDC_UPDATE_LOG.VER_AFTER
+  is 'Версия БД после обновления';
+comment on column FDC_UPDATE_LOG.DESCRIPTION
+  is 'Описание обновления';
+comment on column FDC_UPDATE_LOG.INVALID_LIST_BEFORE
+  is 'Список инвалидных объектов до обновления';
+comment on column FDC_UPDATE_LOG.INVALID_COUNT_BEFORE
+  is 'Количество инвалидных объектов до обновления';
+comment on column FDC_UPDATE_LOG.INVALID_LIST_AFTER
+  is 'Список инвалидных объектов после обновления';
+comment on column FDC_UPDATE_LOG.INVALID_COUNT_AFTER
+  is 'Количество инвалидных объектов после обновления';
+comment on column FDC_UPDATE_LOG.LOG_FILE
+  is 'Журнал обновления';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table FDC_UPDATE_LOG
+  add constraint FDC#PK#UPDATE_LOG primary key (ID)
+  using index ;
+alter table FDC_UPDATE_LOG
+  add constraint FDC#FK#UPDATE_TYPE foreign key (UPDATE_TYPE)
+  references FDC_UPDATE_TYPE (ID) on delete set null;
+  
+  -- Create table
+create table FDC_DOC_ACTIVATE_ERROR
+(
+  DOC_ID NUMBER(15) not null,
+  MSG    VARCHAR2(4000),
+  constraint PK#DOC_ACTIVATE_ERROR primary key (DOC_ID)
+)
+organization INDEX OVERFLOW;
+-- Add comments to the table 
+comment on table FDC_DOC_ACTIVATE_ERROR
+  is 'Ошибки, возникающие при проведении документов';
+-- Add comments to the columns 
+comment on column FDC_DOC_ACTIVATE_ERROR.DOC_ID
+  is 'Идентификатор документа';
+comment on column FDC_DOC_ACTIVATE_ERROR.MSG
+  is 'Сообщение об ошибке';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table FDC_DOC_ACTIVATE_ERROR
+  add constraint FK#DOC_ERR#DOC foreign key (DOC_ID)
+  references FDC_DOCUMENT (ID) on delete cascade;
+
+create table EXCH_MESSAGEDATA
+(
+  MESSAGEDATA_ID NUMBER(20) not null,
+  CREATESTAMP    TIMESTAMP(6) default systimestamp not null,
+  DATA           CLOB not null
+)
+;
+comment on table EXCH_MESSAGEDATA
+  is 'Таблица содержимого сообщений';
+comment on column EXCH_MESSAGEDATA.CREATESTAMP
+  is 'Дата создания сообщения';
+comment on column EXCH_MESSAGEDATA.DATA
+  is 'Тушки сообщений';
+alter table EXCH_MESSAGEDATA
+  add constraint EXCH_MESSAGEDATA_PK primary key (MESSAGEDATA_ID);
+  
+exit

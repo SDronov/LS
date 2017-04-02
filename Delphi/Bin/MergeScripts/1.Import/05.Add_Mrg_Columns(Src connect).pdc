@@ -1,0 +1,37 @@
+SET SERVEROUTPUT ON SIZE 1000000;
+BEGIN
+  FOR c IN (SELECT t.*
+                  ,(SELECT u.iot_type
+                      FROM User_Tables u
+                     WHERE u.table_name = t.table_name) iot_type
+              FROM mrg_table t
+             WHERE t.actual = 1) LOOP
+    IF c.iot_type IS NOT NULL THEN
+      BEGIN
+        EXECUTE IMMEDIATE 'ALTER TABLE ' || c.table_name || ' ADD OVERFLOW STORAGE (INITIAL 1M NEXT 1M)';
+      EXCEPTION
+        WHEN OTHERS THEN
+          dbms_output.put_line(c.table_name ||' ADD OVERFLOW STORAGE with error: ' || SQLERRM);
+      END;
+    END IF;
+    EXECUTE IMMEDIATE 'alter table '|| c.table_name ||' add mrg_error VARCHAR2(2000)';
+    EXECUTE IMMEDIATE 'alter table '|| c.table_name ||' add mrg_info VARCHAR2(2000)';
+  END LOOP;
+  EXECUTE IMMEDIATE 'alter table fdc_object add mrg_DoExp NUMBER(15)';
+
+  FOR cc IN (SELECT t.*
+               FROM mrg_columns t, mrg_table q
+              WHERE q.table_name = t.table_name
+                AND q.actual = 1) LOOP
+    BEGIN            
+      EXECUTE IMMEDIATE 'alter table ' || cc.table_name || ' add mrg_' ||
+                         cc.column_name || ' ' || cc.data_type || '(' || CASE WHEN cc.data_type = 'VARCHAR2' THEN cc.data_length ELSE '15' END || ')';
+    EXCEPTION 
+      WHEN OTHERS THEN
+        dbms_output.put_line(cc.table_name||' not altered with error: '||Sqlerrm); 
+    END;    
+  END LOOP;
+END;
+/
+
+exit

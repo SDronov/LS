@@ -1,0 +1,7 @@
+fromuser=DOXOD_LS_5
+file=.\dmp\DOXOD_LS_5.dmp
+ignore=y
+rows=y
+grants=n
+log=.\log\import.log
+

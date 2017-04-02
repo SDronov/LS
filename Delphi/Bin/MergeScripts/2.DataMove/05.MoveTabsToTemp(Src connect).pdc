@@ -1,0 +1,50 @@
+DEFINE src = LS_TEMP_MERGE
+
+SET SERVEROUTPUT ON SIZE 10000000;
+DECLARE
+  lv_SelColumns varchar2(4000) := '';
+  
+  FUNCTION Is_Mrg_Column( pTable IN VARCHAR2, pColumn IN varchar2) RETURN BOOLEAN IS
+    lv_Dummy INTEGER;
+  BEGIN
+    SELECT 1 
+      INTO lv_Dummy
+     FROM user_tab_columns t
+     WHERE t.TABLE_NAME = pTable
+       AND t.COLUMN_NAME = 'MRG_'||pColumn;  
+      
+    RETURN TRUE;
+  EXCEPTION
+    WHEN no_data_found THEN
+      RETURN FALSE;
+    WHEN OTHERS THEN 
+      RAISE;    
+  END Is_Mrg_Column;
+
+BEGIN
+  FOR tbl IN (SELECT t.*
+                FROM mrg_table t
+               WHERE t.do_exp = 1) LOOP
+    lv_SelColumns := '';
+    FOR c IN (SELECT t.* 
+                FROM user_tab_columns t 
+                WHERE t.TABLE_NAME = tbl.table_name
+                  AND t.COLUMN_NAME NOT LIKE 'MRG%'                  
+                ) LOOP
+      IF Is_Mrg_Column(c.table_name, c.column_name) THEN
+        lv_SelColumns := lv_SelColumns || ', t.MRG_'||c.column_name||' AS '||c.column_name; 
+      ELSE
+        lv_SelColumns := lv_SelColumns || ', t.'||c.column_name;  
+      END IF;
+    END LOOP;           
+    lv_SelColumns := substr(lv_SelColumns, 3);
+    --dbms_output.put_line (
+    EXECUTE IMMEDIATE 
+    'CREATE TABLE &&src..'||tbl.table_name||' AS SELECT '||lv_SelColumns ||' FROM '||tbl.table_name||' t '||nvl(tbl.sql_add, ' ')
+    --)
+    ; 
+  END LOOP;
+END;
+/
+
+exit

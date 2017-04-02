@@ -1,0 +1,44 @@
+SET SERVEROUTPUT ON SIZE 100000
+declare
+   cursor dict is (select * from fdc_nsi_dict_lst where typesysname in (/*'PaymentType',*/'KBKDict'));
+   lv_Olddate1 date := to_date('20082010','ddmmyyyy'); 
+   lv_Olddate2 date := to_date('01072010','ddmmyyyy'); --01092010  --20082010
+   lv_Newdate date := to_date('01092010','ddmmyyyy');
+begin
+   for d in dict loop
+      -- !!!! Это спорный момент, надо бы разобраться (изменять надо не всем записям, 
+      -- а только тем, для которых существует другая запсиь с таким же CODE и CODE2 и sdate = lv_Newdate )
+      if d.edate = lv_Olddate1-1 then
+      update fdc_nsi_dict
+        set edate = lv_Newdate-1
+      where id = d.id;
+      dbms_output.put_line(d.code||'   !!!ВНИМАНИЕ !!!  --> !!!EDATE!!! Было: '||d.edate||' Стало: 31.08.2010');
+      end if;
+      if d.edate = lv_Olddate2-1 then
+      update fdc_nsi_dict
+        set edate = lv_Newdate-1
+      where id = d.id;
+      dbms_output.put_line(d.code||'   !!!ВНИМАНИЕ !!!  --> !!!EDATE!!! Было: '||d.edate||' Стало: 31.08.2010');
+      end if;
+       -- !!!!
+       
+      if d.sdate = lv_Olddate1 then
+      update fdc_nsi_dict
+        set sdate = lv_Newdate
+      where id = d.id;
+      dbms_output.put_line(d.code||' --> sdate Было: '||d.sdate||' Стало: 01.09.2010');
+      end if;
+      if d.sdate = lv_Olddate2 then
+      update fdc_nsi_dict
+        set sdate = lv_Newdate
+      where id = d.id;
+      dbms_output.put_line(d.code||' --> sdate Было: '||d.sdate||' Стало: 01.09.2010');
+      end if;
+      
+   end loop;
+   commit;
+   --dbms_output.put_line('Не забудьте потдвердить или отменить выполненые изменения!');
+end;
+/
+
+exit

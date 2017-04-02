@@ -1,0 +1,67 @@
+prompt -- Сборка 00351
+prompt 
+
+--
+-- Создать индекс "PAYMENT_ORDER_INN_P" для объекта типа таблица "FDC_PAYMENT_ORDER"
+--
+CREATE INDEX PAYMENT_ORDER_INN_P ON FDC_PAYMENT_ORDER (INN_P);
+
+--
+-- Создать столбец "REMOTEPAY" для таблицы "DBF_DCLHEAD"
+--
+ALTER TABLE DBF_DCLHEAD
+  ADD REMOTEPAY VARCHAR2(1 BYTE);
+
+--
+-- Удалить уникальный ключ "DBF_DCLSUMPP_UQ" для объекта типа таблица "DBF_DCLSUMPP"
+--
+ALTER TABLE DBF_DCLSUMPP
+  DROP CONSTRAINT DBF_DCLSUMPP_UQ cascade;
+drop INDEX DBF_DCLSUMPP_UQ;
+
+--
+-- Создать уникальный ключ "DBF_DCLSUMPP_UQ" для объекта типа таблица "DBF_DCLSUMPP"
+--
+ALTER TABLE DBF_DCLSUMPP
+  ADD CONSTRAINT DBF_DCLSUMPP_UQ UNIQUE (G071, G072, G073, GB1, GB3, IRET, GB5, VALPDOK, NUMPDOK, DATPDOK, INNPLAT, KPPPLAT, OKPOPLAT, SUMPDOK, SUM_ALL);
+
+--
+-- Создать столбец "GC_42" для таблицы "DBF_DCLSLOTM"
+--
+ALTER TABLE DBF_DCLSLOTM
+  ADD GC_42 VARCHAR2(3 BYTE);
+
+--
+-- Изменить столбец "ID_BDRD" для таблицы "DBF_DCLTECHD"
+--
+ALTER TABLE DBF_DCLTECHD
+  MODIFY(ID_BDRD VARCHAR2(36 BYTE));
+
+--
+-- Создать столбец "PRPROVID" для таблицы "DBF_DCLTECHD"
+--
+ALTER TABLE DBF_DCLTECHD
+  ADD PRPROVID VARCHAR2(1 BYTE);
+
+--
+-- Создать столбец "ED_AID" для таблицы "DBF_DCLTECHD"
+--
+ALTER TABLE DBF_DCLTECHD
+  ADD ED_AID VARCHAR2(50 BYTE);
+
+--
+-- Создать столбец "ED_ADID" для таблицы "DBF_DCLTECHD"
+--
+ALTER TABLE DBF_DCLTECHD
+  ADD ED_ADID VARCHAR2(50 BYTE);
+
+--
+-- Создать столбец "PREVNUMDOC" для таблицы "DBF_DCLTECHD"
+--
+ALTER TABLE DBF_DCLTECHD
+  ADD PREVNUMDOC VARCHAR2(50 BYTE);
+
+
+prompt -- Сборка 00351 (End) 
+prompt 
+prompt 

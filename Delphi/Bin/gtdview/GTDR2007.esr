@@ -1,0 +1,470 @@
+//Скрипт к модулю визуализации и просмотра ГТД
+//Активные версии оформленных ГТД
+
+Script{
+
+NewObject("Template","TTemplate");
+Template.SetFileName("EAD.rav");
+
+NewObject("DCLHead","TDOAReportConnection");
+DCLHead.ConnectionString("b4");
+DCLHead.SQL("SELECT * FROM GTDR_DCLHEAD WHERE (1=1)");
+DCLHead.Connect();
+DCLHead.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLHead.PublicField("G071",8,"G071","G071","dtString");
+DCLHead.PublicField("G072",10,"G072","G072","dtString");
+DCLHead.PublicField("G073",7,"G073","G073","dtString");
+DCLHead.PublicField("G011",2,"G011","G011","dtString");
+DCLHead.PublicField("G012",2,"G012","G012","dtString");
+DCLHead.PublicField("G0131",3,"G0131","G0131","dtString");
+DCLHead.PublicField("G021",12,"G021","G021","dtString");
+DCLHead.PublicField("G022",80,"G022","G022","dtString");
+DCLHead.PublicField("G023",80,"G023","G023","dtString");
+DCLHead.PublicField("G024N",10,"G024N","G024N","dtString");
+DCLHead.PublicField("G024IN",12,"G024IN","G024IN","dtString");
+DCLHead.PublicField("G032",3,"G032","G032","dtString");
+DCLHead.PublicField("G04",4,"G04","G04","dtString");
+DCLHead.PublicField("G05",3,"G05","G05","dtString");
+DCLHead.PublicField("G06",7,"G06","G06","dtString");
+DCLHead.PublicField("GA1",20,"GA1","","dtString");
+DCLHead.PublicField("GA2",100,"GA2","","dtString");
+DCLHead.PublicField("GA1A",20,"GA1A","","dtString");
+DCLHead.PublicField("GA2A",100,"GA2A","","dtString");
+DCLHead.PublicField("G081",12,"G081","G081","dtString");
+DCLHead.PublicField("G082",80,"G082","G082","dtString");
+DCLHead.PublicField("G083",80,"G083","G083","dtString");
+DCLHead.PublicField("G084A",2,"G084A","","dtString");
+DCLHead.PublicField("G084B",5,"G084B","G084B","dtString");
+DCLHead.PublicField("G091",12,"G091","G091","dtString");
+DCLHead.PublicField("G092",80,"G092","G092","dtString");
+DCLHead.PublicField("G093",80,"G093","G093","dtString");
+DCLHead.PublicField("G094A",2,"G094A","","dtString");
+DCLHead.PublicField("G094B",5,"G094B","G094B","dtString");
+DCLHead.PublicField("G10",3,"G10","","dtString");
+DCLHead.PublicField("G11",3,"G11","G11","dtString");
+DCLHead.PublicField("G12",19,"G12","G12","dtString");
+DCLHead.PublicField("G121",3,"G121","G121","dtString");
+DCLHead.PublicField("G13",8,"G13","G13","dtString");
+DCLHead.PublicField("G141",12,"G141","G141","dtString");
+DCLHead.PublicField("G142",80,"G142","G142","dtString");
+DCLHead.PublicField("G143",80,"G143","G143","dtString");
+DCLHead.PublicField("G144A",2,"G144A","","dtString");
+DCLHead.PublicField("G144B",5,"G144B","G144B","dtString");
+DCLHead.PublicField("G144C",10,"G144C","","dtString");
+DCLHead.PublicField("G144D1",5,"G144D1","","dtString");
+DCLHead.PublicField("G144D2",4,"G144D2","","dtString");
+DCLHead.PublicField("G144D3",3,"G144D3","","dtString");
+DCLHead.PublicField("G145",10,"G145","","dtString");
+DCLHead.PublicField("G15",35,"G15","G15","dtString");
+DCLHead.PublicField("G15A",3,"G15A","G15A","dtString");
+DCLHead.PublicField("G16",35,"G16","G16","dtString");
+DCLHead.PublicField("G17A",3,"G17A","G17A","dtString");
+DCLHead.PublicField("G17B",35,"G17B","G17B","dtString");
+DCLHead.PublicField("G180",4,"G180","G180","dtString");
+DCLHead.PublicField("G19",1,"G19","G19","dtString");
+DCLHead.PublicField("G201",2,"G201","","dtString");
+DCLHead.PublicField("G202",3,"G202","G202","dtString");
+DCLHead.PublicField("G2021",40,"G2021","G2021","dtString");
+DCLHead.PublicField("G203",2,"G203","","dtString");
+DCLHead.PublicField("G210",4,"G210","G210","dtString");
+DCLHead.PublicField("G221",3,"G221","G221","dtString");
+DCLHead.PublicField("G222",19,"G222","G222","dtString");
+DCLHead.PublicField("G23",15,"G23","G23","dtString");
+DCLHead.PublicField("G24",3,"G24","G24","dtString");
+DCLHead.PublicField("G27",40,"G27","G27","dtString");
+DCLHead.PublicField("G271",13,"G271","G271","dtString");
+DCLHead.PublicField("G2810",1,"G2810","G2810","dtString");
+DCLHead.PublicField("G281",70,"G281","G281","dtString");
+DCLHead.PublicField("G282",70,"G282","G282","dtString");
+DCLHead.PublicField("G28OKPO",10,"G28OKPO","G28OKPO","dtString");
+DCLHead.PublicField("G28INN",12,"G28INN","G28INN","dtString");
+DCLHead.PublicField("G28GTD_1",8,"G28GTD_1","G28GTD_1","dtString");
+DCLHead.PublicField("G28GTD_2",10,"G28GTD_2","G28GTD_2","dtString");
+DCLHead.PublicField("G28GTD_3",7,"G28GTD_3","G28GTD_3","dtString");
+DCLHead.PublicField("G281OTH",30,"G281OTH","G281OTH","dtString");
+DCLHead.PublicField("G28ZAJMB",70,"G28ZAJMB","G28ZAJMB","dtString");
+DCLHead.PublicField("G28ZAJMN",70,"G28ZAJMN","G28ZAJMN","dtString");
+DCLHead.PublicField("G28211",1,"G28211","G28211","dtString");
+DCLHead.PublicField("G28212",1,"G28212","G28212","dtString");
+DCLHead.PublicField("G28221",1,"G28221","G28221","dtString");
+DCLHead.PublicField("G28222",1,"G28222","G28222","dtString");
+DCLHead.PublicField("G2823",10,"G2823","G2823","dtString");
+DCLHead.PublicField("G2824",10,"G2824","G2824","dtString");
+DCLHead.PublicField("G2825",3,"G2825","G2825","dtString");
+DCLHead.PublicField("G491",30,"G491","G491","dtString");
+DCLHead.PublicField("G492",10,"G492","G492","dtString");
+DCLHead.PublicField("G5011",80,"G5011","G5011","dtString");
+DCLHead.PublicField("G5012",80,"G5012","G5012","dtString");
+DCLHead.PublicField("G5021",20,"G5021","","dtString");
+DCLHead.PublicField("G5022",10,"G5022","","dtString");
+DCLHead.PublicField("G5023",80,"G5023","G5023","dtString");
+DCLHead.PublicField("G5031",20,"G5031","","dtString");
+DCLHead.PublicField("G5032",10,"G5032","","dtString");
+DCLHead.PublicField("G5033",80,"G5033","G5033","dtString");
+DCLHead.PublicField("G502",10,"G502","","dtString");
+DCLHead.PublicField("G504",12,"G504","G504","dtString");
+DCLHead.PublicField("G5441",30,"G5441","G5441","dtString");
+DCLHead.PublicField("G5442",12,"G5442","G5442","dtString");
+DCLHead.PublicField("G5447",50,"G5447","G5447","dtString");
+DCLHead.PublicField("G542",10,"G542","","dtString");
+DCLHead.PublicField("G5451A",6,"G5451A","G5451A","dtString");
+DCLHead.PublicField("G54521",11,"G54521","G54521","dtString");
+DCLHead.PublicField("G54522",25,"G54522","G54522","dtString");
+DCLHead.PublicField("G54523",80,"G54523","G54523","dtString");
+DCLHead.PublicField("G5453",10,"G5453","G5453","dtString");
+DCLHead.PublicField("G5443",30,"G5443","G5443","dtString");
+DCLHead.PublicField("G5444",20,"G5444","G5444","dtString");
+DCLHead.PublicField("G5445",10,"G5445","G5445","dtString");
+DCLHead.PublicField("G5446",10,"G5446","G5446","dtString");
+DCLHead.PublicField("G52",3,"G52","","dtString");
+DCLHead.PublicField("GD0",2,"GD0","GD0","dtString");
+DCLHead.PublicField("GD1",10,"GD1","GD1","dtString");
+DCLHead.PublicField("GD2",4,"GD2","GD2","dtString");
+DCLHead.PublicField("GD3",6,"GD3","","dtString");
+DCLHead.PublicField("GD4",6,"GD4","","dtString");
+
+
+NewObject("DCLTovar0","TDOAReportConnection");
+DCLTovar0.ConnectionString("b4");
+DCLTovar0.SQL("SELECT * FROM GTDR_DCLTOVAR WHERE (G32='1')");
+DCLTovar0.Connect();
+DCLTovar0.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLTovar0.PublicField("NBLANK",10,"NBLANK","NBLANK","dtString");
+DCLTovar0.PublicField("G031",2,"G031","G031","dtString");
+DCLTovar0.PublicField("G31_1",250,"G31_1","G31_1","dtString");
+DCLTovar0.PublicField("G31_13",35,"G31_13","G31_13","dtString");
+DCLTovar0.PublicField("G31_8",26,"G31_8","G31_8","dtString");
+DCLTovar0.PublicField("G31_2",2,"G31_2","G31_2","dtString");
+DCLTovar0.PublicField("G31_21",150,"G31_21","G31_21","dtString");
+DCLTovar0.PublicField("G31_3",3,"G31_3","G31_3","dtString");
+DCLTovar0.PublicField("G31_4",12,"G31_4","G31_4","dtString");
+DCLTovar0.PublicField("G31_41",11,"G31_41","G31_41","dtString");
+DCLTovar0.PublicField("G31_7",26,"G31_7","G31_7","dtString");
+DCLTovar0.PublicField("G31_71",13,"G31_71","G31_71","dtString");
+DCLTovar0.PublicField("G32",3,"G32","G32","dtString");
+DCLTovar0.PublicField("G33",10,"G33","G33","dtString");
+DCLTovar0.PublicField("G330",1,"G330","G330","dtString");
+DCLTovar0.PublicField("G331",1,"G331","G331","dtString");
+DCLTovar0.PublicField("G332",1,"G332","","dtString");
+DCLTovar0.PublicField("G34",3,"G34","G34","dtString");
+DCLTovar0.PublicField("G35",26,"G35","G35","dtString");
+DCLTovar0.PublicField("G36",5,"G36","G36","dtString");
+DCLTovar0.PublicField("G37",6,"G37","G37","dtString");          
+DCLTovar0.PublicField("G38",26,"G38","G38","dtString");
+DCLTovar0.PublicField("G39",26,"G39","G39","dtString");
+DCLTovar0.PublicField("G41A",3,"G41A","G41A","dtString");
+DCLTovar0.PublicField("G42",19,"G42","G42","dtString");
+DCLTovar0.PublicField("G43",1,"G43","G43","dtString");
+DCLTovar0.PublicField("G430",2,"G430","G430","dtString");
+DCLTovar0.PublicField("G45",19,"G45","G45","dtString");
+DCLTovar0.PublicField("G451",2,"G451","G451","dtString");
+DCLTovar0.PublicField("G46",19,"G46","G46","dtString");
+DCLTovar0.PublicField("G474RUB",19,"G474RUB","G474RUB","dtString");
+
+
+NewObject("DCLTrans18","TDOAReportConnection");
+DCLTrans18.ConnectionString("b4");
+DCLTrans18.SQL("SELECT * FROM GTDR_DCLTRANS WHERE (NGR='18')");
+DCLTrans18.Connect();
+DCLTrans18.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLTrans18.PublicField("NTRANS",30,"NTRANS","NTRANS","dtString");
+DCLTrans18.PublicField("G212",3,"G212","G212","dtString");
+
+NewObject("DCLTrans21","TDOAReportConnection");
+DCLTrans21.ConnectionString("b4");
+DCLTrans21.SQL("SELECT * FROM GTDR_DCLTRANS WHERE (NGR='21')");
+DCLTrans21.Connect();
+DCLTrans21.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLTrans21.PublicField("NTRANS",30,"NTRANS","NTRANS","dtString");
+DCLTrans21.PublicField("G212",3,"G212","G212","dtString");
+
+NewObject("DCLTrans25","TDOAReportConnection");
+DCLTrans25.ConnectionString("b4");
+DCLTrans25.SQL("SELECT * FROM GTDR_DCLTRANS WHERE (NGR='25')");
+DCLTrans25.Connect();
+DCLTrans25.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLTrans25.PublicField("VIDTRANS",2,"VIDTRANS","VIDTRANS","dtString");
+
+NewObject("DCLTrans26","TDOAReportConnection");
+DCLTrans26.ConnectionString("b4");
+DCLTrans26.SQL("SELECT * FROM GTDR_DCLTRANS WHERE (NGR='26')");
+DCLTrans26.Connect();
+DCLTrans26.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLTrans26.PublicField("VIDTRANS",2,"VIDTRANS","VIDTRANS","dtString");
+
+NewObject("DCLTrans29","TDOAReportConnection");
+DCLTrans29.ConnectionString("b4");
+DCLTrans29.SQL("SELECT * FROM GTDR_DCLTRANS WHERE (NGR='29')");
+DCLTrans29.Connect();
+DCLTrans29.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLTrans29.PublicField("G29",8,"G29","G29","dtString");
+
+NewObject("DCLTrans30","TDOAReportConnection");
+DCLTrans30.ConnectionString("b4");
+DCLTrans30.SQL("SELECT * FROM GTDR_DCLTRANS WHERE (NGR='30')");
+DCLTrans30.Connect();
+DCLTrans30.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+NewObject("DCLTovar","TDOAReportConnection");
+DCLTovar.ConnectionString("b4");
+DCLTovar.SQL("SELECT * FROM GTDR_DOBLIST WHERE (G32<>'1')");
+DCLTovar.Connect();
+DCLTovar.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLTovar.BlocksOnList(3,"");
+
+DCLTovar.PublicField("NBLANK",10,"NBLANK","NBLANK","dtString");
+DCLTovar.PublicField("G031",2,"G031","G031","dtString");
+DCLTovar.PublicField("G31_1",250,"G31_1","G31_1","dtString");
+DCLTovar.PublicField("G31_13",35,"G31_13","G31_13","dtString");
+DCLTovar.PublicField("G31_8",26,"G31_8","G31_8","dtString");
+DCLTovar.PublicField("G31_2",2,"G31_2","G31_2","dtString");
+DCLTovar.PublicField("G31_21",150,"G31_21","G31_21","dtString");
+DCLTovar.PublicField("G31_3",3,"G31_3","G31_3","dtString");
+DCLTovar.PublicField("G31_4",12,"G31_4","G31_4","dtString");
+DCLTovar.PublicField("G31_41",11,"G31_41","G31_41","dtString");
+DCLTovar.PublicField("G31_7",26,"G31_7","G31_7","dtString");
+DCLTovar.PublicField("G31_71",13,"G31_71","G31_71","dtString");
+DCLTovar.PublicField("G32",3,"G32","G32","dtString");
+DCLTovar.PublicField("G33",10,"G33","G33","dtString");
+DCLTovar.PublicField("G330",1,"G330","G330","dtString");
+DCLTovar.PublicField("G331",1,"G331","G331","dtString");
+DCLTovar.PublicField("G332",1,"G332","","dtString");
+DCLTovar.PublicField("G34",3,"G34","G34","dtString");
+DCLTovar.PublicField("G35",26,"G35","G35","dtString");
+DCLTovar.PublicField("G36",5,"G36","G36","dtString");
+DCLTovar.PublicField("G37",6,"G37","G37","dtString");          
+DCLTovar.PublicField("G38",26,"G38","G38","dtString");
+DCLTovar.PublicField("G39",26,"G39","G39","dtString");
+DCLTovar.PublicField("G41A",3,"G41A","G41A","dtString");
+DCLTovar.PublicField("G42",19,"G42","G42","dtString");
+DCLTovar.PublicField("G43",1,"G43","G43","dtString");
+DCLTovar.PublicField("G430",2,"G430","G430","dtString");
+DCLTovar.PublicField("G45",19,"G45","G45","dtString");
+DCLTovar.PublicField("G451",2,"G451","G451","dtString");
+DCLTovar.PublicField("G46",19,"G46","G46","dtString");
+DCLTovar.PublicField("G474RUB",19,"G474RUB","G474RUB","dtString");
+
+
+NewObject("DCLPlatr0","TDOAReportConnection");
+DCLPlatr0.ConnectionString("b4");
+DCLPlatr0.SQL("SELECT * FROM GTDR_DCLPLATR WHERE (G32='1')");
+DCLPlatr0.Connect();
+DCLPlatr0.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLPlatr0.BlocksOnList(1,"G32");
+
+DCLPlatr0.PublicField("G471",2,"G471","G471","dtMemo");
+DCLPlatr0.PublicField("G472",26,"G472","G472","dtMemo");
+DCLPlatr0.PublicField("G473",18,"G473","G473","dtMemo");
+DCLPlatr0.PublicField("G474",20,"G474","G474","dtMemo");
+DCLPlatr0.PublicField("G475",2,"G475","G475","dtMemo");
+
+NewObject("DCLPlatr","TDOAReportConnection");
+DCLPlatr.ConnectionString("b4");
+DCLPlatr.SQL("SELECT * FROM GTDR_DCLPLATR WHERE (G32<>'1')");
+DCLPlatr.Connect();
+DCLPlatr.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLPlatr.BlocksOnList(3,"G32");
+
+DCLPlatr.PublicField("G471",2,"G471","G471","dtMemo");
+DCLPlatr.PublicField("G472",26,"G472","G472","dtMemo");
+DCLPlatr.PublicField("G473",18,"G473","G473","dtMemo");
+DCLPlatr.PublicField("G474",20,"G474","G474","dtMemo");
+DCLPlatr.PublicField("G475",2,"G475","G475","dtMemo");
+
+NewObject("DCLTechd0","TDOAReportConnection");
+DCLTechd0.ConnectionString("b4");
+DCLTechd0.SQL("SELECT G071,G072,G073,G32,Substr((G4401||'.'||G4402||'.'||G4403||'.'||G442||'.'||G443||'.'||G444),1,193) AS G44 FROM GTDR_DCLTECHD WHERE (G32='1')");
+DCLTechd0.Connect();
+DCLTechd0.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLTechd0.BlocksOnList(1,"G32");
+
+DCLTechd0.PublicField("G44",193,"G44","G44","dtMemo");
+//DCLTechd0.PublicField("G4401",2,"G4401","G4401","dtMemo");
+//DCLTechd0.PublicField("G4402",2,"G4402","G4402","dtMemo");
+//DCLTechd0.PublicField("G4403",1,"G4403","G4403","dtMemo");
+//DCLTechd0.PublicField("G442",50,"G442","G442","dtMemo");
+//DCLTechd0.PublicField("G443",10,"G443","G443","dtMemo");
+//DCLTechd0.PublicField("G444",128,"G444","G444","dtMemo");
+
+NewObject("DCLPredd0","TDOAReportConnection");
+DCLPredd0.ConnectionString("b4");
+DCLPredd0.SQL("SELECT * FROM GTDR_DCLPREDD WHERE (G32='1')");
+DCLPredd0.Connect();
+DCLPredd0.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLPredd0.PublicField("G40_1",8,"G40_1","G40_1","dtString");
+DCLPredd0.PublicField("G40_2",10,"G40_2","G40_2","dtString");
+DCLPredd0.PublicField("G40_3",7,"G40_3","G40_3","dtString");
+DCLPredd0.PublicField("G40_4",3,"G40_4","G40_4","dtString");
+
+NewObject("DCLPlatv","TDOAReportConnection");
+DCLPlatv.ConnectionString("b4");
+DCLPlatv.SQL("SELECT G071,G072,G073,G48,Substr((GB1||'-'||GB2||'-'||GB3||'-'||GB4),1,40) AS GB FROM GTDR_DCLPLATV WHERE (1=1)");
+DCLPlatv.Connect();
+DCLPlatv.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLPlatv.BlocksOnList(1,"G073");
+
+DCLPlatv.PublicField("G48",10,"G48","G48","dtString");
+DCLPlatv.PublicField("GB",40,"GB","GB","dtMemo");
+//DCLPlatv.PublicField("GB1",2,"GB1","GB1","dtString");
+//DCLPlatv.PublicField("GB2",19,"GB2","GB2","dtString");
+//DCLPlatv.PublicField("GB3",3,"GB3","GB3","dtString");
+//DCLPlatv.PublicField("GB4",16,"GB4","GB4","dtString");
+
+NewObject("DCLSlotm","TDOAReportConnection");
+DCLSlotm.ConnectionString("b4");
+DCLSlotm.SQL("SELECT * FROM GTDR_DCLSLOTM WHERE (1=1)");
+DCLSlotm.Connect();
+DCLSlotm.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLSlotm.PublicField("KRECC",2,"KRECC","KRECC","dtString");
+DCLSlotm.PublicField("GC_1",150,"GC_1","GC_1","dtString");
+DCLSlotm.PublicField("GC_2",10,"GC_2","GC_2","dtString");
+DCLSlotm.PublicField("GC_3",18,"GC_3","GC_3","dtString");
+DCLSlotm.PublicField("GC_31",2,"GC_31","GC_31","dtString");
+DCLSlotm.PublicField("GC_32",8,"GC_32","GC_32","dtString");
+DCLSlotm.PublicField("GC_4",3,"GC_4","GC_4","dtString");
+DCLSlotm.PublicField("GC_5",17,"GC_5","GC_5","dtString");
+DCLSlotm.PublicField("GC_6",4,"GC_6","GC_6","dtString");
+DCLSlotm.PublicField("GC_7",30,"GC_7","GC_7","dtString");
+
+NewObject("DCLTechd","TDOAReportConnection");
+DCLTechd.ConnectionString("b4");
+DCLTechd.SQL("SELECT G071,G072,G073,G32,Substr((G4401||'.'||G4402||'.'||G4403||'.'||G442||'.'||G443||'.'||G444),1,193) AS G44 FROM GTDR_DCLTECHD WHERE (G32<>'1')");
+DCLTechd.Connect();
+DCLTechd.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLTechd.BlocksOnList(3,"G32");
+
+DCLTechd.PublicField("G44",193,"G44","G44","dtMemo");
+//DCLTechd.PublicField("G4401",2,"G4401","G4401","dtMemo");
+//DCLTechd.PublicField("G4402",2,"G4402","G4402","dtMemo");
+//DCLTechd.PublicField("G4403",1,"G4403","G4403","dtMemo");
+//DCLTechd.PublicField("G442",50,"G442","G442","dtMemo");
+//DCLTechd.PublicField("G443",10,"G443","G443","dtMemo");
+//DCLTechd.PublicField("G444",128,"G444","G444","dtMemo");
+
+NewObject("DCLPredd","TDOAReportConnection");
+DCLPredd.ConnectionString("b4");
+DCLPredd.SQL("SELECT * FROM GTDR_DCLPREDD WHERE (G32<>'1')");
+DCLPredd.Connect();
+DCLPredd.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLPredd.BlocksOnList(3,"");
+
+DCLPredd.PublicField("G40_1",8,"G40_1","G40_1","dtString");
+DCLPredd.PublicField("G40_2",10,"G40_2","G40_2","dtString");
+DCLPredd.PublicField("G40_3",7,"G40_3","G40_3","dtString");
+DCLPredd.PublicField("G40_4",3,"G40_4","G40_4","dtString");
+
+NewObject("DCLHeadD","TDOAReportConnection");
+DCLHeadD.ConnectionString("b4");
+DCLHeadD.SQL("SELECT * FROM GTDR_DCLHEAD WHERE (G032>0)");
+DCLHeadD.Connect();
+DCLHeadD.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLHeadD.PublicField("G011",2,"G011","G011","dtString");
+DCLHeadD.PublicField("G012",2,"G012","G012","dtString");
+DCLHeadD.PublicField("G0131",3,"G0131","G0131","dtString");
+DCLHeadD.PublicField("G021",12,"G021","G021","dtString");
+DCLHeadD.PublicField("G022",80,"G022","G022","dtString");
+DCLHeadD.PublicField("G023",80,"G023","G023","dtString");
+DCLHeadD.PublicField("G032",3,"G032","G032","dtString");
+
+NewObject("DCLDInfo0","TDOAReportConnection");
+DCLDInfo0.ConnectionString("b4");
+DCLDInfo0.SQL("SELECT * FROM GTDR_DCLDINFO WHERE (G32='1' AND NGR='31' AND TYP_NGR='01')");
+DCLDInfo0.Connect();
+DCLDInfo0.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLDInfo0.PublicField("TEXT1",250,"TEXT1","TEXT1","dtString");
+DCLDInfo0.PublicField("TEXT2",50,"TEXT2","TEXT2","dtString");
+
+NewObject("DCLDInfo","TDOAReportConnection");
+DCLDInfo.ConnectionString("b4");
+DCLDInfo.SQL("SELECT * FROM GTDR_DCLDINFO WHERE (G32<>'1' AND NGR='31' AND TYP_NGR='01')");
+DCLDInfo.Connect();
+DCLDInfo.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLDInfo.PublicField("G32",3,"G32","G32","dtString");
+DCLDInfo.PublicField("TEXT1",250,"TEXT1","TEXT1","dtString");
+DCLDInfo.PublicField("TEXT2",50,"TEXT2","TEXT2","dtString");
+
+NewObject("DCLDInfoK0","TDOAReportConnection");
+DCLDInfoK0.ConnectionString("b4");
+DCLDInfoK0.SQL("SELECT * FROM GTDR_DCLDINFO WHERE (G32='1' AND NGR='31' AND TYP_NGR='03')");
+DCLDInfoK0.Connect();
+DCLDInfoK0.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLDInfoK0.PublicField("TEXT1",250,"TEXT1","TEXT1","dtString");
+DCLDInfoK0.PublicField("TEXT2",50,"TEXT2","TEXT2","dtString");
+
+NewObject("DCLDInfoK","TDOAReportConnection");
+DCLDInfoK.ConnectionString("b4");
+DCLDInfoK.SQL("SELECT * FROM GTDR_DCLDINFO WHERE (G32<>'1' AND NGR='31' AND TYP_NGR='03')");
+DCLDInfoK.Connect();
+DCLDInfoK.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLDInfoK.PublicField("G32",3,"G32","G32","dtString");
+DCLDInfoK.PublicField("TEXT1",250,"TEXT1","TEXT1","dtString");
+DCLDInfoK.PublicField("TEXT2",50,"TEXT2","TEXT2","dtString");
+
+NewObject("DCLTechd0D","TDOAReportConnection");
+DCLTechd0D.ConnectionString("b4");
+DCLTechd0D.SQL("SELECT G071,G072,G073,G32,Substr((G4401||'.'||G4402||'.'||G4403||'.'||G442||'.'||G443||'.'||G444),1,193) AS G44 FROM GTDR_DCLTECHD WHERE (G32='1')");
+DCLTechd0D.Connect();
+DCLTechd0D.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLTechd0D.InitRec(8);
+
+DCLTechd0D.PublicField("G44",193,"G44","G44","dtString");
+
+NewObject("DCLPredd0D","TDOAReportConnection");
+DCLPredd0D.ConnectionString("b4");
+DCLPredd0D.SQL("SELECT * FROM GTDR_DCLPREDD WHERE (G32='1')");
+DCLPredd0D.Connect();
+DCLPredd0D.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLPredd0D.InitRec(2);
+
+DCLPredd0D.PublicField("G40_1",8,"G40_1","G40_1","dtString");
+DCLPredd0D.PublicField("G40_2",10,"G40_2","G40_2","dtString");
+DCLPredd0D.PublicField("G40_3",7,"G40_3","G40_3","dtString");
+DCLPredd0D.PublicField("G40_4",3,"G40_4","G40_4","dtString");
+
+NewObject("DCLTechdD","TDOAReportConnection");
+DCLTechdD.ConnectionString("b4");
+DCLTechdD.SQL("SELECT G071,G072,G073,G32,Substr((G4401||'.'||G4402||'.'||G4403||'.'||G442||'.'||G443||'.'||G444),1,193) AS G44 FROM GTDR_DCLTECHD WHERE (G32<>'1')");
+DCLTechdD.Connect();
+DCLTechdD.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLTechdD.InitRec(8);
+
+DCLTechdD.PublicField("G32",3,"G32","G32","dtString");
+DCLTechdD.PublicField("G44",193,"G44","G44","dtString");
+
+NewObject("DCLPreddD","TDOAReportConnection");
+DCLPreddD.ConnectionString("b4");
+DCLPreddD.SQL("SELECT * FROM GTDR_DCLPREDD WHERE (G32<>'1')");
+DCLPreddD.Connect();
+DCLPreddD.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+DCLPreddD.InitRec(2);
+
+DCLPreddD.PublicField("G32",3,"G32","G32","dtString");
+DCLPreddD.PublicField("G40_1",8,"G40_1","G40_1","dtString");
+DCLPreddD.PublicField("G40_2",10,"G40_2","G40_2","dtString");
+DCLPreddD.PublicField("G40_3",7,"G40_3","G40_3","dtString");
+DCLPreddD.PublicField("G40_4",3,"G40_4","G40_4","dtString");
+
+NewObject("DCLPasp","TDOAReportConnection");
+DCLPasp.ConnectionString("b4");
+DCLPasp.SQL("SELECT * FROM GTDR_DCLPASP WHERE NZP=1");
+DCLPasp.Connect();
+DCLPasp.SetFilter("G071='^Код таможенного органа^' AND G072=TO_DATE('^Дата оформления^','dd.mm.yyyy') AND G073='^Порядковый номер^'");
+
+DCLPasp.PublicField("PASP",25,"PASP","PASP","dtString");
+DCLPasp.PublicField("PASPDD",10,"PASPDD","PASPDD","dtString");
+
+}

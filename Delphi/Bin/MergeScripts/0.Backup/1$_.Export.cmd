@@ -1,0 +1,2 @@
+%expimp_path%\exp.exe %dest_con% file=%dumps_path%\bkp_dest_%DATE%.dmp log=%dumps_path%\exp_bkp_dest_%DATE%.log statistics=none consistent=y
+%expimp_path%\exp.exe %source_con% file=%dumps_path%\source_%DATE%.dmp log=%dumps_path%\exp_source_%DATE%.log statistics=none consistent=y

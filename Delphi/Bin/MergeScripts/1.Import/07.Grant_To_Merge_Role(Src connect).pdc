@@ -1,0 +1,21 @@
+SET SERVEROUTPUT ON SIZE 1000000;
+BEGIN
+  FOR c IN ( SELECT o.object_name, o.subobject_name, o.object_type
+              FROM all_objects o
+              WHERE o.owner = USER
+                AND o.object_type IN ('PROCEDURE', 'PACKAGE', 'TABLE', 'VIEW', 'FUNCTION')
+                AND o.object_name NOT LIKE 'SYS_IOT%'
+                 ) LOOP
+    BEGIN            
+      EXECUTE IMMEDIATE 'GRANT'|| 
+               CASE WHEN c.object_type IN ('TABLE', 'VIEW') THEN ' SELECT, INSERT, UPDATE ON ' 
+                    ELSE ' EXECUTE ON 'END||c.object_name||' to FDC_ROLE_LS_MERGE';
+    EXCEPTION 
+      WHEN OTHERS THEN
+        dbms_output.put_line(c.object_name||' grant with error: '||Sqlerrm); 
+    END;                    
+  END LOOP;                
+END;
+/
+
+exit

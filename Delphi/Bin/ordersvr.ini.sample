@@ -1,0 +1,12 @@
+﻿
+[Connection]
+Port=212
+TimeOut=5
+
+[Queue]
+TimeOut=5
+
+[Logon]
+username=
+password=
+database=

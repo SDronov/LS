@@ -1,0 +1,8 @@
+userid=<#VERO_USER>/<#VERO_USER_PASSWORD>@<#SERVER_NAME>
+fromuser=<#IMPORT_FROM_USER>
+touser=<#VERO_USER>
+file=Scripts\<#IMPORT_FILE>
+ignore=y
+rows=y
+grants=n
+log=<#INSTALL_LOG_PATH>\03_Import.log

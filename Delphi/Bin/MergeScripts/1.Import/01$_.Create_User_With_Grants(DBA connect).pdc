@@ -1,0 +1,84 @@
+DEFINE SourceUser = LS_SRC_MERGE
+--DEFINE TblSpace = LS
+DEFINE TmpTblSpace = TEMP
+
+DEFINE DestUser = DOXOD_LS_2
+DEFINE psw = w
+DEFINE TempUser = LS_TEMP_MERGE
+
+DROP USER &&SourceUser CASCADE;
+DROP USER &&TempUser CASCADE;
+
+
+declare
+  TblSpace varchar2(20);
+  vSQL varchar2(2000);
+  SourceUser varchar2(20) := 'LS_SRC_MERGE';
+  TmpTblSpace varchar2(20) := 'TEMP';
+  psw varchar2(2) := 'w';
+  TempUser varchar2(20) := 'LS_TEMP_MERGE';
+begin
+  --попробуем вынуть таблспейс из существующего пользователя
+  begin
+    select default_tablespace
+      into TblSpace
+      from dba_users
+      where username = 'DOXOD_LS_2';
+  exception
+    when others then
+      TblSpace := 'USERS';
+  end;
+  vSQL := 'CREATE USER '||SourceUser||' '||
+    'IDENTIFIED BY "'||psw||'" DEFAULT TABLESPACE '||TblSpace||' TEMPORARY TABLESPACE '||TmpTblSpace||' '||
+    'ACCOUNT UNLOCK QUOTA UNLIMITED ON '||TblSpace;
+  execute immediate vSQL;
+  vSQL := 'CREATE USER '||TempUser||' '||
+    'IDENTIFIED BY "'||psw||'" DEFAULT TABLESPACE '||TblSpace||' TEMPORARY TABLESPACE '||TmpTblSpace||' '||
+    'ACCOUNT UNLOCK QUOTA UNLIMITED ON '||TblSpace;
+  execute immediate vSQL;
+end; 
+/
+
+CREATE ROLE FDC_ROLE_LS_MERGE;
+GRANT SELECT ANY SEQUENCE TO FDC_ROLE_LS_MERGE;
+GRANT CREATE ANY TABLE TO FDC_ROLE_LS_MERGE;
+GRANT ALTER ANY TABLE TO FDC_ROLE_LS_MERGE;
+
+GRANT FDC_ROLE_LS_MERGE TO &&DestUser;
+GRANT FDC_ROLE_LS_MERGE TO &&SourceUser;
+GRANT FDC_ROLE_LS_MERGE TO &&TempUser;
+
+GRANT "CONNECT" TO &&SourceUser;
+GRANT "RESOURCE" TO &&SourceUser;
+grant create procedure to &&SourceUser;
+grant create sequence to &&SourceUser;
+grant create table to &&SourceUser;
+grant create trigger to &&SourceUser;
+grant create type to &&SourceUser;
+GRANT CREATE VIEW TO &&SourceUser;
+GRANT QUERY REWRITE TO &&SourceUser;
+grant create sequence to &&SourceUser;
+grant create trigger to &&SourceUser;
+GRANT SELECT on sys.v_$session to &&SourceUser;
+GRANT EXECUTE ON sys.dbms_alert TO &&SourceUser;
+GRANT SELECT ON sys.dbms_alert_info TO &&SourceUser;
+GRANT EXECUTE ON sys.dbms_lock TO &&SourceUser;
+
+GRANT fdc_role_ls_adm_access TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_adm_nsi TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_otp TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_inspector_budget TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_inspector TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_inspector_zadolg TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_inspector_knp TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_inspector_ou TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_service_gtd TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_service_tpo TO &&SourceUser WITH ADMIN OPTION;
+GRANT fdc_role_ls_select_data TO &&SourceUser WITH ADMIN OPTION;
+
+GRANT "CONNECT" TO &&TempUser;
+GRANT "RESOURCE" TO &&TempUser;
+grant create table to &&TempUser;
+grant create type to &&TempUser;
+
+exit

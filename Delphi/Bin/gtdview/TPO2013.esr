@@ -1,0 +1,180 @@
+Script{
+
+NewObject("Template","TTemplate");
+Template.SetFileName("TPO2013.rav");
+
+NewObject("TPO","TBDEReportConnection");
+TPO.ConnectionString("b4");
+TPO.SQL("SELECT tp.tpo_number
+      ,tp.order_type
+      ,tp.ext_list 
+      ,tp.doc_name
+      ,tp.inn
+      ,tp.name
+      ,tp.kodval
+      ,tp.curs_usd
+      ,tp.curs_eku
+      ,tp.dop_inf1
+      ,tp.dop_inf2
+      ,tp.dop_inf3
+      ,tp.weight_al
+      ,tp.tovcost_pl
+      ,tp.tovcost_usd
+      ,tp.tovcost_eku
+      ,tp.sum_rub
+      ,tp.sum_usd       
+      ,tp.sum_eku
+      ,tp.sprub
+      ,tp.oplrub
+      ,tp.fiotam
+      ,tp.fiokas
+      ,g.naimenov
+      ,g.codtnved
+      ,g.weight
+      ,g.kolvo
+      ,g.cod_plat
+      ,g.tovcost_pl AS tovcost0_pl
+      ,g.tovcost_al AS tovcost0_usd
+      ,g.tovcost_pl * tp.curs_eku AS tovcost0_eku FROM ( SELECT s.tpo_number
+               ,s.REGIM || '/' || s.methmove || '/' || s.vid_trans AS order_type
+               ,ext_list
+               ,s.kodtam || '/' || TO_CHAR( s.dat_tpo, 'ddmmyy' ) || '/' || s.tpo_number AS doc_name
+               ,c.inn
+               ,c.name
+               ,s.kodval
+               ,s.curs_usd
+               ,s.curs_eku
+               ,s.dop_inf1
+               ,s.dop_inf2
+               ,s.dop_inf3
+               ,s.weight_al
+               ,s.tovcost_pl
+               ,s.tovcost_al AS tovcost_usd
+               ,s.tovcost_pl * s.curs_eku AS tovcost_eku
+               ,s.sum_rub
+               ,s.sum_rub * s.curs_usd AS sum_usd       
+               ,s.sum_rub * s.curs_eku AS sum_eku
+               ,s.sprub
+               ,s.oplrub
+               ,s.fiotam
+               ,s.fiokas FROM tpos s
+               ,clients c WHERE c.idpayer = s.client ) tp
+      ,g_s g WHERE g.tpo_number = tp.tpo_number AND g.prim_plt = '1' AND NVL( g.num_dtpo, 0 ) = 0 AND NVL( g.pos_dtpo, 0 ) = 0 AND G_S_TYPE='Т'");
+TPO.Connect();
+TPO.SetFilter("tpo_number='^Типографский номер ТПО^'");
+
+TPO.PublicField("TPO_NUMBER",10,"TPO_NUMBER","TPO_NUMBER","dtString");
+TPO.PublicField("ORDER_TYPE",10,"ORDER_TYPE","ORDER_TYPE","dtString");
+TPO.PublicField("EXT_LIST",1,"EXT_LIST","EXT_LIST","dtString");
+TPO.PublicField("DOC_NAME",26,"DOC_NAME","DOC_NAME","dtString");
+TPO.PublicField("C_INN",12,"C_INN","C_INN","dtString");
+TPO.PublicField("C_NAME",48,"C_NAME","C_NAME","dtString");
+TPO.PublicField("KODVAL",3,"KODVAL","KODVAL","dtString");
+TPO.PublicField("CURS_USD",19,"CURS_USD","CURS_USD","dtString");
+TPO.PublicField("CURS_EKU",19,"CURS_EKU","CURS_EKU","dtString");
+TPO.PublicField("DOP_INF1",48,"DOP_INF1","DOP_INF1","dtString");
+TPO.PublicField("DOP_INF2",48,"DOP_INF2","DOP_INF2","dtString");
+TPO.PublicField("DOP_INF3",48,"DOP_INF3","DOP_INF3","dtString");
+TPO.PublicField("WEIGHT_AL",14,"WEIGHT_AL","WEIGHT_AL","dtString");
+TPO.PublicField("TOVCOST_PL",18,"TOVCOST_PL","TOVCOST_PL","dtString");
+TPO.PublicField("TOVCOST_USD",18,"TOVCOST_USD","TOVCOST_USD","dtString");
+TPO.PublicField("TOVCOST_EKU",18,"TOVCOST_EKU","TOVCOST_EKU","dtString");
+TPO.PublicField("SUM_RUB",18,"SUM_RUB","SUM_RUB","dtString");
+TPO.PublicField("SUM_USD",18,"SUM_USD","SUM_USD","dtString");
+TPO.PublicField("SUM_EKU",18,"SUM_EKU","SUM_EKU","dtString");
+TPO.PublicField("SPRUB",2,"SPRUB","SPRUB","dtString");
+TPO.PublicField("OPLRUB",18,"OPLRUB","OPLRUB","dtString");
+TPO.PublicField("FIOTAM",50,"FIOTAM","FIOTAM","dtString");
+TPO.PublicField("FIOKAS",50,"FIOKAS","FIOKAS","dtString");
+TPO.PublicField("CODTNVED",10,"CODTNVED","CODTNVED","dtString");
+TPO.PublicField("WEIGHT",14,"WEIGHT","WEIGHT","dtString");
+TPO.PublicField("KOLVO",16,"KOLVO","KOLVO","dtString");
+TPO.PublicField("COD_PLAT",3,"COD_PLAT","COD_PLAT","dtString");
+TPO.PublicField("TOVCOST0_PL",20,"TOVCOST0_PL","TOVCOST0_PL","dtString");
+TPO.PublicField("TOVCOST0_USD",14,"TOVCOST0_USD","TOVCOST0_USD","dtString");
+TPO.PublicField("TOVCOST0_EKU",14,"TOVCOST0_EKU","TOVCOST0_EKU","dtString");
+TPO.PublicField("NAIMENOV",58,"NAIMENOV","NAIMENOV","dtMemo");
+      
+NewObject("TPODOC","TBDEReportConnection");
+TPODOC.ConnectionString("b4");
+TPODOC.SQL("SELECT * FROM EFZ_ORDER.TPO_DOCS WHERE (1=1)");
+TPODOC.Connect();
+TPODOC.SetFilter("TPO_NUMBER='^Типографский номер ТПО^'");
+TPODOC.BlocksOnList(1,"TPO_NUMBER");
+
+TPODOC.PublicField("PDOC",50,"PDOC","PDOC","dtMemo");
+
+NewObject("TPOITP","TBDEReportConnection");
+TPOITP.ConnectionString("b4");
+TPOITP.SQL("SELECT * FROM EFZ_ORDER.TPO_ITPS WHERE (1=1)");
+TPOITP.Connect();
+TPOITP.SetFilter("TPO_NUMBER='^Типографский номер ТПО^'");
+TPOITP.BlocksOnList(1,"TPO_NUMBER");
+
+TPOITP.PublicField("COD_PLAT",4,"COD_PLAT","COD_PLAT","dtMemo");
+TPOITP.PublicField("OSN_NATCH",18,"OSN_NATCH","OSN_NATCH","dtMemo");
+TPOITP.PublicField("EDOSNOV",15,"EDOSNOV","EDOSNOV","dtMemo");
+TPOITP.PublicField("STAVKA",14,"STAVKA","STAVKA","dtMemo");
+TPOITP.PublicField("SUMPL1",22,"SUMPL1","SUMPL1","dtMemo");
+
+NewObject("TPO_DOB_MAIN","TBDEReportConnection");
+TPO_DOB_MAIN.ConnectionString("b4");
+TPO_DOB_MAIN.SQL("SELECT * FROM EFZ_ORDER.TPOS WHERE (EXT_LIST>0)");
+TPO_DOB_MAIN.Connect();
+TPO_DOB_MAIN.SetFilter("TPO_NUMBER='^Типографский номер ТПО^'");
+
+TPO_DOB_MAIN.PublicField("TPO_NUMBER",10,"TPO_NUMBER","TPO_NUMBER","dtString");
+TPO_DOB_MAIN.PublicField("KODTAM",8,"KODTAM","KODTAM","dtString");
+TPO_DOB_MAIN.PublicField("DAT_TPO",10,"DAT_TPO","DAT_TPO","dtString");
+
+NewObject("TPO_DOP","TBDEReportConnection");
+TPO_DOP.ConnectionString("b4");
+TPO_DOP.SQL("SELECT * FROM EFZ_ORDER.TPO_DOPS WHERE (NUM_DTPO>0)");
+TPO_DOP.Connect();
+TPO_DOP.SetFilter("TPO_NUMBER='^Типографский номер ТПО^'");
+TPO_DOP.BlocksOnList(1,"");
+
+TPO_DOP.PublicField("NUM_DTPO",1,"NUM_DTPO","NUM_DTPO","dtString");
+TPO_DOP.PublicField("TDOP_INF1",72,"TDOP_INF1","TDOP_INF1","dtString");
+TPO_DOP.PublicField("TDOP_INF2",72,"TDOP_INF2","TDOP_INF2","dtString");
+TPO_DOP.PublicField("TDOP_INF3",72,"TDOP_INF3","TDOP_INF3","dtString");
+TPO_DOP.PublicField("TDOP_INF4",72,"TDOP_INF4","TDOP_INF4","dtString");
+TPO_DOP.PublicField("STOIM",18,"STOIM","STOIM","dtString");
+TPO_DOP.PublicField("PLAT",18,"PLAT","PLAT","dtString");
+TPO_DOP.PublicField("POSHL",18,"POSHL","POSHL","dtString");
+TPO_DOP.PublicField("AKCIZ",18,"AKCIZ","AKCIZ","dtString");
+TPO_DOP.PublicField("NDS",18,"NDS","NDS","dtString");
+
+NewObject("GOODST_DOB","TBDEReportConnection");
+GOODST_DOB.ConnectionString("b4");
+GOODST_DOB.SQL("SELECT * FROM EFZ_ORDER.G_S WHERE (G_S_TYPE='Т' AND NUM_DTPO>0 AND POS_DTPO>0)");
+GOODST_DOB.Connect();
+GOODST_DOB.SetFilter("TPO_NUMBER='^Типографский номер ТПО^'");
+GOODST_DOB.BlocksOnList(3,"");
+
+GOODST_DOB.PublicField("CODTNVED",10,"CODTNVED","CODTNVED","dtString");
+GOODST_DOB.PublicField("WEIGHT",14,"WEIGHT","WEIGHT","dtString");
+GOODST_DOB.PublicField("KOLVO",16,"KOLVO","KOLVO","dtString");
+GOODST_DOB.PublicField("CODCOUNTRY",3,"CODCOUNTRY","CODCOUNTRY","dtString");
+GOODST_DOB.PublicField("TOVCOST_US",14,"TOVCOST_US","TOVCOST_US","dtString");
+GOODST_DOB.PublicField("TOVCOST_PL",20,"TOVCOST_PL","TOVCOST_PL","dtString");
+GOODST_DOB.PublicField("NAIMENOV",58,"NAIMENOV","NAIMENOV","dtString");
+
+NewObject("TPO_TDOP","TBDEReportConnection");
+TPO_TDOP.ConnectionString("b4");
+TPO_TDOP.SQL("SELECT * FROM EFZ_ORDER.TPO_TDOPS WHERE (1=1)");
+TPO_TDOP.Connect();
+TPO_TDOP.SetFilter("NUM_TPO='^Типографский номер ТПО^'");
+TPO_TDOP.BlocksOnList(3,"");
+
+TPO_TDOP.PublicField("STAVPOSHL",16,"STAVPOSHL","STAVPOSHL","dtString");
+TPO_TDOP.PublicField("STAVPOSHL2",16,"STAVPOSHL2","STAVPOSHL2","dtString");
+TPO_TDOP.PublicField("STAVAKCIZ",16,"STAVAKCIZ","STAVAKCIZ","dtString");
+TPO_TDOP.PublicField("STAVNDS",8,"STAVNDS","STAVNDS","dtString");
+TPO_TDOP.PublicField("STO",8,"STO","STO","dtString");
+TPO_TDOP.PublicField("SUMPOSHL",18,"SUMPOSHL","SUMPOSHL","dtString");
+TPO_TDOP.PublicField("SUMAKCIZ",18,"SUMAKCIZ","SUMAKCIZ","dtString");
+TPO_TDOP.PublicField("SUMNDS",18,"SUMNDS","SUMNDS","dtString");
+TPO_TDOP.PublicField("SUMSB",18,"SUMSB","SUMSB","dtString");
+
+}

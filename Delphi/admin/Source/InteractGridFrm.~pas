@@ -1,0 +1,37 @@
+unit InteractGridFrm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ObjectGridFrm, cxGraphics, Menus, cxLookAndFeelPainters,
+  cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, DB,
+  cxDBData, dxBar, cxGridCustomPopupMenu, cxGridPopupMenu,
+  FDCCustomDataset, fdcQuery, fdcParamsHolder, ImgList, cxLookAndFeels,
+  cxContainer, dxLayoutLookAndFeels, ActnList, cxGridLevel,
+  cxGridBandedTableView, cxGridDBBandedTableView, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxClasses, cxControls,
+  cxGridCustomView, cxGrid, StdCtrls, dxLayoutControl, cxTextEdit,
+  cxButtons, ExtCtrls, cxProgressBar, cxMaskEdit, cxSpinEdit, cxLabel,
+  dxStatusBar;
+
+type
+  TInteractGridForm = class(TObjectGridForm)
+    dsDataCODE: TStringField;
+    dsDatainteract_name: TStringField;
+    dsDataTYPE: TIntegerField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  InteractGridForm : TInteractGridForm;
+implementation
+
+{$R *.dfm}
+
+initialization
+  RegisterClass(TInteractGridForm);
+end.

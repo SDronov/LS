@@ -1,0 +1,16 @@
+DEFINE src = LS_SRC_MERGE
+
+DECLARE 
+  vid NUMBER;
+BEGIN
+  vid := fdc_user_add(pobject_type_sysname => 'User',
+                          plogin => '&&src',
+                          plastname => 'mrg_user',
+                          pfirstname => '-',
+                          pmiddlename => '-');
+END;
+/
+                          
+COMMIT;
+
+exit

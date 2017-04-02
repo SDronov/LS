@@ -1,0 +1,32 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = StdLibrary.bpl StdConsoleApp.exe StdWin32App.exe StdOraClientApp.exe \
+  StdVEROApp.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+StdConsoleApp.exe: Standard Console Application\StdConsoleApp.dpr
+  $(DCC)
+
+StdOraClientApp.exe: Standard Oracle Client Application\StdOraClientApp.dpr
+  $(DCC)
+
+StdWin32App.exe: Standard Win32 Application\StdWin32App.dpr
+  $(DCC)
+
+StdLibrary.bpl: Standard Components Library\StdLibrary.dpk
+  $(DCC)
+
+StdVEROApp.exe: Standard VERO Application\StdVEROApp.dpr
+  $(DCC)
+
+

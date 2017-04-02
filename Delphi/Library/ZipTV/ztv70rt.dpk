@@ -1,0 +1,111 @@
+package ztv70rt;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'ZipTV Compression Components - Runtime Package'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+{$DEFINE AES_SUPPORT}
+{$DEFINE TNT_UNICODE1}
+
+requires
+  vcl,
+  vclx,
+  rtl;
+
+contains
+  ztvzipencrypt in '..\ztvzipencrypt.pas',
+  err_msgs in '..\err_msgs.pas',
+  ztvarc2arc in '..\ztvarc2arc.pas',
+  ztvarchivestream in '..\ztvarchivestream.pas',
+  ztvarchiveeditor in '..\ztvarchiveeditor.pas',
+  ztvarchivesplitter in '..\ztvarchivesplitter.pas',
+  ztvaes in '..\ztvaes.pas',
+  ztvaesfileenc in '..\ztvaesfileenc.pas',
+  ztvaeshmac in '..\ztvaeshmac.pas',
+  ztvaessha1 in '..\ztvaessha1.pas',
+  ztvaespwd2key in '..\ztvaespwd2key.pas',
+  ztvaesprng in '..\ztvaesprng.pas',
+  ztvbase in '..\ztvbase.pas',
+  ztvblakhole in '..\ztvblakhole.pas',
+  ztvbzip in '..\ztvbzip.pas',
+  ztvcabgbls in '..\ztvcabgbls.pas',
+  ztvconsts in '..\ztvconsts.pas',
+  ztvcrypt in '..\ztvcrypt.pas',
+  ztvdeflate in '..\ztvdeflate.pas',
+  ztvdelzw in '..\ztvdelzw.pas',
+  ztvfileio in '..\ztvfileio.pas',
+  ztvfilescan in '..\ztvfilescan.pas',
+  ztvfindfile in '..\ztvfindfile.pas',
+  ztvgbls in '..\ztvgbls.pas',
+  ztvgzip in '..\ztvgzip.pas',
+  ztvheaders in '..\ztvheaders.pas',
+  ztvinflate in '..\ztvinflate.pas',
+  ztvinflate64 in '..\ztvinflate64.pas',
+  ztvjar in '..\ztvjar.pas',
+  ztvlha in '..\ztvlha.pas',
+  ztvlhapack in '..\ztvlhapack.pas',
+  ztvloadlib in '..\ztvloadlib.pas',
+  ztvlzh3 in '..\ztvlzh3.pas',
+  ztvlzh5 in '..\ztvlzh5.pas',
+  ztvmakecab in '..\ztvmakecab.pas',
+  ztvmakesfx in '..\ztvmakesfx.pas',
+  ztvPPMDi1 in '..\ztvppmdi1.pas',
+  ztvregarchive in '..\ztvregarchive.pas',
+  ztvregister in '..\ztvregister.pas',
+  ztvsearchengine in '..\ztvsearchengine.pas',
+  ztvstreams in '..\ztvstreams.pas',
+  ztvtar in '..\ztvtar.pas',
+  ztvtarbz in '..\ztvtarbz.pas',
+  ztvtargz in '..\ztvtargz.pas',
+  ztvturbosearch in '..\ztvturbosearch.pas',
+  ztvunace2 in '..\ztvunace2.pas',
+  ztvunarc in '..\ztvunarc.pas',
+  ztvunarj in '..\ztvunarj.pas',
+  ztvunbh in '..\ztvunbh.pas',
+  ztvunbzip in '..\ztvunbzip.pas',
+  ztvuncab in '..\ztvuncab.pas',
+  ztvuncabtypes in '..\ztvuncabtypes.pas',
+  ztvungzip in '..\ztvungzip.pas',
+  ztvunjar in '..\ztvunjar.pas',
+  ztvunlha in '..\ztvunlha.pas',
+  ztvunrar in '..\ztvunrar.pas',
+  ztvunsfx in '..\ztvunsfx.pas',
+  ztvuntar in '..\ztvuntar.pas',
+  ztvunzip in '..\ztvunzip.pas',
+  ztvunzoo in '..\ztvunzoo.pas',
+  ztvuudecode in '..\ztvuudecode.pas',
+  ztvuuencode in '..\ztvuuencode.pas',
+  ztvzip in '..\ztvzip.pas',
+  ztvzipcheck in '..\ztvzipcheck.pas',
+  ztvzipkey in '..\ztvzipkey.pas',
+  ztvziprun in '..\ztvziprun.pas',
+  ztvzipsearch in '..\ztvzipsearch.pas',
+  ztvzipsplitter in '..\ztvzipsplitter.pas',
+  ztvzipsplitglue in '..\ztvzipsplitglue.pas',
+  ztvziptv in '..\ztvziptv.pas',
+  ztvclipboard in 'd:\program files\borland\delphi7\comps\fors\ziptv11\ztvclipboard.pas',
+  ztvzipview in '..\ztvzipview.pas';
+
+
+end.

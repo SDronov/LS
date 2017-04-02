@@ -1,0 +1,42 @@
+DEFINE dst = DOXOD_LS_2
+
+-- Исправим на типы целевой схемы
+DECLARE
+
+  FUNCTION GetDestTypeId(pTypeSysName IN fdc_object_type.sysname%TYPE)
+    RETURN fdc_object_type.id%TYPE IS
+    RESULT fdc_object_type.id%TYPE;
+  BEGIN
+    SELECT t.id
+      INTO RESULT
+      FROM &&dst..Fdc_Object_Type t
+     WHERE t.sysname = pTypeSysName;
+    RETURN RESULT; 
+  END GetDestTypeId;
+
+BEGIN
+  FOR c IN (SELECT t.*
+              FROM fdc_object_type t) LOOP
+
+    c.mrg_id := GetDestTypeId(c.sysname);
+
+    FOR q IN (SELECT cl.*
+                FROM mrg_columns cl, mrg_table tb
+               WHERE cl.is_dict = 2
+                 AND tb.table_name = cl.table_name
+                 AND tb.actual = 1) LOOP
+      EXECUTE IMMEDIATE 'UPDATE '||q.table_name||' set mrg_'||q.column_name||' = '||to_char(c.mrg_id)||
+         ' where '||q.column_name||' = '||to_char(c.id);  
+    END LOOP;
+    UPDATE fdc_object t
+      SET t.mrg_id = c.mrg_id
+         ,t.mrg_doexp = 0 
+      WHERE t.id = c.id; 
+  END LOOP;
+END;
+/
+
+COMMIT;
+
+exit
+

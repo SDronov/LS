@@ -1,0 +1,144 @@
+DEFINE dst = DOXOD_LS_2
+
+SET SERVEROUTPUT ON SIZE 100000 
+-- Увеличим ID объектам в БД-источнике, чтобы не дублировались на БД-получателе
+DECLARE
+  lv_ObjDelta NUMBER; -- приращение ID для идентификаторов объектов
+  lv_DbfDelta NUMBER; -- приращеине ID для идентификаторов записей в DBF
+  lv_Delta    NUMBER;
+BEGIN
+  SELECT &&dst..fdc_object_key_sq.NEXTVAL - 
+         (SELECT MIN(o.ID) FROM  fdc_object o WHERE o.ext_source <> '12345678') + 100,
+          &&dst..dbf_object_key_sq.NEXTVAL + 100
+    INTO lv_ObjDelta, lv_DbfDelta
+  FROM dual;
+
+  -- увеличим ID всем полям для is_dict = 0
+  FOR tbl IN (SELECT c.*
+               FROM mrg_table t, mrg_columns c 
+               WHERE c.table_name = t.table_name
+                 AND t.do_exp = 1 
+                 AND c.is_dict = 0 -- только все объекты
+               ORDER BY c.table_name  ) LOOP
+    EXECUTE IMMEDIATE 'update '||tbl.table_name||' set MRG_'||tbl.column_name||
+    ' = '||tbl.column_name||' + '||
+    CASE WHEN tbl.table_name LIKE 'DBF%' AND tbl.column_name = 'ID' 
+      THEN to_char(lv_DbfDelta) 
+      ELSE to_char(lv_ObjDelta) END||' WHERE MRG_'||tbl.column_name||' IS NULL' ;
+
+    -- если первичный ключ, обновим fdc_object 
+    IF  tbl.table_name LIKE 'FDC%' AND tbl.column_name = 'ID'THEN
+      -- если потомок fdc_Document, обновим Document 
+      IF mrgIsDocument(tbl.table_name) = 1 THEN
+        EXECUTE IMMEDIATE '  UPDATE fdc_document d SET d.mrg_id = d.id + '||lv_ObjDelta||
+          ' WHERE d.mrg_id IS NULL AND EXISTS (SELECT 1 FROM '||tbl.table_name||' a WHERE a.id = d.id)';
+      END IF;
+      IF mrgGetTopParent(tbl.table_name) = 'FDC_OBJECT' THEN
+        EXECUTE IMMEDIATE '  UPDATE fdc_object o SET o.mrg_doExp = 1, o.mrg_id = o.id + '||lv_ObjDelta||
+          ' WHERE o.mrg_id IS NULL AND EXISTS (SELECT 1 FROM '||tbl.table_name||' a WHERE a.id = o.id)' ;
+      END IF;
+    END IF; 
+    commit;
+  END LOOP;      
+  
+  -- увеличим ID всем полям для is_dict = -1
+
+  -- Обновим объекты, которые не имеют собственных таблиц
+  UPDATE fdc_object o 
+    SET o.mrg_doexp = 1,
+        o.mrg_id = o.id + lv_ObjDelta
+    WHERE o.mrg_id IS NULL
+      AND o.object_type_id IN ( SELECT t.id 
+                                  FROM Fdc_Object_Type t 
+                                 WHERE t.sysname IN ('LoadInstance', 'BadPayOrderError', 
+                                                     'NoDeclarantFoundError', 
+                                                     'WrongNumberOfMonthsError')
+                               );    
+  commit;                             
+  -- fdc_kind (вроде бы только BigPayer добавляется)
+  UPDATE fdc_kind k
+    SET k.mrg_id = k.id + lv_ObjDelta
+    WHERE k.mrg_id IS NULL
+      AND EXISTS ( SELECT 1
+                     FROM fdc_object_lst o
+                     WHERE o.id = k.id
+                       AND o.SYSNAME LIKE 'BigPayer%');
+  UPDATE fdc_object o 
+    SET o.mrg_doexp = 1,
+        o.mrg_id = o.id + lv_ObjDelta
+    WHERE o.mrg_id IS NULL
+      AND EXISTS( SELECT 1
+                    FROM fdc_kind k
+                    WHERE k.id = o.id 
+                      AND k.mrg_id IS NOT NULL);
+   commit;                   
+   -- fdc_obj_kind таблица связей, при отборе данных для экспорта, надо проверять mrg_DoExp по object_id
+   UPDATE fdc_obj_kind o
+     SET o.mrg_kind_id   = getmrgid(o.kind_id),
+         o.mrg_object_id = getmrgid(o.object_id)
+    WHERE o.mrg_object_id IS NULL;     
+   commit;  
+   -- fdc_object_relation
+   UPDATE fdc_object_relation t
+     SET t.mrg_id = t.id + lv_ObjDelta,
+         t.mrg_object_id = getmrgid(t.object_id),
+         t.mrg_rel_object_id = getmrgid(t.rel_object_id)
+     WHERE t.mrg_id IS NULL 
+       AND NOT EXISTS ( SELECT 1 
+                          FROM fdc_object_lst o 
+                         WHERE o.ID = t.id
+                           AND o.TYPESYSNAME IN ( 'Rel.BP<->Deduction', 
+                                                  'RelOperationAccount', 
+                                                  'RelOperationDocClass') 
+                      );
+   UPDATE fdc_object o 
+    SET o.mrg_doexp = 1,
+        o.mrg_id = o.id + lv_ObjDelta
+    WHERE o.mrg_id IS NULL
+      AND EXISTS( SELECT 1
+                    FROM fdc_object_relation r
+                    WHERE r.id = o.id 
+                      AND r.mrg_id IS NOT NULL);
+  commit;                    
+  -- fdc_value
+  UPDATE fdc_value v
+    SET v.mrg_id            = v.id + lv_ObjDelta,
+        v.mrg_ref_object_id = getmrgid(v.ref_object_id)
+   WHERE v.mrg_id IS NULL
+     AND (v.ref_object_id IS NOT NULL
+          OR
+          EXISTS ( SELECT 1 
+                   FROM fdc_object o, fdc_object o1
+                   WHERE o.id = v.id
+                     AND o.owner_object_id = o1.id
+                     AND o1.mrg_doexp = 1)  
+         );
+         
+   UPDATE fdc_object o 
+    SET o.mrg_doexp = 1,
+        o.mrg_id = o.id + lv_ObjDelta
+    WHERE o.mrg_id IS NULL
+      AND EXISTS( SELECT 1
+                    FROM fdc_value v
+                    WHERE v.id = o.id 
+                      AND v.mrg_id IS NOT NULL);       
+  
+  commit;
+  --  owner object
+  FOR c IN ( SELECT o.id, getmrgid(o.owner_object_id) AS mrg_owner_object_id
+               FROM fdc_object o 
+               WHERE o.mrg_owner_object_id IS NULL 
+                 AND o.owner_object_id IS NOT NULL) LOOP
+    UPDATE fdc_object ob
+      SET ob.mrg_owner_object_id = c.mrg_owner_object_id
+      WHERE ob.id = c.id; 
+  END LOOP;
+/*  UPDATE fdc_object o
+    SET o.mrg_owner_object_id = getmrgid(o.owner_object_id)
+    WHERE o.mrg_owner_object_id IS NULL 
+      AND o.owner_object_id IS NOT NULL;
+*/  commit;                    
+END;
+/
+
+exit

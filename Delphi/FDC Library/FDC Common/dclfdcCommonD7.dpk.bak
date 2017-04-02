@@ -1,0 +1,68 @@
+package dclfdcCommonD7;
+
+{$R *.res}
+{$R 'Source\fdcQuery.dcr'}
+{$R 'Source\fdcInspector.dcr'}
+{$R 'Source\fdcTimer.dcr'}
+{$R 'Source\fdcStringsHolder.dcr'}
+{$R 'Source\fdcParamsHolder.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'FDC - Common library'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  designide,
+  vclx,
+  vcl,
+  dbrtl,
+  vcldb,
+  vclactnband,
+  dcldb,
+  vcldesigner,
+  designdgm,
+  dclstd,
+  dclocx,
+  vcljpg,
+  bdertl,
+  Package1;
+
+contains
+  fdcParamsHolderEditor in 'Source\fdcParamsHolderEditor.pas',
+  fdcCommonReg in 'Source\fdcCommonReg.pas',
+  Progr in 'Source\progr.pas' {ProgressDlg},
+  DelExpert in 'Source\DelExpert.pas' {DelExpertDlg},
+  Delfor1 in 'Source\Delfor1.pas',
+  DelforEng in 'Source\DelforEng.pas',
+  DelForTypes in 'Source\DelforTypes.pas',
+  EditFile in 'Source\EditFile.pas' {FileEditDlg},
+  fdcFormatterWizard in 'Source\fdcFormatterWizard.pas',
+  fdcNamePropertyEditor in 'Source\fdcNamePropertyEditor.pas',
+  fdcNamePropertyFrm in 'Source\fdcNamePropertyFrm.pas' {fdcNamePropertyForm},
+  MyIDEStream in 'Source\MyIDEStream.pas',
+  OObjects in 'Source\oObjects.pas',
+  OptDlg in 'Source\OptDlg.pas' {OptionsDlg},
+  SQLEditorFrm in 'Source\SQLEditorFrm.pas' {SQLEditorForm};
+
+end.

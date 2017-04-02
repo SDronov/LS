@@ -1,0 +1,77 @@
+unit DeclarantChecksFrm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ObjectFrm, DB, FDCCustomDataset, fdcQuery, fdcParamsHolder,
+  dxBar, ImgList, cxEdit, cxLookAndFeels, cxContainer,
+  dxLayoutLookAndFeels, ActnList, StdCtrls, dxLayoutControl, cxMemo,
+  cxDBEdit, cxTextEdit, cxPC, cxControls, cxGraphics, cxDropDownEdit,
+  cxMaskEdit, cxCalendar, OracleData, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, fdcObjectLookupEdit;
+
+type
+  TDeclarantChecksForm = class(TObjectForm)
+    edtreqContent: TcxDBMemo;
+    lcireqContent: TdxLayoutItem;
+    edtansContent: TcxDBMemo;
+    lciAnsContent: TdxLayoutItem;
+    dsDataCHECKDATE: TDateTimeField;
+    dsDataREQCONT: TStringField;
+    dsDataNSTATUS: TIntegerField;
+    dsDataANSDATE: TDateTimeField;
+    dsDataANSCONT: TStringField;
+    dsDataCHECKNUMB: TIntegerField;
+    dsDataSUBJECT_ID: TIntegerField;
+    dsDataDOCUMENT_ID: TIntegerField;
+    edtcheckNumber: TcxDBTextEdit;
+    lciCheckNumber: TdxLayoutItem;
+    edtCheckDate: TcxDBDateEdit;
+    lcicheckDate: TdxLayoutItem;
+    lcGeneralGroup1: TdxLayoutGroup;
+    dsDataSCHECKTYPE: TStringField;
+    cmbxChecktype: TfdcObjectLookupEdit;
+    lcGeneralItem1: TdxLayoutItem;
+    dsChecktype: TOracleDataSet;
+    srcChecktype: TDataSource;
+    dsChecktypesDESCRIPTION: TStringField;
+    dsDatanCHECKTYPE: TIntegerField;
+    dsChecktypeID: TFloatField;
+    lcGeneralGroup3: TdxLayoutGroup;
+    procedure dsDataAfterOpen(DataSet: TDataSet);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DeclarantChecksForm: TDeclarantChecksForm;
+
+implementation
+
+{$R *.dfm}
+procedure TDeclarantChecksForm.dsDataAfterOpen(DataSet: TDataSet);
+begin
+  inherited;
+  lciNameEdit.Visible := not IsNew;
+  lciCheckNumber.Visible := not IsNew;
+  lcireqContent.Visible := not IsNew;
+  lciansContent.Visible := not IsNew;
+  lciCheckDate.Visible := not IsNew;
+
+  cmbxChecktype.Properties.ReadOnly := not IsNew;
+  edtName.Properties.ReadOnly := not IsNew;
+  edtcheckNumber.Properties.ReadOnly := not IsNew;
+  edtReqContent.Properties.ReadOnly := not IsNew;
+  edtAnsContent.Properties.ReadOnly := not IsNew;
+  edtCheckDate.Properties.ReadOnly := not IsNew;
+
+  dsInsert.ParamByName('SUBJECT_ID').Value := ParamsHolder.Params.ParamValues['SUBJECT_ID'];
+  dsInsert.ParamByName('DOCUMENT_ID').Value := ParamsHolder.Params.ParamValues['DOCUMENT_ID'];
+end;
+
+initialization
+RegisterClass(TDeclarantChecksForm);
+end.

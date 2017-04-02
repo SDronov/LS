@@ -1,0 +1,1 @@
+..\bin\CheckCSApp.exe /uninstall

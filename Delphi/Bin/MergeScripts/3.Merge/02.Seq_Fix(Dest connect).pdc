@@ -1,0 +1,36 @@
+DECLARE
+  lv_Max NUMBER;
+  lv_DBFMax NUMBER := 0;
+  lv_Dummy NUMBER;
+BEGIN
+  SELECT MAX(ID)+100
+    INTO lv_Max
+   FROM (select max(id) id 
+           from fdc_object
+         union
+         select max(ext_id) id
+           from fdc_object);
+  EXECUTE IMMEDIATE 'drop sequence FDC_OBJECT_KEY_SQ';
+  EXECUTE IMMEDIATE 'create sequence FDC_OBJECT_KEY_SQ minvalue 1 maxvalue 999999999999999999999999999 start with '||
+    to_char(lv_Max)||' increment by 1 cache 100';
+  FOR c IN ( SELECT t.TABLE_NAME
+               FROM User_Tab_Columns t   
+               WHERE t.TABLE_NAME LIKE 'DBF%'
+                 AND t.COLUMN_NAME = 'ID'
+                 AND t.DATA_TYPE = 'NUMBER') LOOP
+    EXECUTE IMMEDIATE 'select max(id) from '||c.table_name
+    INTO lv_Dummy;
+    
+    IF  lv_Dummy > lv_DBFMax THEN
+      lv_DBFMax := lv_Dummy;
+    END IF;                     
+  END LOOP;               
+  EXECUTE IMMEDIATE 'drop sequence DBF_OBJECT_KEY_SQ';
+  EXECUTE IMMEDIATE 'create sequence DBF_OBJECT_KEY_SQ minvalue 1 maxvalue 999999999999999999999999999 start with '||
+    to_char(lv_DBFMax+100)||' increment by 1 cache 20';    
+END;   
+/
+
+execute fdc_service.Recompile;
+
+exit

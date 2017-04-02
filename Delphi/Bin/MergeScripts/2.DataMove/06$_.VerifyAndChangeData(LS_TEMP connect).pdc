@@ -1,0 +1,336 @@
+DEFINE SRC = LS_SRC_MERGE
+
+DEFINE DST = DOXOD_LS_2
+SET SERVEROUTPUT ON SIZE 1000000;
+
+-- Проверить наличие неподтвержденныx перезачетов
+DECLARE
+  lv_SQL   VARCHAR2(4000) := 
+  'UPDATE fdc_doc_reuse_customs dr
+  SET dr.customs_code_old = ''=Dst=''
+  WHERE dr.customs_code_old = ''=Src=''
+    AND NOT EXISTS ( SELECT 1      
+                       FROM fdc_doc_reuse_customs_y y, fdc_doc_confirm c
+                       WHERE y.id = c.id
+                         AND c.confirmed_doc_id = dr.id )
+/';
+  lv_Dummy NUMBER := 0;
+BEGIN
+  SELECT COUNT(*)
+  INTO lv_Dummy
+  FROM fdc_doc_reuse_customs dr
+  WHERE dr.customs_code_old = &&Src..p_Params.CustomCode -- все исх.перезачеты
+    AND NOT EXISTS ( SELECT 1                            -- неподтвержденные
+                       FROM fdc_doc_reuse_customs_y y, fdc_doc_confirm c
+                       WHERE y.id = c.id
+                         AND c.confirmed_doc_id = dr.id );
+  IF  lv_Dummy > 0 THEN
+    lv_SQL :=  replace(lv_SQL, '=Src=', &&Src..p_Params.CustomCode);
+    lv_SQL :=  replace(lv_SQL, '=Dst=', &&Dst..p_Params.CustomCode);
+    dbms_output.put_line('ВНИМАНИЕ !!!  В ликвидируемой таможне присутствуют неподтвержденные перезачеты. На уровне РТУ необходимо выполнить следущий скрипт: '
+      || CHR(13) || CHR(10)||CHR(10)||lv_SQL );
+  END IF;  
+END;
+/                         
+
+-- Проверить наличие неподтвержденныx возвратов
+DECLARE
+  lv_SQL   VARCHAR2(4000) := 
+  'UPDATE fdc_doc_pack_returns  t
+   SET t.customs_code = ''=Dst=''
+   WHERE t.customs_code = ''=Src=''
+     AND EXISTS( SELECT 1 
+                  FROM fdc_payment_order_payback pb, fdc_object_relation r
+                  WHERE pb.id = r.Rel_Object_ID
+                    AND r.Object_ID = t.id
+                    AND NOT EXISTS (SELECT 1 FROM fdc_doc_confirm c, fdc_payment_order_payback_y y  WHERE y.id = c.id  AND c.confirmed_doc_id  =  pb.id )
+              )
+/';
+  lv_Dummy NUMBER := 0;
+BEGIN
+  SELECT COUNT(*)
+    INTO lv_Dummy
+   FROM fdc_doc_pack_returns  t
+   WHERE EXISTS( SELECT 1 
+                  FROM fdc_payment_order_payback pb, fdc_object_relation r
+                 WHERE pb.id = r.Rel_Object_ID
+                   AND r.Object_ID = t.id
+                   AND NOT EXISTS (SELECT 1 FROM fdc_doc_confirm c, fdc_payment_order_payback_y y  WHERE y.id = c.id  AND c.confirmed_doc_id  =  pb.id )
+               );
+  IF  lv_Dummy > 0 THEN
+    lv_SQL :=  replace(lv_SQL, '=Src=', &&Src..p_Params.CustomCode);
+    lv_SQL :=  replace(lv_SQL, '=Dst=', &&Dst..p_Params.CustomCode);
+    dbms_output.put_line('ВНИМАНИЕ !!!  В ликвидируемой таможне присутствуют неподтвержденные возвраты. На уровне РТУ необходимо выполнить следущий скрипт: '
+      || CHR(13) || CHR(10)||CHR(10)||lv_SQL );
+  END IF;  
+END;
+/
+
+-- Проверить наличие перезачетов между объединяемыми ТО
+DECLARE
+  lv_Dummy NUMBER;
+  vId number;
+  vSumma number;
+BEGIN
+  SELECT COUNT(*)
+    INTO lv_Dummy
+    FROM fdc_doc_reuse_customs t
+    WHERE t.customs_code_old = &&DST..p_params.CustomCode
+       OR t.customs_code_new = &&DST..p_params.CustomCode;
+  IF lv_Dummy > 0 THEN   
+    for c in (select distinct o.id, o.ext_id, o.ext_source, o.ext_typesysname
+                from fdc_payment_deduction ded,
+                     fdc_object o
+                where ded.decl_id in 
+                  (select id from fdc_doc_reuse_customs t where t.customs_code_old = &&DST..p_params.CustomCode
+                   OR t.customs_code_new = &&DST..p_params.CustomCode)
+                  and o.id = ded.payment_id) loop
+      --Перекинем остатки
+      for c3 in (select * from &&DST..fdc_po_lst where ext_id = c.ext_id and ext_source = c.ext_source
+                 and ext_typesysname = c.ext_typesysname) loop
+        select sum(reg_sum)
+          into vSumma
+          from fdc_rest_reg
+          where payment_id = c.id
+            and reg_sum > 0;
+        vId := &&DST..p_ded_correctactivedoc.add(
+          pobjecttype   => 'PaymentDeduction.CorrectActiveDoc'
+         ,pdocno        => NULL
+         ,pdocdate      => trunc(sysdate)
+         ,pname         => NULL
+         ,pdescript     => NULL
+         ,pdeclid       => NULL
+         ,ppaymentid    => c3.id
+         ,ppaytypeid    => NULL
+         ,psumma        => -vSumma
+         ,ppaymendate   => trunc(sysdate)
+         ,ppaymentmonth => NULL
+         ,pchargecurrid => &&DST..p_nsi_currency.findbycode('643')
+         ,pchargesumma  => 0
+         ,pkbkcodeid    => c3.kbkcode_id
+         ,pkbkcode1id   => c3.KBKCODE_ID
+         ,pchargeid     => NULL
+        );                   
+      end loop;
+    end loop;
+    commit;
+    --Удалим перезачет
+    for c1 in (select id from fdc_doc_reuse_customs t where t.customs_code_old = &&DST..p_params.CustomCode
+                   OR t.customs_code_new = &&DST..p_params.CustomCode) loop
+      for c2 in (select id from fdc_payment_deduction where decl_id = c1.id) loop
+        delete from fdc_payment_deduction where id = c2.id;
+        delete from fdc_document where id = c2.id;
+        delete from fdc_object where id = c2.id;
+      end loop;
+      delete from fdc_doc_reuse_customs where id = c1.id;
+      delete from fdc_document where id = c1.id;
+      delete from fdc_object where id = c1.id;
+    end loop;
+    commit;
+    --Raise_application_error(-20101, 'В таблицах присутствуют данные о перезачетах между объединяемыми таможнями!', true);
+  END IF;       
+END;    
+/
+
+-- Проверить наличие КНП
+DECLARE
+  lv_Dummy NUMBER;
+BEGIN
+  SELECT COUNT(*)
+    INTO lv_Dummy 
+   FROM fdc_payment_order_agreement;
+  IF lv_Dummy > 0 THEN   
+    Raise_application_error(-20101, 'В таблицах присутствуют данные о платежах КНП!', true);
+  END IF;  
+END;  
+/
+
+-- Исправить дубли ID в exp_rest_pays
+DECLARE
+  lv_Max NUMBER;
+BEGIN
+  SELECT MAX(ID) INTO lv_Max FROM &&dst..exp_rest_pays;
+  
+  UPDATE exp_rest_pays t
+    SET t.imperrmsg =  t.id,
+        t.id =  lv_Max + ROWNUM
+  WHERE EXISTS(SELECT 1 FROM &&dst..exp_rest_pays r WHERE r.id = t.id);   
+END;
+/
+COMMIT;
+
+-- Изменить тип ПП
+DECLARE
+ lv_OldType NUMBER;
+ lv_NewType NUMBER;
+BEGIN
+  lv_OldType := &&Dst..fdc_object_get_bysysname('ObjectType', 'PaymentOrderRestCustoms');
+  lv_NewType := &&Dst..fdc_object_get_bysysname('ObjectType', 'CashlessPaymentOrder');
+
+  INSERT INTO fdc_payment_order_cashless(ID)
+  SELECT id FROM fdc_payment_order_rest_customs;
+  
+  UPDATE fdc_object o
+    SET o.object_type_id = lv_NewType
+    WHERE EXISTS ( SELECT 1 FROM fdc_payment_order_rest_customs t WHERE t.id = o.id);
+
+  UPDATE fdc_payment_order_non_id t
+    SET t.payment_order_type_id = lv_NewType
+    WHERE t.payment_order_type_id = lv_OldType;
+    
+  DELETE FROM fdc_payment_order_rest_customs;
+    
+END;
+/
+
+-- Подсчитать входящие остатки на ПП
+UPDATE fdc_payment_order t
+  SET t.summa =  ( SELECT (SELECT nvl(SUM(r.reg_sum),0) FROM fdc_rest_reg r WHERE r.payment_id = t.id)--остатки
+                           +       
+                          (SELECT nvl(SUM(d.summa), 0) FROM fdc_tr tr, fdc_object o, &&dst..fdc_state_lst s, fdc_payment_deduction d
+                            WHERE d.decl_id = tr.id 
+                              AND d.payment_id = t.id  
+                              AND o.id = tr.id
+                              AND s.id(+) = o.state_id
+                              AND nvl(s.sysname, 'x') NOT IN ('Annul', 'PayOff')) -- непогашенные ТР
+                         /*Нау передумал
+                          -
+                          (SELECT nvl(SUM(rp.summa),0)
+                             FROM fdc_advice a, fdc_value v, fdc_object ob, fdc_reserved_payment rp
+                             WHERE a.ID = ob.OWNER_OBJECT_ID
+                               AND ob.id = v.id    
+                               AND rp.id = v.Ref_Object_ID 
+                               AND rp.edate IS NULL
+                               AND rp.payment_id = t.id)  */                                
+                  FROM dual)            
+  WHERE EXISTS (SELECT 1 FROM fdc_payment_order_credit c WHERE c.id = t.id)
+    AND NOT EXISTS ( SELECT 1 FROM Fdc_Payment_Order_Aggr a WHERE a.id = t.id)
+    -- только подтвержденные
+    AND t.doc_no2 IS NOT NULL 
+    AND t.doc_date2 IS NOT NULL
+    AND t.summa IS NOT NULL 
+/
+
+-- Изменить тип подтвержд.КО и чекам с остатками 
+DECLARE
+ lv_OldType1 NUMBER;
+ lv_OldType2 NUMBER;
+ lv_OldType3 NUMBER;
+ 
+ lv_NewType NUMBER;
+BEGIN
+  lv_OldType1 := &&Dst..fdc_object_get_bysysname('ObjectType', 'CashOrderBank');
+  lv_OldType2 := &&Dst..fdc_object_get_bysysname('ObjectType', 'CashOrderCustoms');
+  lv_OldType3 := &&Dst..fdc_object_get_bysysname('ObjectType', 'CustomCheque');
+  lv_NewType  := &&Dst..fdc_object_get_bysysname('ObjectType', 'CashlessPaymentOrder');
+  
+  fOR c IN ( SELECT po.* 
+               fROM fdc_payment_order po, fdc_object o 
+               WHERE o.id = po.id 
+                 AND o.object_type_id IN (lv_OldType1, lv_OldType2, lv_OldType3)
+                 AND nvl(po.summa, 0)> 0
+                 AND po.doc_no2 IS NOT NULL
+            ) LOOP
+    INSERT INTO fdc_payment_order_cashless(ID)
+    VALUES (c.id);
+    
+    UPDATE fdc_object ob
+     SET ob.object_type_id = lv_NewType
+     WHERE ob.id = c.id;
+    DELETE FROM fdc_payment_order_cashorder WHERE ID = c.id;
+    DELETE FROM fdc_payment_order_bankorder WHERE ID = c.id;
+    DELETE FROM fdc_payment_order_custorder WHERE ID = c.id;
+    DELETE FROM fdc_payment_order_cheque WHERE ID = c.id;
+  END LOOP;  
+   
+END;
+/
+-- Заполнить признаки проведения в пп 
+UPDATE fdc_document d
+  SET d.is_active = CASE WHEN (SELECT nvl(po.summa, 1) FROM fdc_payment_order po WHERE po.id = d.id) > 0 THEN 'N' 
+                         ELSE 'A' END
+     ,activation_date = NULL
+  WHERE EXISTS (SELECT 1 FROM fdc_payment_order_credit c WHERE c.id = d.id)
+/
+
+-- Заполнить признаки проведения в ТР
+UPDATE fdc_document d
+  SET d.is_active = CASE WHEN (SELECT nvl(SUM(pd.summa), 0) 
+                                 FROM fdc_payment_deduction pd 
+                                 WHERE pd.decl_id = d.id
+                                   AND NOT EXISTS ( SELECT 1 
+                                                     FROM fdc_payment_deduct_cnfrm pdc
+                                                     WHERE pdc.id = pd.id
+                                                   )   
+                               ) > 0 THEN 'N' 
+                         ELSE 'A' END
+     ,activation_date = NULL
+  WHERE EXISTS (SELECT 1 FROM fdc_tr t WHERE t.id = d.id)
+/
+
+-- Заполнить признаки проведения в Уведомлениях
+UPDATE fdc_document d
+  SET d.is_active = CASE WHEN 
+                          (SELECT nvl(SUM(rp.summa),0)
+                             FROM  fdc_value v, fdc_object ob, fdc_reserved_payment rp
+                             WHERE d.ID = ob.OWNER_OBJECT_ID
+                               AND ob.id = v.id    
+                               AND rp.id = v.Ref_Object_ID 
+                               AND rp.edate IS NULL
+                           ) > 0 THEN 'N' 
+                         ELSE 'A' END
+     ,activation_date = NULL
+  WHERE EXISTS (SELECT 1 FROM fdc_advice a WHERE a.id = d.id)
+/
+
+-- Заполнить признаки проведения в блокировках
+UPDATE fdc_document d
+  SET d.is_active = CASE WHEN EXISTS 
+                          (SELECT 1
+                             FROM  fdc_reserved_payment rp
+                             WHERE rp.id = d.id
+                               AND rp.edate IS NULL
+                               AND nvl(rp.summa, 0) > 0
+                           ) THEN 'N' 
+                         ELSE 'A' END
+     ,activation_date = NULL
+  WHERE EXISTS (SELECT 1 FROM fdc_reserved_for_reuse r WHERE r.id = d.id)
+/
+
+COMMIT;
+
+-- Заполнить признаки проведения в списаниях (неоплаченным по ГТД проставить N)
+UPDATE fdc_document d
+  SET d.is_active = CASE WHEN 
+       EXISTS (SELECT 1
+                FROM fdc_custom_decl cd
+                    ,fdc_decl_charge dc
+                    ,&&Dst..fdc_dict pt
+                WHERE dc.id = d.id
+                  AND dc.decl_id = cd.id
+                  AND pt.id = dc.pay_type_id
+                  AND pt.code NOT IN ('10', '100')
+                  AND NOT EXISTS (SELECT 1
+                                  FROM fdc_payment_deduction pd, &&Dst..fdc_dict vp
+                                  WHERE vp.id = pd.pay_type_id
+                                    AND pd.decl_id = cd.id
+                                    AND vp.code = pt.code)  )         THEN 'N' 
+                         ELSE 'A' END
+     ,activation_date = NULL
+  WHERE EXISTS (SELECT 1 FROM fdc_decl_charge fdc WHERE fdc.id = d.id AND d.is_active = 'Y')
+/
+
+-- снять признак проведения в списаниях с денег в пути
+UPDATE fdc_document d
+  SET d.is_active = 'N', d.activation_date = NULL
+WHERE 
+  EXISTS ( SELECT 1 
+            FROM fdc_payment_deduction pd, fdc_payment_order po 
+           WHERE po.id = pd.payment_id
+             AND po.doc_no2 IS NULL
+             AND pd.id = d.id)
+/
+
+COMMIT;
+
+exit

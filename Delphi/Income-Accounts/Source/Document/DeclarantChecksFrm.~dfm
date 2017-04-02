@@ -1,0 +1,351 @@
+inherited DeclarantChecksForm: TDeclarantChecksForm
+  Left = 401
+  Top = 414
+  Width = 785
+  Height = 480
+  Caption = #1055#1088#1086#1074#1077#1088#1082#1080' '#1091#1095#1072#1089#1090#1085#1080#1082#1086#1074' '#1042#1069#1044
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pcMain: TcxPageControl
+    Width = 769
+    Height = 442
+    ClientRectBottom = 418
+    ClientRectRight = 769
+    inherited tabGeneral: TcxTabSheet
+      inherited lcGeneral: TdxLayoutControl
+        Width = 763
+        Height = 387
+        inherited edtName: TcxDBTextEdit
+          Left = 118
+        end
+        inherited edtDescript: TcxDBMemo
+          Left = 118
+          Top = 178
+          TabOrder = 6
+        end
+        object edtreqContent: TcxDBMemo [2]
+          Left = 118
+          Top = 90
+          DataBinding.DataField = 'REQCONT'
+          DataBinding.DataSource = srcData
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          TabOrder = 4
+          Height = 34
+          Width = 636
+        end
+        object edtansContent: TcxDBMemo [3]
+          Left = 118
+          Top = 130
+          DataBinding.DataField = 'ANSCONT'
+          DataBinding.DataSource = srcData
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          TabOrder = 5
+          Height = 42
+          Width = 636
+        end
+        object edtcheckNumber: TcxDBTextEdit [4]
+          Left = 118
+          Top = 63
+          DataBinding.DataField = 'CHECKNUMB'
+          DataBinding.DataSource = srcData
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          TabOrder = 2
+          Width = 121
+        end
+        object edtCheckDate: TcxDBDateEdit [5]
+          Left = 273
+          Top = 63
+          DataBinding.DataField = 'CHECKDATE'
+          DataBinding.DataSource = srcData
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          Style.ButtonStyle = btsHotFlat
+          Style.PopupBorderStyle = epbsSingle
+          TabOrder = 3
+          Width = 200
+        end
+        object cmbxChecktype: TfdcObjectLookupEdit [6]
+          Left = 118
+          Top = 36
+          DataBinding.DataField = 'nCHECKTYPE'
+          DataBinding.DataSource = srcData
+          ParentFont = False
+          Properties.DropDownListStyle = lsFixedList
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+              MinWidth = 250
+              FieldName = 'sDESCRIPTION'
+            end>
+          Properties.ListSource = srcChecktype
+          Properties.MaxLength = 250
+          Properties.OnChange = Modify
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          Style.ButtonStyle = btsHotFlat
+          Style.PopupBorderStyle = epbsSingle
+          TabOrder = 1
+          Width = 145
+        end
+        inherited dxLayoutGroup1: TdxLayoutGroup
+          object lcGeneralGroup1: TdxLayoutGroup [1]
+            ShowCaption = False
+            Hidden = True
+            ShowBorder = False
+            object lcGeneralItem1: TdxLayoutItem
+              Caption = #1058#1080#1087' '#1087#1088#1086#1074#1077#1088#1082#1080
+              CaptionOptions.AlignHorz = taRightJustify
+              Control = cmbxChecktype
+              ControlOptions.ShowBorder = False
+            end
+            object lcGeneralGroup3: TdxLayoutGroup
+              ShowCaption = False
+              Hidden = True
+              LayoutDirection = ldHorizontal
+              ShowBorder = False
+              object lciCheckNumber: TdxLayoutItem
+                Caption = #1053#1086#1084#1077#1088
+                CaptionOptions.AlignHorz = taRightJustify
+                Control = edtcheckNumber
+                ControlOptions.ShowBorder = False
+              end
+              object lcicheckDate: TdxLayoutItem
+                Caption = #1044#1072#1090#1072
+                CaptionOptions.AlignHorz = taRightJustify
+                Control = edtCheckDate
+                ControlOptions.ShowBorder = False
+              end
+            end
+          end
+          object lcireqContent: TdxLayoutItem [2]
+            Caption = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077' '#1079#1072#1087#1088#1086#1089#1072
+            CaptionOptions.AlignHorz = taRightJustify
+            Control = edtreqContent
+            ControlOptions.ShowBorder = False
+          end
+          object lciAnsContent: TdxLayoutItem [3]
+            Caption = #1057#1086#1076#1077#1088#1078#1072#1085#1080#1077' '#1086#1090#1074#1077#1090#1072
+            CaptionOptions.AlignHorz = taRightJustify
+            Control = edtansContent
+            ControlOptions.ShowBorder = False
+          end
+          inherited lciDescriptEdit: TdxLayoutItem
+            Visible = False
+          end
+        end
+      end
+      inherited dxBarDockControlTop: TdxBarDockControl
+        Width = 769
+      end
+      inherited dxBarDockControlLeft: TdxBarDockControl
+        Height = 387
+      end
+      inherited dxBarDockControlBottom: TdxBarDockControl
+        Top = 415
+        Width = 769
+      end
+      inherited dxBarDockControlRight: TdxBarDockControl
+        Left = 766
+        Height = 387
+      end
+    end
+    inherited tabService: TcxTabSheet
+      inherited pcService: TcxPageControl
+        Width = 769
+        Height = 418
+        ClientRectBottom = 394
+        ClientRectRight = 769
+      end
+    end
+  end
+  inherited ActionList: TActionList
+    Left = 184
+    inherited actDelete: TAction
+      Visible = False
+    end
+  end
+  inherited OfficeEditStyleController: TcxEditStyleController
+    Style.IsFontAssigned = True
+  end
+  inherited WebEditStyleController: TcxEditStyleController
+    Style.IsFontAssigned = True
+    Top = 187
+  end
+  inherited DefaultEditStyleController: TcxDefaultEditStyleController
+    Style.IsFontAssigned = True
+  end
+  inherited BarManager: TdxBarManager
+    Bars = <
+      item
+        AllowClose = False
+        Caption = #1054#1073#1098#1077#1082#1090
+        DockControl = dxBarDockControlTop
+        DockedDockControl = dxBarDockControlTop
+        DockedLeft = 0
+        DockedTop = 0
+        FloatLeft = 876
+        FloatTop = 472
+        FloatClientWidth = 113
+        FloatClientHeight = 82
+        ItemLinks = <
+          item
+            Item = btnNew
+            Visible = True
+          end
+          item
+            Item = btnSave
+            Visible = True
+          end
+          item
+            Item = btnRefresh
+            Visible = True
+          end
+          item
+            BeginGroup = True
+            Item = btnDelete
+            Visible = True
+          end
+          item
+            BeginGroup = True
+            Item = btnStateTransit
+            Visible = True
+          end
+          item
+            BeginGroup = True
+            Item = btnCreateActCorrOB
+            Visible = True
+          end>
+        Name = #1054#1073#1098#1077#1082#1090'1'
+        OneOnRow = True
+        Row = 0
+        UseOwnFont = False
+        Visible = True
+        WholeRow = True
+      end>
+    Categories.ItemsVisibles = (
+      2
+      2)
+    Categories.Visibles = (
+      True
+      True)
+    DockControlHeights = (
+      0
+      0
+      0
+      0)
+  end
+  inherited dsData: TfdcQuery
+    SQL.Strings = (
+      'select *'
+      '  from v_asbc_checks_lst'
+      ' where ID = :ID')
+    object dsDataCHECKDATE: TDateTimeField
+      FieldName = 'CHECKDATE'
+    end
+    object dsDataREQCONT: TStringField
+      DisplayWidth = 500
+      FieldName = 'REQCONT'
+      Size = 240
+    end
+    object dsDataNSTATUS: TIntegerField
+      FieldName = 'NSTATUS'
+    end
+    object dsDataANSDATE: TDateTimeField
+      FieldName = 'ANSDATE'
+    end
+    object dsDataANSCONT: TStringField
+      DisplayWidth = 500
+      FieldName = 'ANSCONT'
+      Size = 240
+    end
+    object dsDataCHECKNUMB: TIntegerField
+      FieldName = 'CHECKNUMB'
+    end
+    object dsDataSUBJECT_ID: TIntegerField
+      FieldName = 'SUBJECT_ID'
+    end
+    object dsDataDOCUMENT_ID: TIntegerField
+      FieldName = 'DOCUMENT_ID'
+    end
+    object dsDataSCHECKTYPE: TStringField
+      FieldName = 'SCHECKTYPE'
+    end
+    object dsDatanCHECKTYPE: TIntegerField
+      FieldName = 'nCHECKTYPE'
+    end
+  end
+  inherited dsInsert: TfdcQuery
+    SQL.Strings = (
+      'begin'
+      '  :ID ::= PKG_ASBC_CHECKS.Add(nChecktype => :NCHECKTYPE,'
+      
+        '                                                     nSubjectId ' +
+        '=> :SUBJECT_ID,'
+      
+        '                                                     nDocumentId' +
+        ' => :Document_ID,'
+      
+        '                                                     nRaiseParam' +
+        'sError => 1);'
+      'end;')
+    ParamData = <
+      item
+        DataType = ftFloat
+        Name = 'ID'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftInteger
+        Name = 'NCHECKTYPE'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftInteger
+        Name = 'SUBJECT_ID'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftInteger
+        Name = 'Document_ID'
+        ParamType = ptUnknown
+      end>
+  end
+  inherited dsAccessLevelUpdate: TfdcQuery
+    Left = 424
+    Top = 191
+  end
+  object dsChecktype: TOracleDataSet
+    SQL.Strings = (
+      'select t.id, t.name sDESCRIPTION'
+      'from ASBC_CHECKTYPES t')
+    Session = MainData.Session
+    Left = 459
+    Top = 100
+    object dsChecktypeID: TFloatField
+      FieldName = 'ID'
+    end
+    object dsChecktypesDESCRIPTION: TStringField
+      DisplayWidth = 250
+      FieldName = 'sDESCRIPTION'
+      Size = 250
+    end
+  end
+  object srcChecktype: TDataSource
+    DataSet = dsChecktype
+    Left = 427
+    Top = 100
+  end
+end

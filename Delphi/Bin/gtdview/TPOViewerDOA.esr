@@ -1,0 +1,187 @@
+Script{
+
+NewObject("Template","TTemplate");
+Template.SetFileName("TPO.rav");
+
+NewObject("TPO","TDOAReportConnection");
+TPO.ConnectionString("b4");
+TPO.SQL("SELECT DECODE(A.EXT_LIST,'0','',A.WEIGHT_AL) AS WEIGHT_ALL, DECODE(A.CURS_VAL,'',1,A.CURS_VAL) AS CURS_VALUT, A.*, to_date(day_tpo||mon_tpo||jar_tpo, 'ddmmyyyy') as DAT_TPO, day_tpo||mon_tpo||substr(jar_tpo,3) DAT_TPOa,p_payment_order.DeclNoFromTRAnnul(tpo.id) AN,nvl(oplrub,0)+nvl(opl3,0)+nvl(opl4,0) oplrub2 FROM DBF_TPO A,fdc_tpo_lst tpo WHERE  tpo.name=a.code||'/'||TO_CHAR(to_date(a.day_tpo||a.mon_tpo||a.JAR_TPO,'ddmmyyyy'),'ddmmyy')||'/'||a.tpo_number and (1=1)");
+TPO.Connect();
+TPO.SetFilter("A.TPO_NUMBER='^Типографский номер ТПО^'");
+
+TPO.PublicField("TPO_NUMBER",10,"TPO_NUMBER","TPO_NUMBER","dtString");
+  TPO.PublicField("ORDER_TYPE",1,"ORDER_TYPE","ORDER_TYPE","dtString");
+TPO.PublicField("EXT_LIST",1,"EXT_LIST","EXT_LIST","dtString");
+TPO.PublicField("KODTAM",8,"KODTAM","CODE","dtString");
+//TPO.PublicField("DAT_TPO",10,"DAT_TPO","DAT_CURS","dtString");
+TPO.PublicField("DAT_TPO",10,"DAT_TPOa","DAT_TPOa","dtString");
+TPO.PublicField("REGIM",2,"REGIM","REGIM","dtString");
+TPO.PublicField("METHMOVE",2,"METHMOVE","METH_MOVE","dtString");
+TPO.PublicField("KODVAL",3,"KODVAL","KODVAL","dtString");
+TPO.PublicField("CURS_USD",19,"CURS_USD","CURS_USD","dtString");
+TPO.PublicField("CURS_VALUT",15,"CURS_VALUT","CURS_VAL","dtString");
+TPO.PublicField("DOP_INF1",48,"DOP_INF1","DOP_INF1","dtString");
+TPO.PublicField("DOP_INF2",48,"DOP_INF2","DOP_INF2","dtString");
+TPO.PublicField("DOP_INF3",48,"DOP_INF3","DOP_INF3","dtString");
+TPO.PublicField("SPRUB",2,"SPRUB","SPRUB","dtString");
+TPO.PublicField("SPVAL",2,"SPVAL","SPVAL","dtString");
+TPO.PublicField("OPLVAL",18,"OPLVAL","OPLVAL","dtString");
+TPO.PublicField("OPLRUB2",18,"OPLRUB2","OPLRUB2","dtString");
+TPO.PublicField("SUM_RUB",18,"SUM_RUB","SUM_RUB","dtString");
+TPO.PublicField("POD1",16,"POD1","POD1","dtString");
+TPO.PublicField("POD2",16,"POD2","POD2","dtString");
+TPO.PublicField("POD3",16,"POD3","POD3","dtString");
+TPO.PublicField("POD4",16,"POD4","POD4","dtString");
+TPO.PublicField("POD5",16,"POD5","POD5","dtString");
+TPO.PublicField("POD6",16,"POD6","POD6","dtString");
+TPO.PublicField("POD7",16,"POD7","POD7","dtString");
+TPO.PublicField("POD8",16,"POD8","POD8","dtString");
+TPO.PublicField("TOVCOST_AL",18,"TOVCOST_AL","TOVCOST_AL","dtString");
+TPO.PublicField("TOVCOST_PL",18,"TOVCOST_PL","TOVCOST_PL","dtString");
+TPO.PublicField("WEIGHT_ALL",14,"WEIGHT_ALL","WEIGHT_ALL","dtString");
+TPO.PublicField("FIOTAM",20,"FIOTAM","FIOTAM","dtString");
+TPO.PublicField("AN",100,"AN","AN","dtString");
+
+NewObject("FIZLIC","TDOAReportConnection");
+FIZLIC.ConnectionString("b4");
+FIZLIC.SQL("SELECT FAMILIA, IMYA, OTCHESTVO, decode(NUM_DOC, null, NUM_DOC, 'НОМЕР ' || NUM_DOC) as NUM_DOC, decode(SER_DOC, null, SER_DOC, 'ПАСПОРТ СЕРИЯ ' || SER_DOC) as SER_DOC, decode(GIVE_DOC, null, GIVE_DOC, 'ВЫДАН ' || GIVE_DOC) as GIVE_DOC, KOGD_DOC, OKPO, INN, ADRES FROM DBF_TPO_CLIENTS WHERE 1=1");
+FIZLIC.Connect();
+FIZLIC.SetLink("ID=LTRIM(RTRIM('^TPO.IDPAYER^'))");
+
+FIZLIC.PublicField("NAME",60,"NAME","FAMILIA","dtString");
+FIZLIC.PublicField("IMYA",15,"IMYA","IMYA","dtString");
+FIZLIC.PublicField("OTCHESTVO",15,"OTCHESTVO","OTCHESTVO","dtString");
+//FIZLIC.PublicField("DOCUM",2,"DOCUM","DOCUM","dtString");
+FIZLIC.PublicField("NUM_DOC",10,"NUM_DOC","NUM_DOC","dtString");
+FIZLIC.PublicField("SER_DOC",11,"SER_DOC","SER_DOC","dtString");
+FIZLIC.PublicField("GIVE_DOC",60,"GIVE_DOC","GIVE_DOC","dtString");
+FIZLIC.PublicField("KOGD_DOC",10,"KOGD_DOC","KOGD_DOC","dtString");
+FIZLIC.PublicField("OKPO",8,"OKPO","OKPO","dtString");
+FIZLIC.PublicField("INN",12,"INN","INN","dtString");
+FIZLIC.PublicField("ADDRESS",120,"ADDRESS","ADRES","dtString");
+
+NewObject("FIZLIC_PLAT","TDOAReportConnection");
+FIZLIC_PLAT.ConnectionString("b4");
+FIZLIC_PLAT.SQL("SELECT FAMILIA, IMYA, OTCHESTVO, decode(NUM_DOC, null, NUM_DOC, 'НОМЕР ' || NUM_DOC) as NUM_DOC, decode(SER_DOC, null, SER_DOC, 'ПАСПОРТ СЕРИЯ ' || SER_DOC) as SER_DOC, decode(GIVE_DOC, null, GIVE_DOC, 'ВЫДАН ' || GIVE_DOC) as GIVE_DOC, KOGD_DOC, decode(OKPO, null, OKPO, 'ОКПО ' || OKPO) as OKPO, INN, ADRES FROM DBF_TPO_CLIENTS c, DBF_TPO t WHERE c.id = trim(t.idpayer2) and t.idpayer <> t.idpayer2");
+FIZLIC_PLAT.Connect();
+FIZLIC_PLAT.SetFilter("T.TPO_NUMBER='^Типографский номер ТПО^'");
+
+FIZLIC_PLAT.PublicField("NAME",60,"NAME","FAMILIA","dtString");
+FIZLIC_PLAT.PublicField("IMYA",15,"IMYA","IMYA","dtString");
+FIZLIC_PLAT.PublicField("OTCHESTVO",15,"OTCHESTVO","OTCHESTVO","dtString");
+FIZLIC_PLAT.PublicField("NUM_DOC",10,"NUM_DOC","NUM_DOC","dtString");
+FIZLIC_PLAT.PublicField("SER_DOC",11,"SER_DOC","SER_DOC","dtString");
+FIZLIC_PLAT.PublicField("GIVE_DOC",60,"GIVE_DOC","GIVE_DOC","dtString");
+FIZLIC_PLAT.PublicField("KOGD_DOC",10,"KOGD_DOC","KOGD_DOC","dtString");
+FIZLIC_PLAT.PublicField("OKPO",8,"OKPO","OKPO","dtString");
+FIZLIC_PLAT.PublicField("INN",12,"INN","INN","dtString");
+FIZLIC_PLAT.PublicField("ADDRESS",120,"ADDRESS","ADRES","dtString");
+
+NewObject("TPODOC","TDOAReportConnection");
+TPODOC.ConnectionString("b4");
+TPODOC.SQL("SELECT * FROM DBF_TPO_DOC WHERE (1=1)");
+TPODOC.Connect();
+TPODOC.SetFilter("NUM_TPO='^Типографский номер ТПО^'");
+TPODOC.BlocksOnList(1,"NUM_TPO");
+
+TPODOC.PublicField("PDOC",50,"PDOC","PDOC","dtMemo");
+
+NewObject("GOODST","TDOAReportConnection");
+GOODST.ConnectionString("b4");
+GOODST.SQL("SELECT * FROM DBF_TPO_GOODS WHERE (PR_SBR='Т' AND NUM_DTPO=0 AND POS_DTPO=0)");
+GOODST.Connect();
+GOODST.SetFilter("NUM_TPO='^Типографский номер ТПО^'");
+
+GOODST.PublicField("CODTNVED",10,"CODTNVED","CODTNVED","dtString");
+GOODST.PublicField("WEIGHT",14,"WEIGHT","WEIGHT","dtString");
+GOODST.PublicField("KOLVO",16,"KOLVO","KOLVO","dtString");
+GOODST.PublicField("CODCOUNTRY",3,"CODCOUNTRY","CODCOUNTRY","dtString");
+GOODST.PublicField("TOVCOST_US",14,"TOVCOST_US","TOVCOST_US","dtString");
+GOODST.PublicField("TOVCOST_PL",20,"TOVCOST_PL","TOVCOST_PL","dtString");
+
+NewObject("GOODSU","TDOAReportConnection");
+GOODSU.ConnectionString("b4");
+GOODSU.SQL("SELECT * FROM DBF_TPO_GOODS WHERE (PR_SBR='У')");
+GOODSU.Connect();
+GOODSU.SetFilter("NUM_TPO='^Типографский номер ТПО^'");
+TPODOC.BlocksOnList(1,"NUM_TPO");
+
+GOODSU.PublicField("NAIMENOV",58,"NAIMENOV","NAIMENOV","dtMemo");
+
+NewObject("TPOITP","TDOAReportConnection");
+TPOITP.ConnectionString("b4");
+TPOITP.SQL("SELECT I.NUM_TPO, I.COD_MAINPL AS COD_PLAT, I.OSN_NATCH, I.STAVKA, I.SUM_RUB, I.EDSTAV, I.EDOSNOV, I.SUMPL1, I.SUMPL2, I.PR_PLT,
+I.PR_COD, I.CALCUL, I.REG_PAID, '№' || P.NUM_DOC || ' от ' || P.DATE_DOC AS PAYORDER FROM DBF_TPO_ITP I, DBF_TPO_PLT P WHERE NVL(P.VIDNAC,I.COD_MAINPL) = I.COD_MAINPL AND P.NUM_TPO=I.NUM_TPO");
+TPOITP.Connect();
+TPOITP.SetFilter("I.NUM_TPO='^Типографский номер ТПО^'");
+TPOITP.BlocksOnList(1,"NUM_TPO");
+
+TPOITP.PublicField("COD_PLAT",4,"COD_PLAT","COD_PLAT","dtMemo");
+TPOITP.PublicField("OSN_NATCH",18,"OSN_NATCH","OSN_NATCH","dtMemo");
+TPOITP.PublicField("EDOSNOV",15,"EDOSNOV","EDOSNOV","dtMemo");
+TPOITP.PublicField("STAVKA",14,"STAVKA","STAVKA","dtMemo");
+TPOITP.PublicField("SUMPL1",22,"SUMPL1","SUMPL1","dtMemo");
+TPOITP.PublicField("PAYORDER",50,"PAYORDER","PAYORDER","dtMemo");
+
+NewObject("TPO_DOB_MAIN","TDOAReportConnection");
+TPO_DOB_MAIN.ConnectionString("b4");
+TPO_DOB_MAIN.SQL("SELECT x.*,day_tpo||mon_tpo||substr(jar_tpo,3) DAT_TPOa FROM DBF_TPO x WHERE (EXT_LIST>'0')");
+TPO_DOB_MAIN.Connect();
+TPO_DOB_MAIN.SetFilter("TPO_NUMBER='^Типографский номер ТПО^'");
+
+TPO_DOB_MAIN.PublicField("TPO_NUMBER",10,"TPO_NUMBER","TPO_NUMBER","dtString");
+TPO_DOB_MAIN.PublicField("KODTAM",8,"KODTAM","CODE","dtString");
+TPO_DOB_MAIN.PublicField("DAT_TPO",10,"DAT_TPOa","DAT_TPOa","dtString");
+TPO_DOB_MAIN.PublicField("METHMOVE",3,"METHMOVE","METH_MOVE","dtString");
+
+NewObject("TPO_DOP","TDOAReportConnection");
+TPO_DOP.ConnectionString("b4");
+TPO_DOP.SQL("SELECT * FROM DBF_TPO_DOP WHERE (NUM_DTPO>0)");
+TPO_DOP.Connect();
+TPO_DOP.SetFilter("NUM_TPO='^Типографский номер ТПО^'");
+TPO_DOP.BlocksOnList(1,"");
+
+TPO_DOP.PublicField("NUM_DTPO",1,"NUM_DTPO","NUM_DTPO","dtString");
+TPO_DOP.PublicField("TDOP_INF1",72,"TDOP_INF1","TDOP_INF1","dtString");
+TPO_DOP.PublicField("TDOP_INF2",72,"TDOP_INF2","TDOP_INF2","dtString");
+TPO_DOP.PublicField("TDOP_INF3",72,"TDOP_INF3","TDOP_INF3","dtString");
+TPO_DOP.PublicField("TDOP_INF4",72,"TDOP_INF4","TDOP_INF4","dtString");
+TPO_DOP.PublicField("STOIM",18,"STOIM","STOIM","dtString");
+TPO_DOP.PublicField("PLAT",18,"PLAT","PLAT","dtString");
+TPO_DOP.PublicField("POSHL",18,"POSHL","POSHL","dtString");
+TPO_DOP.PublicField("AKCIZ",18,"AKCIZ","AKCIZ","dtString");
+TPO_DOP.PublicField("NDS",18,"NDS","NDS","dtString");
+
+NewObject("GOODST_DOB","TDOAReportConnection");
+GOODST_DOB.ConnectionString("b4");
+GOODST_DOB.SQL("SELECT * FROM DBF_TPO_GOODS WHERE (PR_SBR='Т' AND NUM_DTPO>0 AND POS_DTPO>0)");
+GOODST_DOB.Connect();
+GOODST_DOB.SetFilter("NUM_TPO='^Типографский номер ТПО^'");
+GOODST_DOB.BlocksOnList(10,"");
+
+GOODST_DOB.PublicField("CODTNVED",10,"CODTNVED","CODTNVED","dtString");
+GOODST_DOB.PublicField("WEIGHT",14,"WEIGHT","WEIGHT","dtString");
+GOODST_DOB.PublicField("KOLVO",16,"KOLVO","KOLVO","dtString");
+GOODST_DOB.PublicField("CODCOUNTRY",3,"CODCOUNTRY","CODCOUNTRY","dtString");
+GOODST_DOB.PublicField("TOVCOST_US",14,"TOVCOST_US","TOVCOST_US","dtString");
+GOODST_DOB.PublicField("TOVCOST_PL",20,"TOVCOST_PL","TOVCOST_PL","dtString");
+GOODST_DOB.PublicField("NAIMENOV",58,"NAIMENOV","NAIMENOV","dtString");
+
+NewObject("TPO_TDOP","TDOAReportConnection");
+TPO_TDOP.ConnectionString("b4");
+TPO_TDOP.SQL("SELECT * FROM DBF_TPO_TDOP WHERE (1=1)");
+TPO_TDOP.Connect();
+TPO_TDOP.SetFilter("NUM_TPO='^Типографский номер ТПО^'");
+TPO_TDOP.BlocksOnList(10,"");
+
+TPO_TDOP.PublicField("STAVPOSHL",16,"STAVPOSHL","STAVPOSHL","dtString");
+TPO_TDOP.PublicField("STAVPOSHL2",16,"STAVPOSHL2","STAVPOSHL2","dtString");
+TPO_TDOP.PublicField("STAVAKCIZ",16,"STAVAKCIZ","STAVAKCIZ","dtString");
+TPO_TDOP.PublicField("STAVNDS",8,"STAVNDS","STAVNDS","dtString");
+TPO_TDOP.PublicField("STO",8,"STO","STO","dtString");
+TPO_TDOP.PublicField("SUMPOSHL",18,"SUMPOSHL","SUMPOSHL","dtString");
+TPO_TDOP.PublicField("SUMAKCIZ",18,"SUMAKCIZ","SUMAKCIZ","dtString");
+TPO_TDOP.PublicField("SUMNDS",18,"SUMNDS","SUMNDS","dtString");
+TPO_TDOP.PublicField("SUMSB",18,"SUMSB","SUMSB","dtString");
+
+}

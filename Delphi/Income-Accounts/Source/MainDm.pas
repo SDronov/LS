@@ -1,0 +1,1046 @@
+{
+  Copyright © Fors Development Center.
+  All rights reserved.
+
+  $Workfile: MainDm.pas $
+  $Revision: 16503 $
+  $Author: adavletyarov $
+  $Date: 2013-04-05 17:17:37 +0400 (РџС‚, 05 Р°РїСЂ 2013) $
+}
+unit MainDm;
+
+interface
+
+uses
+  SysUtils, Classes, Controls, Oracle, FDCOracleSession, DB, FDCCustomDataset,
+  FDCQuery, fdcCustomMainDm, QueryList, fdcUtils, PropSetIntf, IniFiles,
+  OracleData, Graphics, cxStyles, Windows;
+
+const
+  MAX_ADAPTER_ADDRESS_LENGTH = 6;
+  NULL_MAC_ADDRESS = '00-00-00-00-00-00';
+  
+type
+
+  TMacAddress = array[0..MAX_ADAPTER_ADDRESS_LENGTH - 1] of byte;
+
+  TLoadInfo =  record
+    Total:  integer;
+    Done :  integer;
+    ErrorCount: integer;
+    NewCount:  integer;
+    ModifyCount: integer;
+    SkipCount: integer;
+  end;
+
+  PLoadInfo = ^TLoadInfo;
+
+  TBuxReport = class (TObject)
+  private
+    fID: Integer;
+    fTemplate: string;
+    fName: string;
+    fSysName: string;
+    fDateFrom: TDateTime;
+    fDateTo: TDateTime;
+    fEvtType: string;
+    fEvtCode: string;
+    fForPeriod: boolean;
+  public
+    property ID        : Integer   read fID        write fID;
+    property Name      : string    read fName      write fName;
+    property Template  : string    read fTemplate  write fTemplate;
+    property DateFrom  : TDateTime read fDateFrom  write fDateFrom;
+    property DateTo    : TDateTime read fDateTo    write fDateTo;
+    property SysName   : string    read fSysName   write fSysName;
+    property EvtType   : string    read fEvtType   write fEvtType;
+    property EvtCode   : string    read fEvtCode   write fEvtCode;
+    property ForPeriod : boolean   read fForPeriod write fForPeriod;
+  end;
+
+  TMainData = class(TfdcCustomMainData, IPropLoader)
+    dsObject: TFDCQuery;
+    dsObjectTypeAll: TFDCQuery;
+    dsObjectIs: TFDCQuery;
+    dsObjectFree: TfdcQuery;
+    dsCheckVersion: TfdcQuery;
+    dsGetUser: TfdcQuery;
+    dsUserIsAdminData: TfdcQuery;
+    dsUserIsAdminTask: TfdcQuery;
+    dsUserIsSchemaOwner: TfdcQuery;
+    dsUserInGroupAdd: TfdcQuery;
+    dsUserInGroupDel: TfdcQuery;
+    dsReGrant: TfdcQuery;
+    dsEvent: TfdcQuery;
+    dsObjectGrantUpdate: TfdcQuery;
+    dsObjectAccessLevelUpdate: TfdcQuery;
+    dsTaskSysComponentAdd: TfdcQuery;
+    dsTaskSysComponentDel: TfdcQuery;
+    dsUserGroupTaskAdd: TfdcQuery;
+    dsUserGroupTaskDel: TfdcQuery;
+    dsUserGrantForExec: TfdcQuery;
+    dsUserGrantForExecOBJECT_NAME: TStringField;
+    dsUserGrantForExecOBJECT_TYPE: TStringField;
+    dsUserGrantForExecLOGIN: TStringField;
+    dsUserGrantForExecALLOWGRANTOPTION: TIntegerField;
+    dsUserGrantForExecGRANTED: TFloatField;
+    dsUserGrantForExecTOGRANT: TFloatField;
+    dsUserGrantForExecCMD: TStringField;
+    qryLobQuery: TOracleQuery;
+    dsCollectionObjectAdd: TfdcQuery;
+    dsCollectionObjectDel: TfdcQuery;
+    dsCollectionMerge: TfdcQuery;
+    dsCheckTask: TfdcQuery;
+    QueryList: TQueryList;
+    sqlSetKind: TsqlOp;
+    qryLoadFile: TOracleQuery;
+    sqlvaluebool: TsqlOp;
+    sqlvaluestring: TsqlOp;
+    sqlvaluenumber: TsqlOp;
+    sqlvaluedatetime: TsqlOp;
+    sqlGetProps: TsqlOp;
+    sqlSetSchema: TsqlOp;
+    sqlOrgProps: TsqlOp;
+    sqlSetAccDate: TsqlOp;
+    qryGetDocAsXML: TOracleQuery;
+    dsDocList: TOracleDataSet;
+    pkgCommon: TOraclePackage;
+    sqlGetServerDate: TsqlOp;
+    dsRegEvent: TfdcQuery;
+    StyleRepository: TcxStyleRepository;
+    stlDocPackAlien: TcxStyle;
+    stlDocPackAlienSelected: TcxStyle;
+    stlDocPackSended: TcxStyle;
+    stlDocPackSendedSelected: TcxStyle;
+    stlDocPackConfirmed: TcxStyle;
+    stlDocPackConfirmedSelected: TcxStyle;
+    sqlGetCurrentUserName: TsqlOp;
+    dsBuxReports: TOracleDataSet;
+    stlDocPackTransNoAuto: TcxStyle;
+    dsGetChildCustoms: TfdcQuery;
+    stlPOPaybackLoaded: TcxStyle;
+    stlPOPaybackWorked: TcxStyle;
+    stlPOPaybackConfirmed: TcxStyle;
+    stlPOPaybackDenial: TcxStyle;
+    stlRepOwnRecords: TcxStyle;
+    stlRepOwnGroupRecords: TcxStyle;
+    stlRepOtherGroupRecords: TcxStyle;
+    stlSumByDoc: TcxStyle;
+    stlDocInactive: TcxStyle;
+    sqlGetObjectId: TsqlOp;
+    sqlGetIPAddress: TsqlOp;
+    sqlSetMacAddress: TsqlOp;
+    sqlGetUserExpDate: TsqlOp;
+    sqlUserChangePassword: TsqlOp;
+    sqlGetUserLogin: TsqlOp;
+    sqlSetExpDate: TsqlOp;
+    sqlGetUserCustomsId: TsqlOp;
+    sqlGetUserCustomsCode: TsqlOp;
+    dsHintRcd: TfdcQuery;
+    dsCheckVerifyParams: TfdcQuery;
+    procedure SessionAfterLogOn(Sender: TOracleSession);
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
+  private
+    FNoteStr: string;
+    { Private declarations }
+    FUserContext        : TMemIniFile;
+    FCustomsLevel       : integer;
+    FCustomsID          : Integer;
+    FCustomsCode        : string;
+    FUserCustomsID      : Integer;
+    FUserCustomsCode    : string;
+    FSoftCustomsCode    : string;
+    FForceDrop          : boolean;
+    FConvertInputDir    : string;
+    FConvertOutputDir   : string;
+    FConvertRulesFile   : string;
+    FPrefixFile         : string;
+    FDeclColumnParse    : string;
+    FCurrentUserName    : string;
+    FArchFileNamePrefix : string;
+    FEnableOrder	: string;
+    FMACAddress	  : string;
+
+    fChildCustoms : TStrings;
+
+    // Признак возможности редактирование справочников НСИ (необходим для запрета редактирования некоторых справочников)
+    fAccessModifyNSI : boolean;
+
+    function InitConvert(CreateDirIfNotExists : boolean = True): boolean;
+
+    procedure InternalLoad(Op: TSqlOp; IniMem: TMemIniFile; const ASectionName: String = '';
+      const APropName: String = '');
+    function GetMACAddress : String;
+    procedure SetMACAddress(Value : string);
+  public
+    { Public declarations }
+    function GetCustomsID: integer;
+    function GetCustomsLevel: integer;
+    function GetCustomsCode: string;
+
+    function GetUserCustomsID: integer;
+    function GetUserCustomsCode: string;
+
+    function GetSoftCustomsCode: string;
+    function EnableForceDropObject: boolean;
+    function CheckVersion(ACheckBuildNumber: boolean; var AServerVersion: string; var AVersionMigrate: boolean): boolean;
+    function GetDeclColumnForParse: string;
+    function GetCurrentUserName : string;
+    function ArchFileNamePrefix : string;
+
+    function GetUser(ALogin: string = ''): double;
+    function GetHintRcd(AUsrIdtf: string): string;
+    function GetUserExpDate: string;
+    function UserIsAdminData(AUserID: double = 0; ADoRaise: boolean = True): boolean;
+    function UserIsAdminTask(AUserID: double = 0; ADoRaise: boolean = True): boolean;
+    function UserIsSchemaOwner: boolean;
+    procedure ReGrantUser(AUserLogin: string);
+    function  GetSystemValue(const Name: string; AValueType: TRegValueType): Variant; overload;
+    function  GetSystemValue(const Name: string; AValueType: TRegValueType; const DefValue: Variant): Variant; overload;
+
+    function ObjectIs(ID: double; TypeSysName: string): boolean;
+
+    procedure UpdateObjectAccessLevel(AObjectID, AAccessLevel: double);
+    procedure UpdateObjectGrant(AObjectID, AUserID, AAccessLevel: double;
+      ADoNotCheck: boolean = False; AAdminNotGrant: boolean = True;
+      ANoReduction: boolean = True);
+
+    procedure AddUserToGroup(AUserID, AUserGroupID: double);
+    procedure RemoveUserFromGroup(AUserID, AUserGroupID: double);
+
+    procedure AddSysComponentToTask(ASysComponentID, ATaskID: double);
+    procedure RemoveSysComponentFromTask(ASysComponentID, ATaskID: double);
+
+    procedure AddTaskToUserGroup(ATaskID, AUserGroupID: double);
+    procedure RemoveTaskFromUserGroup(ATaskID, AUserGroupID: double);
+
+    procedure AddObjectToCollection(AObjectID, ACollectionID: double; ARoleName: string = ''; ADescript: string = '');
+    procedure RemoveObjectFromCollection(AID: double);
+    procedure MergeCollection(AID, ASRCID: double; ARoleName: string);
+
+    procedure FreeObject(AID: double);
+    function CheckTask(const TaskName: String; doRaise : boolean = False): Boolean;
+
+    procedure SetObjectKind(const ObjId: double; const KindSysName: string);
+    function LoadDbf(const FileName: string; const TableName: string; const ColMap: string = ''; LoadInfo: PLoadInfo = nil): integer;
+    function LoadStream(Stream: TStream; const TableName: string; const ColMap: string = ''; LoadInfo: PLoadInfo = nil): integer;
+    procedure Load(IniMem: TMemIniFile; const ASectionName: String = '';
+      const APropName: String = '');
+    procedure GetDBAppParams(IniMem: TMemIniFile; const ASectionName: String = '';
+      const APropName: String = '');
+    function  UserContext(const Ident: string; const Default: string = ''): string;
+    function AppParamExists(const ParamName: string): boolean;
+    procedure ConvertTransferPackToDBF(APackId: integer);
+    function GetServerDate: TDateTime;
+
+    // Регистрация события
+    procedure RegisterEvent(TypeCode:String; EvtNum:String;
+      Param1:String = ''; Param2:String = ''; Param3:String = ''; Param4:String = ''; Param5:String = '');
+
+    // Получить список названий подчинённых ТО
+    procedure GetChildCustomsNames( AListCustoms : TStrings );
+    procedure GetChildCustomsCodes( AListCustoms : TStrings );
+    function GetChildCustomsCodeByName( AName : string ) : string;
+    function GetEnableOrder: string;
+
+    // Заполнить структуру TBuxReport данными из БД
+    procedure load_BuxReport(pBuxReport: TBuxReport;pid: Integer);
+
+    // Признак возможности редактирование справочников НСИ (необходим для запрета редактирования некоторых справочников)
+    property AccessModifyNSI : boolean read fAccessModifyNSI;
+
+    // MAC-адрес интерфейса соединения
+    property MACAddress : string read FMACAddress write SetMACAddress;
+    // KAV
+    property NoteStr: string read FNoteStr write FNoteStr;
+    //
+  end;
+
+Const
+  clYellowLight     : TColor = $00BFFFFF;
+  clYellowFocused   : TColor = $0000A4A4;
+  clBlueDark        : TColor = $00C56A31;
+  clBlueLight       : TColor = $00F7EAD9;
+  clBlueBright      : TColor = $00FF953D;
+  clBlueSky         : TColor = $00EBC4A4;
+
+  clGold            : TColor = $0047D5FE;
+  clGoldDark        : TColor = $0001BDF3;
+
+  clGreyLight       : TColor = $00E2EFF1;
+  clGreyDark        : TColor = $00B9D9DD;
+
+  clGreenBright     : TColor = $0082E887;
+  clGreenLight      : TColor = $00C9F5CB;
+  clGreenObscured   : TColor = $00ACF0AF;
+  clGreenDark       : TColor = $0044DD4B;
+
+  clSilverDark      : TColor = $00A6A6A6;
+
+  clLightRed        : TColor = $00B4B7EB;
+  clLightRedFocused : TColor = $00363EC9;
+
+  ccCustomsAll = '00000000';
+
+  procedure msg_action_disabled;
+
+  function SendARP(const DestIP, SrcIP: ULONG;
+    pMacAddr: PULONG; var PhyAddrLen: ULONG): DWORD; stdcall; external 'IPHLPAPI.DLL';
+
+var
+  MainData: TMainData;
+
+implementation
+
+uses Forms, fdcOracleMonitor, OracleCI, Variants, FormMngr, ConverterWrap, fdcMessages, Dialogs, Winsock;
+
+{$R *.dfm}
+
+{ TMainData }
+
+function TMainData.CheckVersion(ACheckBuildNumber: boolean;
+  var AServerVersion: string; var AVersionMigrate: boolean): boolean;
+begin
+  dsCheckVersion.ParamByName('CHKVERSION').AsString := GetAppVersion;
+  dsCheckVersion.ParamByName('CHKBUILDNUM').AsFloat := integer(ACheckBuildNumber);
+  dsCheckVersion.ExecSQL;
+  Result := dsCheckVersion.ParamByName('Result').AsFloat = 1;
+  AServerVersion := dsCheckVersion.ParamByName('CURRENTVERSION').AsString;
+  AVersionMigrate := dsCheckVersion.ParamByName('VERSIONMIGRATE').AsFloat = 1;
+end;
+
+function TMainData.GetUser(ALogin: string = ''): double;
+begin
+  dsGetUser.ParamByName('LOGIN').AsString := ALogin;
+  dsGetUser.ExecSQL;
+  Result := dsGetUser.ParamByName('Result').AsFloat;
+end;
+
+function TMainData.GetHintRcd(AUsrIdtf: string): string;
+begin
+  dsHintRcd.ParamByName('UserLogn').AsString := AUsrIdtf;
+  dsHintRcd.ExecSQL;
+  Result := dsHintRcd.ParamByName('Result').AsString;
+end;
+
+function TMainData.GetUserExpDate: string;
+var
+  dt: TDateTime;
+  st: string;
+begin
+//  Result := sqlGetUserExpDate.Exec;
+//  dt := sqlGetUserExpDate.Exec;
+
+  Result := sqlGetUserExpDate.Exec;
+{
+  if st = '' then
+    Result := 0
+  else
+    Result := StrToDate(st);
+}
+end;
+
+function TMainData.UserIsAdminData(AUserID: double = 0;
+  ADoRaise: boolean = True): boolean;
+begin
+  dsUserIsAdminData.ParamByName('USER_ID').AsFloat := AUserID;
+  dsUserIsAdminData.ParamByName('DORAISE').AsFloat := integer(ADoRaise);
+  dsUserIsAdminData.ExecSQL;
+  Result := dsUserIsAdminData.ParamByName('Result').AsFloat = 1;
+end;
+
+function TMainData.UserIsAdminTask(AUserID: double = 0;
+  ADoRaise: boolean = True): boolean;
+begin
+  dsUserIsAdminTask.ParamByName('USER_ID').AsFloat := AUserID;
+  dsUserIsAdminTask.ParamByName('DORAISE').AsFloat := integer(ADoRaise);
+  dsUserIsAdminTask.ExecSQL;
+  Result := dsUserIsAdminTask.ParamByName('Result').AsFloat = 1;
+end;
+
+function TMainData.UserIsSchemaOwner: boolean;
+begin
+  dsUserIsSchemaOwner.ExecSQL;
+  Result := dsUserIsSchemaOwner.ParamByName('Result').AsFloat = 1;
+end;
+
+procedure TMainData.ReGrantUser(AUserLogin: string);
+begin
+  dsUserGrantForExec.ParamByName('LOGIN').AsString := AUserLogin;
+  dsUserGrantForExec.Open;
+  try
+    while not dsUserGrantForExec.Eof do
+    begin
+      dsReGrant.SQL.Text := dsUserGrantForExecCMD.AsString;
+      dsReGrant.ExecSQL;
+      dsUserGrantForExec.Next;
+    end;
+  finally
+    dsUserGrantForExec.Close;
+  end;
+end;
+
+procedure TMainData.UpdateObjectAccessLevel(AObjectID,
+  AAccessLevel: double);
+begin
+  dsObjectAccessLevelUpdate.ParamByName('ID').AsFloat := AObjectID;
+  dsObjectAccessLevelUpdate.ParamByName('AccessLevel').AsFloat := AAccessLevel;
+  dsObjectAccessLevelUpdate.ExecSQL;
+end;
+
+procedure TMainData.UpdateObjectGrant(AObjectID, AUserID,
+  AAccessLevel: double; ADoNotCheck: boolean = False;
+  AAdminNotGrant: boolean = True; ANoReduction: boolean = True);
+begin
+  dsObjectGrantUpdate.ParamByName('ID')           .AsFloat := AObjectID;
+  dsObjectGrantUpdate.ParamByName('Grantee_ID')   .AsFloat := AUserID;
+  dsObjectGrantUpdate.ParamByName('AccessLevel')  .AsFloat := AAccessLevel;
+  dsObjectGrantUpdate.ParamByName('DoNotCheck')   .AsFloat := integer(ADoNotCheck);
+  dsObjectGrantUpdate.ParamByName('AdminNotGrant').AsFloat := integer(AAdminNotGrant);
+  dsObjectGrantUpdate.ParamByName('NoReduction')  .AsFloat := integer(ANoReduction);
+  dsObjectGrantUpdate.ExecSQL;
+end;
+
+procedure TMainData.AddUserToGroup(AUserID, AUserGroupID: double);
+begin
+  dsUserInGroupAdd.ParamByName('USER_ID')      .AsFloat := AUserID;
+  dsUserInGroupAdd.ParamByName('USER_GROUP_ID').AsFloat := AUserGroupID;
+  dsUserInGroupAdd.ExecSQL;
+end;
+
+procedure TMainData.RemoveUserFromGroup(AUserID, AUserGroupID: double);
+begin
+  dsUserInGroupDel.ParamByName('USER_ID')      .AsFloat := AUserID;
+  dsUserInGroupDel.ParamByName('USER_GROUP_ID').AsFloat := AUserGroupID;
+  dsUserInGroupDel.ExecSQL;
+end;
+
+procedure TMainData.AddSysComponentToTask(ASysComponentID,
+  ATaskID: double);
+begin
+  dsTaskSysComponentAdd.ParamByName('TASK_ID')        .AsFloat := ATaskID;
+  dsTaskSysComponentAdd.ParamByName('SYSCOMPONENT_ID').AsFloat := ASysComponentID;
+  dsTaskSysComponentAdd.ExecSQL;
+end;
+
+procedure TMainData.RemoveSysComponentFromTask(ASysComponentID,
+  ATaskID: double);
+begin
+  dsTaskSysComponentDel.ParamByName('TASK_ID')        .AsFloat := ATaskID;
+  dsTaskSysComponentDel.ParamByName('SYSCOMPONENT_ID').AsFloat := ASysComponentID;
+  dsTaskSysComponentDel.ExecSQL;
+end;
+
+procedure TMainData.AddTaskToUserGroup(ATaskID, AUserGroupID: double);
+begin
+  dsUserGroupTaskAdd.ParamByName('USER_GROUP_ID').AsFloat := AUserGroupID;
+  dsUserGroupTaskAdd.ParamByName('TASK_ID')      .AsFloat := ATaskID;
+  dsUserGroupTaskAdd.ExecSQL;
+end;
+
+procedure TMainData.RemoveTaskFromUserGroup(ATaskID, AUserGroupID: double);
+begin
+  dsUserGroupTaskDel.ParamByName('USER_GROUP_ID').AsFloat := AUserGroupID;
+  dsUserGroupTaskDel.ParamByName('TASK_ID')      .AsFloat := ATaskID;
+  dsUserGroupTaskDel.ExecSQL;
+end;
+
+procedure TMainData.AddObjectToCollection(AObjectID, ACollectionID: double; ARoleName: string = ''; ADescript: string = '');
+begin
+  dsCollectionObjectAdd.ParamByName('COLLECTION_ID').AsFloat := ACollectionID;
+  dsCollectionObjectAdd.ParamByName('OBJECT_ID').AsFloat := AObjectID;
+  dsCollectionObjectAdd.ParamByName('ROLENAME').AsString := ARoleName;
+  dsCollectionObjectAdd.ParamByName('DESCRIPT').AsString := ADescript;
+  dsCollectionObjectAdd.ExecSQL;
+end;
+
+procedure TMainData.RemoveObjectFromCollection(AID: double);
+begin
+  dsCollectionObjectDel.ParamByName('ID').AsFloat := AID;
+  dsCollectionObjectDel.ExecSQL;
+end;
+
+procedure TMainData.MergeCollection(AID, ASRCID: double; ARoleName: string);
+begin
+  dsCollectionMerge.ParamByName('ID').AsFloat := AID;
+  dsCollectionMerge.ParamByName('SRC_ID').AsFloat := ASRCID;
+  dsCollectionMerge.ParamByName('RoleName').AsString := ARoleName;
+  dsCollectionMerge.ExecSQL;
+end;
+
+procedure TMainData.FreeObject(AID: double);
+begin
+  dsObjectFree.ParamByName('ID').AsFloat := AID;
+  dsObjectFree.ExecSQL;
+end;
+
+function TMainData.CheckTask(const TaskName: String; doRaise : boolean = False): Boolean;
+begin
+   dsCheckTask.ParamByName('taskname').Value := TaskName;
+   try
+     dsCheckTask.ExecSQL;
+     Result := True;
+   except
+     if doRaise then
+       raise
+     else
+     begin
+       Application.HandleException(Self);
+       Result := False;
+     end;
+   end;
+end;
+
+function GetAppParamValue(const ParamName: string; var Value: string): boolean;
+var
+  I: Integer;
+begin
+  for I := 1 to ParamCount do
+  begin
+    if CompareText(ParamStr(I), '/'+ ParamName) = 0 then
+    begin
+      Result := True;
+      Exit;
+    end;
+  end;
+  Result := False;
+end;
+
+procedure DoInitMonitor;
+var
+  S: String;
+begin
+  if GetAppParamValue('usemonitor', s) then
+      MonitorInitialize;
+end;
+
+procedure TMainData.SetObjectKind(const ObjId: double;
+  const KindSysName: string);
+begin
+  sqlSetKind.Exec('id;sysname', [ObjId, KindSysName]);
+  Session.Commit;
+end;
+
+function TMainData.GetEnableOrder: string;
+begin
+  Result:=FEnableOrder;
+end;
+
+procedure TMainData.SessionAfterLogOn(Sender: TOracleSession);
+var
+  pVal: string;
+begin
+
+  if Sender.Connected then
+  begin
+    sqlSetSchema.Exec('p', Session.DefSchemeName);
+    SetPropLoader(Self);
+    if FormManager <> nil then
+        FormManager.FormCreated(TCustomForm(Self));
+
+    pkgCommon.PackageName := 'p_Params';
+    FCustomsID       := pkgCommon.GetIntegerVariable( 'cCustomsId'       );
+    FCustomsLevel    := pkgCommon.GetIntegerVariable( 'cCustomLevel'     );
+    FCustomsCode     := pkgCommon.GetStringVariable ( 'cCustomCode'      );
+    FSoftCustomsCode := pkgCommon.GetStringVariable ( 'cSoftCustomsCode' );
+    pVal             := pkgCommon.GetStringVariable ( 'ForceDropObject'  );
+    FForceDrop       := IfElse(pVal = 'Y', True, False );
+    FArchFileNamePrefix := pkgCommon.GetStringVariable ( 'cArchFileNamePrefix'  );
+
+    //Вытаскиваем параметр для сортировки
+    FEnableOrder             := GetSystemValue('EnableOrder', rvString, 'N');
+//    FEnableOrder     :=  IfElse(pVal = 'Y', True, False);
+
+    FCurrentUserName := sqlGetCurrentUserName.Exec;
+    FUserCustomsID     := sqlGetUserCustomsId.Exec;
+    FUserCustomsCode   := sqlGetUserCustomsCode.Exec;
+    if FUserCustomsID = 0 then
+     begin
+      FUserCustomsID := FCustomsID;
+      FUserCustomsCode := FCustomsCode;
+     end;
+
+    //Вычисляем
+    MACAddress := GetMACAddress;
+
+  fChildCustoms.Clear;
+  with dsGetChildCustoms do
+    begin
+      if Active then
+        Refresh
+      else
+        Open;
+
+      First;
+      while not Eof do
+        begin
+          fChildCustoms.Add( FieldByName( 'name' ).AsString + '=' + FieldByName( 'code' ).AsString );
+
+          Next;
+        end;
+
+      Close;
+    end;
+
+  end;
+
+  inherited;
+end;
+
+function TMainData.LoadDbf(const FileName, TableName, ColMap: string; LoadInfo: PLoadInfo): integer;
+var
+  F: TFileStream;
+begin
+  F := TFileStream.Create(FileName, fmOpenRead or fmShareDenyNone);
+  try
+    Result := LoadStream(F, TableName, ColMap, LoadInfo);
+  finally
+    F.Free;
+  end;
+end;
+
+function TMainData.GetSystemValue(const Name: string;
+  AValueType: TRegValueType; const DefValue: Variant): Variant;
+var
+  Op : TsqlOp;
+begin
+  case AValueType of
+    rvBoolean  :  begin
+                    Result := False;
+                    Op := sqlvaluebool;
+                  end;
+    rvInteger  :  begin
+                    Result := 0.0;
+                    Op := sqlvaluenumber;
+                  end;
+    rvFloat    :  begin
+                    Result := now;
+                    Op := sqlvaluedatetime;
+                  end;
+    rvString   :  begin
+                    Result := '';
+                    Op := sqlvaluestring;
+                  end;
+    rvDateTime :  begin
+                    Result := now;
+                    Op := sqlvaluedatetime;
+                  end;
+  else
+    Op := nil;
+  end;
+
+  Op['RESULT'] := Result;
+  try
+    Result := Op.Exec('NAME', Name);
+  except
+    Result := DefValue;
+  end;
+end;
+
+function TMainData.ObjectIs(ID: double; TypeSysName: string): boolean;
+begin
+  dsObjectIs.ParamByName('ID').AsFloat := ID;
+	dsObjectIs.ParamByName('TYPESYSNAME').AsString := TypeSysName;
+  dsObjectIs.ExecSQL;
+
+  Result := (trunc(dsObjectIs.ParamByName('Result').AsFloat) = 1);
+end;
+
+function TMainData.GetSystemValue(const Name: string;
+  AValueType: TRegValueType): Variant;
+begin
+  Result := GetSystemValue(Name, AValueType, NULL);
+end;
+
+procedure TMainData.DataModuleCreate(Sender: TObject);
+begin
+  inherited;
+  if FormManager <> nil then
+      FormManager.FormCreated(TCustomForm(Self));
+  FDeclColumnParse := '-1';
+
+  fChildCustoms := TStringList.Create;
+  fAccessModifyNSI := False;
+end;
+
+procedure TMainData.InternalLoad(Op: TSqlOp; IniMem: TMemIniFile; const ASectionName,
+  APropName: String);
+var
+  Query: TOracleQuery;
+begin
+  IniMem.Clear;
+  try
+    Query := Op.Query('s;n', [ASectionName, APropName]);
+    while not Query.Eof do
+    begin
+      IniMem.WriteString(Query.FieldAsString(0)
+                         ,Query.FieldAsString(1)
+                         ,Query.FieldAsString(2)
+                         );
+      Query.Next;
+    end;
+  except
+  	on E:Exception do
+     begin
+       SetPropLoader(nil);
+//       raise;
+     end;
+  end;  // try/except
+end;
+
+procedure TMainData.DataModuleDestroy(Sender: TObject);
+begin
+  inherited;
+  SetPropLoader(nil);
+  FreeAndNil(FUserContext);
+  FreeAndNil(fChildCustoms);
+end;
+
+procedure TMainData.Load(IniMem: TMemIniFile; const ASectionName,
+  APropName: String);
+begin
+  InternalLoad(sqlOrgProps, IniMem, ASectionName, APropName);
+end;
+
+procedure TMainData.GetDBAppParams(IniMem: TMemIniFile; const ASectionName,
+  APropName: String);
+begin
+  InternalLoad(sqlGetProps, IniMem, ASectionName, APropName);
+end;
+
+function TMainData.UserContext(const Ident: string; const Default: string): string;
+begin
+  if FUserContext = nil then
+  begin
+    FUserContext := TMemIniFile.Create('');
+    GetDBAppParams(FUserContext, 'UserContext');
+  end;
+  Result := FUserContext.ReadString('UserContext', Ident, Default);
+end;
+
+function TMainData.LoadStream(Stream: TStream; const TableName,
+  ColMap: string; LoadInfo: PLoadInfo): integer;
+var
+  LOB: TLOBLocator;
+begin
+  LOB := TLOBLocator.CreateTemporary(Session, otBLOB, True);
+  try
+    LOB.CopyFrom(Stream, Stream.Size - Stream.Position);
+    Lob.Trim;
+    qryLoadFile.SetComplexVariable('file', LOB);
+    qryLoadFile.SetVariable('TableName', TableName);
+    qryLoadFile.SetVariable('ColMap', ColMap);
+    qryLoadFile.Execute;
+    Result := qryLoadFile.GetVariable('result');
+    if LoadInfo <> nil then
+    begin
+      LoadInfo.Total := qryLoadFile.GetVariable('v1');
+      LoadInfo.Done := qryLoadFile.GetVariable('v2');
+      LoadInfo.ErrorCount := qryLoadFile.GetVariable('v3');
+      LoadInfo.NewCount := qryLoadFile.GetVariable('v4');
+      LoadInfo.ModifyCount := qryLoadFile.GetVariable('v5');
+      LoadInfo.SkipCount := qryLoadFile.GetVariable('v6');
+    end;
+  finally
+      LOB.Free;
+  end;
+end;
+
+
+function TMainData.GetCustomsLevel: integer;
+begin
+  Result := FCustomsLevel;
+end;
+
+function TMainData.GetCustomsCode: string;
+begin
+  Result := FCustomsCode;
+end;
+
+function TMainData.InitConvert(CreateDirIfNotExists : boolean = True): boolean;
+// временно, пока нет настроек
+const
+  ConfigFile = 'format.xml';
+  InDir = 'Input';
+  OutDir = 'Output';
+  PrefixFile =  'DOC_';
+var
+  AppPath : string;
+begin
+  AppPath := IncludeTrailingPathDelimiter( ExtractFilePath( Application.ExeName ));
+  FConvertRulesFile := AppPath + ConfigFile;
+  Result := FileExists(FConvertRulesFile);
+  if not Result then
+    exit;
+  FConvertInputDir := AppPath + 'Data\' + InDir;
+  if not DirectoryExists(FConvertInputDir) and
+     CreateDirIfNotExists then
+    ForceDirectories(FConvertInputDir);
+
+  FConvertOutputDir := AppPath + 'Data\' + OutDir;
+  if not DirectoryExists(FConvertOutputDir) and
+     CreateDirIfNotExists then
+    ForceDirectories(FConvertOutputDir);
+
+  Result := DirectoryExists(FConvertInputDir) and DirectoryExists(FConvertOutputDir);
+
+  if not Result then
+    exit;
+
+end;
+
+procedure TMainData.ConvertTransferPackToDBF(APackId: integer);
+ var
+   converter: CConverterWrap;
+   LOB: TLOBLocator;
+   XMLFile : TFileName;
+   ArchName: String;
+begin
+  if not InitConvert then exit;
+
+  dsDocList.SetVariable('PACK_ID', APackId);
+  if dsDocList.Active then dsDocList.Refresh else dsDocList.Open;
+  // конвертируем все документы, входящие в пакет
+  while not dsDocList.Eof do
+    begin
+      LOB := TLOBLocator.Create(Session, otCLOB);
+      try
+        qryGetDocAsXML.SetVariable('DOC_ID', dsDocList.FieldValues['ID']);
+        qryGetDocAsXML.SetVariable('TYPESYSNAME', dsDocList.FieldValues['TYPESYSNAME']);
+        qryGetDocAsXML.SetComplexVariable('XMLCLOB', LOB);
+        qryGetDocAsXML.Execute;
+        if not LOB.IsNull then
+          begin
+            XMLFile := IncludeTrailingPathDelimiter( FConvertInputDir )+
+                       dsDocList.FieldByName('TYPESYSNAME').AsString+ '_' +
+                       dsDocList.fieldByName('ID').AsString;
+            if FileExists(XMLFile) then
+              DeleteFile(PChar(XMLFile));
+
+            LOB.SaveToFile(XMLFile);
+            converter := CConverterWrap.Create();
+            Try
+              converter.Init();
+              // Задаем информацию для файла сопровождения
+              converter.SetParam('CustomsCode', GetSystemValue('CustomsCode', rvString));
+              converter.SetParam('CustomsName', GetSystemValue('CustomsName', rvString));
+              converter.SetParam('Performer', 'Исполнитель');
+              converter.SetParam('TypeInfo', dsDocList.FieldValues['TYPESYSNAME']);
+              converter.SetParam('Currency', '810');
+              converter.SetParam('ReceiverName', 'Наименование таможни назначения');
+              // Конвертируем
+              converter.Execute(FConvertRulesFile, FConvertInputDir, XMLFile, FConvertOutputDir, FPrefixFile, ArchName);
+            finally
+              converter.Free;
+            end;
+          end;
+        dsDocList.FieldByName('ID').AsInteger
+      finally
+        LOB.Free;
+      end;
+      dsDocList.Next;
+    end;
+end;
+
+function TMainData.AppParamExists(const ParamName: string): boolean;
+var
+  I: Integer;
+begin
+  for I := 1 to ParamCount do
+  begin
+    if CompareText(ParamStr(I), '/'+ ParamName) = 0 then
+    begin
+      Result := True;
+      Exit;
+    end;
+  end;
+  Result := False;
+end;
+
+function TMainData.EnableForceDropObject: boolean;
+begin
+  Result := FForceDrop;
+end;
+
+function TMainData.GetServerDate: TDateTime;
+begin
+  sqlGetServerDate['RESULT'] := Now;
+  Result := sqlGetServerDate.Exec;
+end;
+
+function TMainData.GetDeclColumnForParse: string;
+begin
+  if FDeclColumnParse = '-1' then
+    FDeclColumnParse := GetSystemValue('dclparse.declcolumn', rvString, '14');
+  Result := FDeclColumnParse;
+end;
+
+// Регистрация события
+procedure TMainData.RegisterEvent(TypeCode:String; EvtNum:String;
+  Param1:String = ''; Param2:String = ''; Param3:String = ''; Param4:String = ''; Param5:String = '');
+begin
+	dsRegEvent.ParamByName('TypeCode').AsString := TypeCode;
+  dsRegEvent.ParamByName('EvtNum').AsString := EvtNum;
+  if Param1 = ''
+  then dsRegEvent.ParamByName('P1').Clear
+  else dsRegEvent.ParamByName('P1').AsString := Param1;
+  if Param2 = ''
+  then dsRegEvent.ParamByName('P2').Clear
+  else dsRegEvent.ParamByName('P2').AsString := Param2;
+  if Param3 = ''
+  then dsRegEvent.ParamByName('P3').Clear
+  else dsRegEvent.ParamByName('P3').AsString := Param3;
+  if Param4 = ''
+  then dsRegEvent.ParamByName('P4').Clear
+  else dsRegEvent.ParamByName('P4').AsString := Param4;
+  if Param5 = ''
+  then dsRegEvent.ParamByName('P5').Clear
+  else dsRegEvent.ParamByName('P5').AsString := Param5;
+
+  dsRegEvent.ExecSQL;
+end;
+
+function TMainData.GetSoftCustomsCode: string;
+begin
+  Result := FSoftCustomsCode;
+end;
+
+function TMainData.GetCustomsID: integer;
+begin
+  Result := FCustomsID;
+end;
+
+function TMainData.GetUserCustomsID: integer;
+begin
+  Result := FUserCustomsID;
+end;
+
+function TMainData.GetUserCustomsCode: string;
+begin
+  Result := FUserCustomsCode;
+end;
+
+function TMainData.GetCurrentUserName: string;
+begin
+  Result := FCurrentUserName;
+end;
+
+function TMainData.ArchFileNamePrefix: string;
+begin
+  Result := FArchFileNamePrefix;
+end;
+
+procedure TMainData.GetChildCustomsNames(AListCustoms: TStrings);
+  var
+    i : Integer;
+begin
+  AListCustoms.Clear;
+
+  for i := 0 to fChildCustoms.Count - 1 do
+    AListCustoms.Add( fChildCustoms.Names[i] );
+end;
+
+procedure TMainData.GetChildCustomsCodes(AListCustoms: TStrings);
+  var
+    i : Integer;
+begin
+  AListCustoms.Clear;
+
+  for i := 0 to fChildCustoms.Count - 1 do
+    AListCustoms.Add( fChildCustoms.ValueFromIndex[i] );
+end;
+
+function TMainData.GetChildCustomsCodeByName(AName: string): string;
+begin
+  Result := fChildCustoms.Values[ AName ];
+end;
+
+procedure TMainData.load_BuxReport(pBuxReport: TBuxReport;pid: Integer);
+begin
+  if (pBuxReport<>nil) then
+    begin
+      with dsBuxReports do
+        begin
+          if Active then
+            begin
+              Refresh;
+            end
+          else
+            begin
+              Open;
+            end;
+          First;
+          while not Eof do
+            begin
+              if (FieldByName( 'id' ).AsInteger = pid) then
+                begin
+                  with pBuxReport do
+                    begin
+                      ID        := FieldByName( 'id' ).AsInteger;
+                      Name      := FieldByName( 'name' ).AsString;
+                      SysName   := FieldByName( 'SysName' ).AsString;
+                      Template  := FieldByName( 'template_name' ).AsString;
+                      EvtType   := FieldByName( 'evt_type' ).AsString;
+                      EvtCode   := FieldByName( 'evt_code' ).AsString;
+                      DateFrom  := FieldByName( 'sdate' ).AsDateTime;
+                      ForPeriod := false;
+                      if (FieldByName( 'edate' ).IsNull) then
+                        begin
+                          DateTo := 0;
+                        end
+                      else
+                        begin
+                          DateTo := FieldByName( 'edate' ).AsDateTime;
+                        end;
+                    end;
+                end;
+              Next;
+            end;
+        end;
+    end;
+end;
+
+procedure msg_action_disabled;
+begin
+  fdcMessages.MessageDlg('Информационное сообщение:','Данное действие запрещено!','Данное действие запрещено!',mtInformation,[mbOk],0);
+end;
+
+function TMainData.GetMACAddress : String;
+var
+  li: Integer;
+  lv_DestIP: ULONG;
+  lv_MacAddr: TMacAddress;
+  lv_PhyAddrLen: ULONG;
+  lv_IPAdress: string;
+begin
+
+  // Может быть несколько интерфейсов, нам нужен наш: возьмем из окружения Oracle-соединения
+  // далее ARP - запрос
+  try
+    lv_IPAdress := sqlGetIPAddress.Exec;
+    lv_DestIP := inet_addr( PChar( lv_IPAdress ) );
+    lv_PhyAddrLen := 6;
+    SendArp( lv_DestIP, 0, @lv_MacAddr, lv_PhyAddrLen );
+    if lv_PhyAddrLen = 0 then Result := NULL_MAC_ADDRESS else
+    begin
+      Result := '';
+      for li := 0 to lv_PhyAddrLen - 2 do
+        Result := Result + IntToHex( lv_MacAddr[ li ], 2) + '-';
+      Result := Result + IntToHex( lv_MacAddr[ lv_PhyAddrLen - 1 ], 2 );
+    end;
+  except
+    Result := NULL_MAC_ADDRESS;
+  end;
+end;
+
+procedure TMainData.SetMACAddress( Value : string );
+begin
+  FMACAddress := Value;
+  sqlSetMACAddress.Exec( 'pMacAddress', FMACAddress );
+end;
+
+initialization
+     DoInitMonitor;
+
+end.

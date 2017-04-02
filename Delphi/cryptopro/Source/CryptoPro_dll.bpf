@@ -1,0 +1,10 @@
+USEUNIT("CryptoPro_dll.cpp");
+USEUNIT("CryptoContainer.cpp");
+USEUNIT("CryptMessages.cpp");
+USEUNIT("CryptCertificate.cpp");
+USELIB("$(BCB)\Lib\PSDK\crypt32.lib");
+USEUNIT("CheckCertificate.cpp");
+//---------------------------------------------------------------------------
+This file is used by the project manager only and should be treated like the project file
+
+DllEntryPoint

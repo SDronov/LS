@@ -1,0 +1,16 @@
+# root priority - valid values are 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'
+#log4d.rootLogger=error,file
+log4d.rootLogger=debug,file
+#log4d.rootLogger=info,file
+
+
+#log4d.appender.file=TLogFileAppender
+log4d.appender.file=TRollingFileAppender
+log4d.appender.file.maximumFileSize=1M
+log4d.appender.file.maxSizeRollBackups=6
+log4d.appender.file.append=true
+log4d.appender.file.fileName=.\ordersvr.log
+log4d.appender.file.layout=TLogPatternLayout
+log4d.appender.file.layout.dateFormat=yyyy-mm-dd hh:MM:ss,zzz
+log4d.appender.file.layout.pattern=%d [%p] - %m%n%e
+

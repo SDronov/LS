@@ -1,0 +1,1226 @@
+***  Installation Started 07/06/2011 23:11  ***
+Title: ZipTV Compfression Components 2011
+Source: i:\Distrib\DevTools\Delphi 7.0\Comps\ZipTV\ztv2011.exe | 07-05-2011 | 07:46:20 | 2747933
+ZipTV Compression Components
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\UNWISE.EXE | 11-05-2001 | 10:30:50 | | 165376 | 6ef8d7f9
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\ZipTV Components for Delphi 7
+RegDB Val: ZipTV Components for Delphi 7
+RegDB Name: DisplayName
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\ZipTV Components for Delphi 7
+RegDB Val: D:\PROGRA~1\Borland\Delphi7\Comps\FORS\ZipTV11\UNWISE.EXE D:\PROGRA~1\Borland\Delphi7\Comps\FORS\ZipTV11\INSTALL.LOG
+RegDB Name: UninstallString
+RegDB Root: 2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvregister.dcu | 10-12-2010 | 10:36:20 | | 41139 | 66c272a0
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAes.dcu | 10-12-2010 | 10:36:20 | | 8111 | 6509fad
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesFileenc.dcu | 10-12-2010 | 10:36:20 | | 53079 | 5971ab48
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesHmac.dcu | 10-12-2010 | 10:36:20 | | 2970 | c20d525d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesPrng.dcu | 10-12-2010 | 10:36:20 | | 2634 | b8e9d672
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesPwd2key.dcu | 10-12-2010 | 10:36:20 | | 1992 | 2f556cf5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesSha1.dcu | 10-12-2010 | 10:36:20 | | 3947 | 2f63aff5
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\packages
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\packages\ztv70rt.dpk | 10-12-2010 | 10:36:10 | | 3352 | e77d8c51
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\packages\ztv70rt.dof | 10-12-2010 | 10:36:10 | | 2616 | 95de1c84
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\packages\ztv70rt.res | 10-12-2010 | 10:36:10 | | 1816 | d766f94a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\packages\ztv70rt.cfg | 10-12-2010 | 10:36:10 | | 556 | 278fa346
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\packages\ztv70dt.dpk | 10-12-2010 | 10:36:10 | | 690 | b97a3f79
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\packages\ztv70dt.dof | 10-12-2010 | 10:36:10 | | 2470 | d6d0ceca
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\packages\ztv70dt.res | 10-12-2010 | 10:36:10 | | 1544 | 44e7d17d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\packages\ztv70dt.cfg | 10-12-2010 | 10:36:10 | | 552 | 16e4f0a
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP
+File Delete: D:\Program Files\Borland\Delphi7\bin\ztv70rt.bpl
+Backup Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP\ztv70rt.bpl
+File Delete: D:\Program Files\Borland\Delphi7\bin\ztv70dt.bpl
+Backup Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP\ztv70dt.bpl
+File Delete: D:\Program Files\Borland\Delphi7\bin\ztv70dt.dcp
+Backup Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP\ztv70dt.dcp
+RegDB Key: Software\Borland\Delphi\7.0\Known Packages
+RegDB Val: ZipTV Compression Components (design time)
+RegDB Name: $(DELPHI)\bin\ztv70dt.bpl
+RegDB Root: 2
+RegDB Old: ZipTV Compression Components
+RegDB Key: Software\Borland\Delphi\7.0\Known Packages
+RegDB Val: ZipTV Compression Components (design time)
+RegDB Name: $(DELPHI)\bin\ztv70dt.bpl
+RegDB Root: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: CompanyName
+INI Val: Microchip Data Systems
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: FileDescription
+INI Val: ZipTV Compression Components
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: FileVersion
+INI Val: 10.0.0.0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: InternalName
+INI Val: ZipTV Components
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: LegalCopyright
+INI Val: Microchip Data Systems / Carl Bunton 1997-2008
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: LegalTrademarks
+INI Val: ZipTV
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: OriginalFilename
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: ProductName
+INI Val: ZipTV Compression Components
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: ProductVersion
+INI Val: 10.0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: ZipTV Version
+INI Item: Comments
+INI Val: www.ziptv.com
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: B
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: C
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: D
+INI Val: 0
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: E
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: F
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: G
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: H
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: I
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: J
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: K
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: L
+INI Val: 0
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: M
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: N
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: O
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: P
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: Q
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: R
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: S
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: T
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: U
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: V
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: W
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: X
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: Y
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: Z
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: ShowHints
+INI Val: 0
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: ShowWarnings
+INI Val: 0
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Compiler
+INI Item: UnitAliases
+INI Val: WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+INI Old: WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Linker
+INI Item: MapFile
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Linker
+INI Item: OutputObjs
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Linker
+INI Item: ConsoleApp
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Linker
+INI Item: DebugInfo
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Linker
+INI Item: RemoteSymbols
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Linker
+INI Item: MinStackSize
+INI Val: 16384
+INI Old: 16384
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Linker
+INI Item: MaxStackSize
+INI Val: 1048576
+INI Old: 1048576
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Linker
+INI Item: ImageBase
+INI Val: 4194304
+INI Old: 4194304
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Linker
+INI Item: ExeDescription
+INI Val: ZipTV Compression Components / Run-time Package
+INI Old: ZipTV Compression Components - Runtime Package
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Directories
+INI Item: OutputDir
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Directories
+INI Item: UnitOutputDir
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Directories
+INI Item: PackageDLLOutputDir
+INI Val: $(DELPHI)\bin
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Directories
+INI Item: PackageDCPOutputDir
+INI Val: $(DELPHI)\bin
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Directories
+INI Item: SearchPath
+INI Val: $(DELPHI)\bin
+INI Old: $(DELPHI)\bin
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Directories
+INI Item: Packages
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Directories
+INI Item: Conditionals
+INI Val: 
+INI Old: AES_SUPPORT;TNT_UNICODE1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Directories
+INI Item: DebugSourceDirs
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Directories
+INI Item: UsePackages
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Parameters
+INI Item: RunParams
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Parameters
+INI Item: HostApplication
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Parameters
+INI Item: Launcher
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Parameters
+INI Item: UseLauncher
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Parameters
+INI Item: DebugCWD
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Language
+INI Item: ActiveLang
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Language
+INI Item: ProjectLang
+INI Val: $00000409
+INI Old: $00000409
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Language
+INI Item: RootDir
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: IncludeVerInfo
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: AutoIncBuild
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: MajorVer
+INI Val: 4
+INI Old: 2009
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: MinorVer
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: Release
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: Build
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: Debug
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: PreRelease
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: Special
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: Private
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: DLL
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: Locale
+INI Val: 1033
+INI Old: 1033
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70rt.dof
+INI Sect: Version Info
+INI Item: CodePage
+INI Val: 1252
+INI Old: 1252
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: CompanyName
+INI Val: Microchip Data Systems
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: FileDescription
+INI Val: ZipTV Compression Components
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: FileVersion
+INI Val: 10.0.0.0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: InternalName
+INI Val: ZipTV
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: LegalCopyright
+INI Val: Microchip Data Systems / Carl Bunton 1997-2008
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: LegalTrademarks
+INI Val: ZipTV
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: OriginalFilename
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: ProductName
+INI Val: ZipTV Compression Components
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: ProductVersion
+INI Val: 10.0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: ZipTV Version
+INI Item: Comments
+INI Val: www.ziptv.com
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: B
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: C
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: D
+INI Val: 0
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: E
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: F
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: G
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: H
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: I
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: J
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: K
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: L
+INI Val: 0
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: M
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: N
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: O
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: P
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: Q
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: R
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: S
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: T
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: U
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: V
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: W
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: X
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: Y
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: Z
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: ShowHints
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: ShowWarnings
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Compiler
+INI Item: UnitAliases
+INI Val: WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+INI Old: WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Linker
+INI Item: MapFile
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Linker
+INI Item: OutputObjs
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Linker
+INI Item: ConsoleApp
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Linker
+INI Item: DebugInfo
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Linker
+INI Item: RemoteSymbols
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Linker
+INI Item: MinStackSize
+INI Val: 16384
+INI Old: 16384
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Linker
+INI Item: MaxStackSize
+INI Val: 1048576
+INI Old: 1048576
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Linker
+INI Item: ImageBase
+INI Val: 4194304
+INI Old: 4194304
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Linker
+INI Item: ExeDescription
+INI Val: ZipTV Compression Components / Design-Time Package
+INI Old: ZipTV Compression Components - Designtime Package
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Directories
+INI Item: OutputDir
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Directories
+INI Item: UnitOutputDir
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Directories
+INI Item: PackageDLLOutputDir
+INI Val: $(DELPHI)\bin
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Directories
+INI Item: PackageDCPOutputDir
+INI Val: $(DELPHI)\bin
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Directories
+INI Item: SearchPath
+INI Val: $(DELPHI)\bin
+INI Old: $(DELPHI)\bin
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Directories
+INI Item: Packages
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Directories
+INI Item: Conditionals
+INI Val: 
+INI Old: AES_SUPPORT;TNT_UNICODE1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Directories
+INI Item: DebugSourceDirs
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Directories
+INI Item: UsePackages
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Parameters
+INI Item: RunParams
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Parameters
+INI Item: HostApplication
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Parameters
+INI Item: Launcher
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Parameters
+INI Item: UseLauncher
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Parameters
+INI Item: DebugCWD
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Language
+INI Item: ActiveLang
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Language
+INI Item: ProjectLang
+INI Val: $00000409
+INI Old: $00000409
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Language
+INI Item: RootDir
+INI Val: 
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: IncludeVerInfo
+INI Val: 1
+INI Old: 1
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: AutoIncBuild
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: MajorVer
+INI Val: 4
+INI Old: 2010
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: MinorVer
+INI Val: 0
+INI Old: 12
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: Release
+INI Val: 0
+INI Old: 31
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: Build
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: Debug
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: PreRelease
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: Special
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: Private
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: DLL
+INI Val: 0
+INI Old: 0
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: Locale
+INI Val: 1033
+INI Old: 1033
+INI File: d:\program files\borland\delphi7\comps\fors\ziptv11\packages\ztv70dt.dof
+INI Sect: Version Info
+INI Item: CodePage
+INI Val: 1252
+INI Old: 1252
+File Copy: C:\WINDOWS\system32\ztvunrar39.dll | 05-20-2009 | 11:40:52 | 3.90.2.139 | 178176 | 8effe5c3
+Shared DLL counter ignored:
+File Overwrite: C:\WINDOWS\system32\ztvunace26.dll | 08-26-2005 | 02:50:00 | 2.6.0.0 | 77312 | fbd107e5
+File Overwrite: C:\WINDOWS\system32\ztvcabinet.dll | 06-19-2006 | 14:01:38 | 5.0.2147.1 | 69632 | 19a46499
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Help
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Help\Install.txt | 04-21-2008 | 11:45:38 | | 7156 | a58e286b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\cabstrut.inc | 10-12-2010 | 10:36:10 | | 7908 | 89e800f9
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\compiler.inc | 10-12-2010 | 10:36:10 | | 5697 | ea9a4da1
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\defines.inc | 10-12-2010 | 10:36:10 | | 403 | f551776b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ziptv.inc | 10-12-2010 | 10:36:10 | | 2565 | 119e9fd6
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\RegPack.pas | 10-12-2010 | 10:36:10 | | 17370 | e5169207
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\RegPack.dcr | 10-12-2010 | 10:36:10 | | 32980 | 5af61622
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\err_msgs.pas | 10-12-2010 | 10:36:10 | | 5014 | 431cf8b5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\err_msgs.res | 10-12-2010 | 10:36:10 | | 8712 | 25f388df
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\err_msgs.rc | 10-12-2010 | 10:36:10 | | 8378 | 9cf5f8f8
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\bz_bcb_src
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\bz_bcb_src\bzlib.obj | 08-08-2005 | 07:52:56 | | 11818 | 69315d82
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\bz_bcb_src\compress.obj | 08-08-2005 | 07:52:56 | | 14508 | 3a3fb6c1
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\bz_bcb_src\decompress.obj | 08-08-2005 | 07:52:56 | | 15607 | 821c8394
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\bz_bcb_src\huffman.obj | 08-08-2005 | 07:52:58 | | 6327 | 74b54fd8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\bz_bcb_src\blocksort.obj | 08-08-2005 | 07:52:58 | | 11460 | c97b5f13
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\bz_bcb_src\crctable.obj | 08-08-2005 | 07:52:56 | | 6209 | 60e88c45
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\bz_bcb_src\randtable.obj | 08-08-2005 | 07:52:58 | | 7238 | ff9e8e10
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvPPMDi.obj | 10-12-2010 | 10:36:10 | | 13478 | 4397eec2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvPPMDi1.dcu | 10-12-2010 | 10:36:20 | | 17305 | 91533a33
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\aes_bcb
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\aes_bcb\ztvAes2008.obj | 12-15-2007 | 09:23:32 | | 53810 | 7c888ee8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvGbls.dcu | 10-12-2010 | 10:36:20 | | 69519 | f5414365
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvArc2Arc.dcu | 10-12-2010 | 10:36:20 | | 26619 | c9c71f40
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvFindFile.dcu | 10-12-2010 | 10:36:20 | | 24085 | 78a66030
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvTurboSearch.dcu | 10-12-2010 | 10:36:20 | | 14680 | e157d3c5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZipRun.dcu | 10-12-2010 | 10:36:20 | | 19185 | f1c42c8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZipView.dcu | 10-12-2010 | 10:36:20 | | 69977 | e61d73ba
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZipCheck.dcu | 10-12-2010 | 10:36:20 | | 14000 | 690862c8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZipSearch.dcu | 10-12-2010 | 10:36:20 | | 33580 | 4da871f3
+File Overwrite: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesFileenc.dcu | 10-12-2010 | 10:36:20 | | 53079 | 5971ab48
+Backup Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP\ztvAesFileenc.dcu
+File Overwrite: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesHmac.dcu | 10-12-2010 | 10:36:20 | | 2970 | c20d525d
+Backup Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP\ztvAesHmac.dcu
+File Overwrite: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesPrng.dcu | 10-12-2010 | 10:36:20 | | 2634 | b8e9d672
+Backup Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP\ztvAesPrng.dcu
+File Overwrite: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAes.dcu | 10-12-2010 | 10:36:20 | | 8111 | 6509fad
+Backup Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP\ztvAes.dcu
+File Overwrite: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesPwd2key.dcu | 10-12-2010 | 10:36:20 | | 1992 | 2f556cf5
+Backup Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP\ztvAesPwd2key.dcu
+File Overwrite: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvAesSha1.dcu | 10-12-2010 | 10:36:20 | | 3947 | 2f63aff5
+Backup Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\BACKUP\ztvAesSha1.dcu
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvArchiveStream.dcu | 10-12-2010 | 10:36:20 | | 10973 | 1aa21789
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvArchiveSplitter.dcu | 10-12-2010 | 10:36:20 | | 19497 | 273cf164
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvArchiveEditor.dcu | 10-12-2010 | 10:36:20 | | 31432 | f76c3167
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZipSplitter.dcu | 10-12-2010 | 10:36:20 | | 14346 | 512b6d91
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZipSplitGlue.dcu | 10-12-2010 | 10:36:20 | | 9147 | b89cd868
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvStreams.dcu | 10-12-2010 | 10:36:20 | | 51660 | 55dde96
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvBase.dcu | 10-12-2010 | 10:36:20 | | 207295 | f08368ac
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvBZip.dcu | 10-12-2010 | 10:36:20 | | 21639 | e21dd6ec
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvunbzip.dcu | 10-12-2010 | 10:36:20 | | 54263 | 1e31abf5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvBlakHole.dcu | 10-12-2010 | 10:36:20 | | 22442 | 83a839a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvCabGbls.dcu | 10-12-2010 | 10:36:20 | | 9625 | aafe051e
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvCrypt.dcu | 10-12-2010 | 10:36:20 | | 10772 | 3141778
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvClipboard.dcu | 10-12-2010 | 10:36:20 | | 11636 | 3f8cb95b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvConsts.dcu | 10-12-2010 | 10:36:20 | | 47254 | 412d1830
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvDeflate.dcu | 10-12-2010 | 10:36:20 | | 50003 | 320e5333
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvDeLZW.dcu | 10-12-2010 | 10:36:20 | | 7496 | 592860cc
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvFileIo.dcu | 10-12-2010 | 10:36:20 | | 13912 | 56c82861
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvGZip.dcu | 10-12-2010 | 10:36:20 | | 19306 | 6c7d2cd9
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvHeaders.dcu | 10-12-2010 | 10:36:20 | | 13067 | fd28376d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvInflate.dcu | 10-12-2010 | 10:36:20 | | 42657 | a1512dd6
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvInflate64.dcu | 10-12-2010 | 10:36:20 | | 31996 | 110043e
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvJar.dcu | 10-12-2010 | 10:36:20 | | 5241 | c1adf6cf
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvLha.dcu | 10-12-2010 | 10:36:20 | | 23115 | db7ef583
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvLhaPack.dcu | 10-12-2010 | 10:36:20 | | 17345 | ca0ae3a0
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvLzh3.dcu | 10-12-2010 | 10:36:20 | | 10913 | bf55de0c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvLzh5.dcu | 10-12-2010 | 10:36:20 | | 18530 | 5c6ef1b1
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvMakeCab.dcu | 10-12-2010 | 10:36:20 | | 32266 | db2282c8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvMakeSfx.dcu | 10-12-2010 | 10:36:20 | | 14886 | 532c1ea3
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvLoadLib.dcu | 10-12-2010 | 10:36:20 | | 930 | 801639f
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvRegArchive.dcu | 10-12-2010 | 10:36:20 | | 17325 | 8c658889
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvSearchEngine.dcu | 10-12-2010 | 10:36:20 | | 26998 | d6931650
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvTar.dcu | 10-12-2010 | 10:36:20 | | 24637 | e2cba995
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvTarBZ.dcu | 10-12-2010 | 10:36:20 | | 7144 | f1aeaccd
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvTarGZ.dcu | 10-12-2010 | 10:36:20 | | 6548 | fb33f36f
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnAce2.dcu | 10-12-2010 | 10:36:20 | | 34772 | e4af04ce
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnArc.dcu | 10-12-2010 | 10:36:20 | | 23477 | ba4c498a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnArj.dcu | 10-12-2010 | 10:36:20 | | 20356 | ca8b46df
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnBh.dcu | 10-12-2010 | 10:36:20 | | 15483 | d67931ff
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnCab.dcu | 10-12-2010 | 10:36:20 | | 17268 | 321c3bcd
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnCabTypes.dcu | 10-12-2010 | 10:36:20 | | 3617 | 8c8c68af
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnGZip.dcu | 10-12-2010 | 10:36:20 | | 16805 | 62bdd8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnJar.dcu | 10-12-2010 | 10:36:20 | | 3227 | dc85bedb
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnLha.dcu | 10-12-2010 | 10:36:20 | | 13579 | 479f158c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnRar.dcu | 10-12-2010 | 10:36:20 | | 24632 | e57bb5ba
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnSfx.dcu | 10-12-2010 | 10:36:20 | | 12346 | 34fb6b12
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnTar.dcu | 10-12-2010 | 10:36:20 | | 15300 | 1b395d1c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnZip.dcu | 10-12-2010 | 10:36:20 | | 42245 | 47fb0402
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUnZoo.dcu | 10-12-2010 | 10:36:20 | | 16017 | 497b6f94
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUUDecode.dcu | 10-12-2010 | 10:36:20 | | 24190 | c6dbbbee
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvUUEncode.dcu | 10-12-2010 | 10:36:20 | | 23729 | 4e69b793
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZip.dcu | 10-12-2010 | 10:36:20 | | 49061 | 856eee4a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZipEncrypt.dcu | 10-12-2010 | 10:36:20 | | 26332 | b7b61351
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZipTV.dcu | 10-12-2010 | 10:36:20 | | 68496 | 6c22b0f4
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvZipKey.dcu | 10-12-2010 | 10:36:20 | | 18906 | 62fdf822
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\ztvFileScan.dcu | 10-12-2010 | 10:36:20 | | 26490 | 5c2790f7
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Delphi2TntCtrls.pas | 10-12-2010 | 10:36:10 | | 11143 | e52e7aac
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\StreamToStream
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\StreamToStream\StreamToStream.dpr | 10-12-2010 | 10:36:12 | | 307 | a2a51690
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\StreamToStream\unit1.pas | 10-12-2010 | 10:36:12 | | 5818 | ce3bc738
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\StreamToStream\unit1.dfm | 10-12-2010 | 10:36:12 | | 1107 | 41af7d83
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFileStrm
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFileStrm\ExtractToFileStrm.dpr | 10-12-2010 | 10:36:12 | | 423 | 50b471f8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFileStrm\ExtractToFileStrm.res | 10-12-2010 | 10:36:12 | | 876 | 483416c3
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFileStrm\Unit1.pas | 10-12-2010 | 10:36:12 | | 12075 | 18973ae4
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFileStrm\Unit1.dfm | 10-12-2010 | 10:36:12 | | 195816 | bbd3dc91
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToMem
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToMem\ExtractToMem.dpr | 10-12-2010 | 10:36:12 | | 197 | 89c2067b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToMem\Unit1.dfm | 10-12-2010 | 10:36:12 | | 195557 | 9d7beb5b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToMem\Unit1.pas | 10-12-2010 | 10:36:12 | | 10283 | 317a7835
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToTempStream
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToTempStream\ExtractToTempStream.dpr | 10-12-2010 | 10:36:12 | | 201 | ed39e091
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToTempStream\ExtractToTempStream.res | 10-12-2010 | 10:36:12 | | 2032 | 9d43b1a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToTempStream\Unit1.dfm | 10-12-2010 | 10:36:12 | | 195555 | 62bcf687
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToTempStream\Unit1.pas | 10-12-2010 | 10:36:12 | | 10001 | 3749f6af
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ClipBoard
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ClipBoard\ClipBoard.dpr | 10-12-2010 | 10:36:12 | | 189 | 33b744ee
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ClipBoard\ClipBoard.res | 10-12-2010 | 10:36:12 | | 1536 | b6ff99fc
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ClipBoard\Unit1.dfm | 10-12-2010 | 10:36:12 | | 2367 | 88ee04a5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ClipBoard\Unit1.pas | 10-12-2010 | 10:36:12 | | 6253 | 20fcc35
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo1
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo1\arccomp.dpr | 10-12-2010 | 09:45:40 | | 14597 | 9cfdf46a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo1\arccomp.res | 10-12-2010 | 09:45:40 | | 876 | b13c7db2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo1\arcext.dpr | 10-12-2010 | 09:45:40 | | 27275 | 958f7882
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo1\arcext.res | 10-12-2010 | 09:45:40 | | 2552 | 4985f807
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo1\arcutil.ico | 10-12-2010 | 09:45:40 | | 3950 | 987b0848
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo1\readme.txt | 10-12-2010 | 09:45:40 | | 9449 | 3daee4cd
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarv.dpr | 10-12-2010 | 09:45:40 | | 17196 | 93dd8810
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarv.cfg | 10-12-2010 | 09:45:40 | | 378 | e9363ec3
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarv.ico | 10-12-2010 | 09:45:40 | | 766 | 20f63b48
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarv.rc | 10-12-2010 | 09:45:40 | | 673 | 78f99b99
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarv.res | 10-12-2010 | 09:45:40 | | 2552 | cc2bc487
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarv.rws | 10-12-2010 | 09:45:40 | | 53094 | fe12079b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarv.txt | 10-12-2010 | 09:45:40 | | 3490 | c32ee2a4
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarx.dpr | 10-12-2010 | 09:45:40 | | 54834 | 90b4f72d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarx.cfg | 10-12-2010 | 09:45:40 | | 406 | c17bcb6f
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarx.ico | 10-12-2010 | 09:45:40 | | 766 | 20f63b48
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarx.rc | 10-12-2010 | 09:45:40 | | 673 | dc8c69c2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarx.res | 10-12-2010 | 09:45:40 | | 2552 | 9ab5c95e
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarx.rws | 10-12-2010 | 09:45:40 | | 53094 | 8dbf3325
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Console Apps\ConsoleDemo2\pibarx.txt | 10-12-2010 | 09:45:40 | | 5423 | d1ce1c36
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\tarbz
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\tarbz\tarbz.dpr | 10-12-2010 | 10:36:10 | | 233 | 1df6fa12
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\tarbz\unit1.dfm | 10-12-2010 | 10:36:10 | | 2138 | 6388ed4e
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\tarbz\unit1.pas | 10-12-2010 | 10:36:10 | | 8419 | a36ed1ce
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\targz
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\targz\targz.dpr | 10-12-2010 | 10:36:10 | | 185 | fd90e240
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\targz\unit1.dfm | 10-12-2010 | 10:36:10 | | 3451 | c36ddc79
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\targz\unit1.pas | 10-12-2010 | 10:36:10 | | 9656 | 86148cf7
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Arc2Arc
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Arc2Arc\Arc2Arc.dpr | 10-12-2010 | 10:36:12 | | 237 | 77a01048
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Arc2Arc\Unit1.dfm | 10-12-2010 | 10:36:12 | | 10617 | 4a6db532
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Arc2Arc\Unit1.pas | 10-12-2010 | 10:36:12 | | 19622 | 6a23223
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\BatchRename
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\BatchRename\BatchRename.dpr | 10-12-2010 | 10:36:10 | | 346 | 7fa6eec4
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\BatchRename\Unit1.dfm | 10-12-2010 | 10:36:10 | | 3326 | 91d4a510
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\BatchRename\Unit1.pas | 10-12-2010 | 10:36:10 | | 10854 | d755cced
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\BatchRename\Unit2.dfm | 10-12-2010 | 10:36:10 | | 8117 | a20c851f
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\BatchRename\Unit2.pas | 10-12-2010 | 10:36:10 | | 17574 | 28bb20d5
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\ByHeader
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\ByHeader\ByHeader.dpr | 10-12-2010 | 10:36:10 | | 343 | e02c46f8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\ByHeader\Unit1.dfm | 10-12-2010 | 10:36:10 | | 4965 | 845869dd
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\ByHeader\Unit1.pas | 10-12-2010 | 10:36:10 | | 16161 | 3915ec7c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\ByHeader\Unit2.dfm | 10-12-2010 | 10:36:10 | | 8117 | 6759e0cf
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ArchiveEditor\ByHeader\Unit2.pas | 10-12-2010 | 10:36:10 | | 17398 | 6e8930a
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Cab
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Cab\CabDemo.dpr | 10-12-2010 | 10:36:12 | | 430 | 9b182fdb
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Cab\unit1.dfm | 10-12-2010 | 10:36:12 | | 6493 | 9e25ad2d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Cab\unit1.pas | 10-12-2010 | 10:36:12 | | 12962 | 9a9920bd
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Cab\unit2.dfm | 10-12-2010 | 10:36:12 | | 2599 | 991e421e
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Cab\unit2.pas | 10-12-2010 | 10:36:12 | | 1696 | 98fc2e8d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Cab\unit3.dfm | 10-12-2010 | 10:36:12 | | 1462 | 3e4a3915
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Cab\unit3.pas | 10-12-2010 | 10:36:12 | | 2228 | b86b5067
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\GZip
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\GZip\GZipDemo.dpr | 10-12-2010 | 10:36:12 | | 334 | cfcf6c70
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\GZip\unit1.dfm | 10-12-2010 | 10:36:12 | | 5996 | be92d65e
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\GZip\unit1.pas | 10-12-2010 | 10:36:12 | | 11846 | 98544624
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\GZip\unit2.dfm | 10-12-2010 | 10:36:12 | | 2599 | 991e421e
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\GZip\unit2.pas | 10-12-2010 | 10:36:12 | | 1696 | 5e30defa
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\bzip
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\bzip\BZipDemo.dpr | 10-12-2010 | 10:36:12 | | 336 | e1524749
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\bzip\unit1.dfm | 10-12-2010 | 10:36:12 | | 5010 | 3447a2f8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\bzip\unit1.pas | 10-12-2010 | 10:36:12 | | 10722 | ed57ef0b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\bzip\unit2.dfm | 10-12-2010 | 10:36:12 | | 2600 | db51b0b2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\bzip\unit2.pas | 10-12-2010 | 10:36:12 | | 1696 | 98fc2e8d
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\CustomFileList
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\CustomFileList\CustomFileList.dpr | 10-12-2010 | 10:36:10 | | 194 | ba116fe5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\CustomFileList\unit1.dfm | 10-12-2010 | 10:36:10 | | 3439 | baa95a76
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\CustomFileList\unit1.pas | 10-12-2010 | 10:36:10 | | 6397 | d18d3d47
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ArchiveStream
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ArchiveStream\ArchiveStream.dpr | 10-12-2010 | 10:36:12 | | 430 | 34823644
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ArchiveStream\unit1.pas | 10-12-2010 | 10:36:12 | | 16415 | 31588df8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ArchiveStream\unit1.dfm | 10-12-2010 | 10:36:12 | | 2696 | 94a51e95
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ArchiveStream\unit2.pas | 10-12-2010 | 10:36:12 | | 4559 | eae2fb57
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ArchiveStream\unit2.dfm | 10-12-2010 | 10:36:12 | | 1680 | eb9825fe
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ArchiveStream\unit3.pas | 10-12-2010 | 10:36:12 | | 2174 | 818869b3
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ArchiveStream\unit3.dfm | 10-12-2010 | 10:36:12 | | 3182 | c4a4bb46
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFileStream
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFileStream\ExtractToFileStream.dpr | 10-12-2010 | 10:36:14 | | 202 | 842d0bcc
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFileStream\Unit1.pas | 10-12-2010 | 10:36:14 | | 1590 | fae657af
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFileStream\Unit1.dfm | 10-12-2010 | 10:36:14 | | 1104 | ed0dbf0d
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToPtr
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToPtr\ExtractToPtr.dpr | 10-12-2010 | 10:36:12 | | 197 | ac04b817
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToPtr\Unit1.dfm | 10-12-2010 | 10:36:12 | | 2415 | e1c1daf1
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToPtr\Unit1.pas | 10-12-2010 | 10:36:12 | | 6789 | a77e37ee
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Buffer
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Buffer\Buffer.dpr | 10-12-2010 | 10:36:12 | | 191 | 810cca49
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Buffer\Unit1.dfm | 10-12-2010 | 10:36:12 | | 1500 | be35f126
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Buffer\Unit1.pas | 10-12-2010 | 10:36:12 | | 4265 | fd134edf
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ZipTV
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ZipTV\ZipTV.dpr | 10-12-2010 | 10:36:12 | | 267 | e9a76d25
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ZipTV\Unit1.dfm | 10-12-2010 | 10:36:12 | | 2256 | 9bcccff5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ZipTV\Unit1.pas | 10-12-2010 | 10:36:12 | | 6487 | 7a8e4ba7
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ZipTV\Unit2.dfm | 10-12-2010 | 10:36:12 | | 1414 | f91a696b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ZipTV\Unit2.pas | 10-12-2010 | 10:36:12 | | 1347 | 1f5e1aa2
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFiles
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFiles\ExtractToFiles.dpr | 10-12-2010 | 10:36:12 | | 276 | 24facedf
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFiles\Unit1.dfm | 10-12-2010 | 10:36:12 | | 726 | ffcb1ec2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFiles\Unit1.pas | 10-12-2010 | 10:36:12 | | 6028 | 56aad942
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFiles\Unit2.dfm | 10-12-2010 | 10:36:12 | | 5708 | e12fb129
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\ExtractToFiles\Unit2.pas | 10-12-2010 | 10:36:12 | | 2852 | aa4a5ad8
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Strings
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Strings\Strings1.dpr | 10-12-2010 | 10:36:12 | | 193 | f4ddc148
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Strings\Unit1.dfm | 10-12-2010 | 10:36:12 | | 1474 | e482e635
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Strings\Unit1.pas | 10-12-2010 | 10:36:12 | | 4009 | a1280d1d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Strings\Strings2.dpr | 10-12-2010 | 10:36:12 | | 193 | f99383d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Strings\Unit2.dfm | 10-12-2010 | 10:36:12 | | 832 | cf090f8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\Strings\Unit2.pas | 10-12-2010 | 10:36:12 | | 3738 | 12a8decf
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\uucode
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\uucode\uucode.dpr | 10-12-2010 | 10:36:12 | | 186 | 77f0d573
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\uucode\Unit1.dfm | 10-12-2010 | 10:36:12 | | 9740 | 7e975c51
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\uucode\Unit1.pas | 10-12-2010 | 10:36:12 | | 6470 | fb3e45f8
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\CompressToMem
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\CompressToMem\CompressToMem.dpr | 10-12-2010 | 10:36:14 | | 198 | 52cc876f
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\CompressToMem\Unit1.dfm | 10-12-2010 | 10:36:14 | | 998 | 453c7968
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Streaming\CompressToMem\Unit1.pas | 10-12-2010 | 10:36:14 | | 9402 | c3f74666
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileInArc
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileInArc\FileInArc.dpr | 10-12-2010 | 10:36:14 | | 314 | c1d820f4
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileInArc\Unit1.dfm | 10-12-2010 | 10:36:14 | | 1188 | 5373fb0b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileInArc\Unit1.pas | 10-12-2010 | 10:36:14 | | 3762 | 6ac7e0ef
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileInArc\Unit2.dfm | 10-12-2010 | 10:36:14 | | 2067 | 1260ee0
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileInArc\Unit2.pas | 10-12-2010 | 10:36:14 | | 2770 | 3f7a4427
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FindFile
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FindFile\FindFile.dpr | 10-12-2010 | 10:36:14 | | 340 | 50b2860c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FindFile\Unit1.dfm | 10-12-2010 | 10:36:14 | | 7394 | d37480e9
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FindFile\Unit1.pas | 10-12-2010 | 10:36:14 | | 19126 | ed838285
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FindFile\Unit2.dfm | 10-12-2010 | 10:36:14 | | 1233 | 1d6c88a9
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FindFile\Unit2.pas | 10-12-2010 | 10:36:14 | | 2128 | b867883c
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileScan
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileScan\FileScan.dpr | 10-12-2010 | 10:36:14 | | 238 | a0a8252d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileScan\Unit1.dfm | 10-12-2010 | 10:36:14 | | 4789 | 7afbbf91
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\FileScan\Unit1.pas | 10-12-2010 | 10:36:14 | | 12368 | 254ba507
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx\MakeSfx
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx\MakeSfx\MakeSfx.dpr | 10-12-2010 | 10:36:14 | | 189 | d1d88ba2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx\MakeSfx\Unit1.dfm | 10-12-2010 | 10:36:14 | | 4961 | ea4a1987
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx\MakeSfx\Unit1.pas | 10-12-2010 | 10:36:14 | | 12715 | 13c8e0b4
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\RegisterArchive
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\RegisterArchive\RegisterArchive.dpr | 10-12-2010 | 10:36:14 | | 800 | bb3aef88
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\RegisterArchive\Unit1.dfm | 10-12-2010 | 10:36:14 | | 1173 | c9797c6d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\RegisterArchive\Unit1.pas | 10-12-2010 | 10:36:14 | | 9146 | 30c867ca
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\FilesByDateOrSize
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\FilesByDateOrSize\FilesByDateOrSize.dpr | 10-12-2010 | 10:36:14 | | 248 | e195f220
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\FilesByDateOrSize\Unit1.dfm | 10-12-2010 | 10:36:14 | | 10353 | 2429b41c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\FilesByDateOrSize\Unit1.pas | 10-12-2010 | 10:36:14 | | 31451 | cd9bd9ba
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\TurboSearch
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\TurboSearch\TurboSearch.dpr | 10-12-2010 | 10:36:14 | | 394 | afd5937b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\TurboSearch\Unit1.dfm | 10-12-2010 | 10:36:14 | | 6523 | a19b0bba
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\TurboSearch\Unit1.pas | 10-12-2010 | 10:36:14 | | 17315 | 8eb8453d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\TurboSearch\Unit2.dfm | 10-12-2010 | 10:36:14 | | 1020 | 1a027cf5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\TurboSearch\Unit2.pas | 10-12-2010 | 10:36:14 | | 2918 | ccb20921
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\TurboSearch\Unit3.dfm | 10-12-2010 | 10:36:14 | | 542 | 1c7b52ba
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\TurboSearch\Unit3.pas | 10-12-2010 | 10:36:14 | | 1477 | 85dc67e3
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch\ZipSearch.dpr | 10-12-2010 | 10:36:14 | | 431 | 3a467876
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch\Unit1.dfm | 10-12-2010 | 10:36:14 | | 8416 | 30e77c48
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch\Unit1.pas | 10-12-2010 | 10:36:14 | | 29675 | 9cd53583
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch\Unit2.dfm | 10-12-2010 | 10:36:14 | | 1020 | 1a027cf5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch\Unit2.pas | 10-12-2010 | 10:36:14 | | 2914 | f8a43600
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch\Unit3.dfm | 10-12-2010 | 10:36:14 | | 564 | 2e6e7c57
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch\Unit3.pas | 10-12-2010 | 10:36:14 | | 1708 | 27f7b54
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch\Viewer.dfm | 10-12-2010 | 10:36:14 | | 1894 | 3baf4626
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Search\ZipSearch\Viewer.pas | 10-12-2010 | 10:36:14 | | 3781 | e133a2d7
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UnRar
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UnRar\UnRar.dpr | 10-12-2010 | 10:36:14 | | 283 | 880cab9
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UnRar\UnRar.res | 10-12-2010 | 10:36:14 | | 1712 | 653fa22d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UnRar\Unit1.dfm | 10-12-2010 | 10:36:14 | | 1189 | a68080c4
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UnRar\Unit1.pas | 10-12-2010 | 10:36:14 | | 3759 | 63d810e2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UnRar\Unit2.dfm | 10-12-2010 | 10:36:14 | | 2600 | db51b0b2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UnRar\Unit2.pas | 10-12-2010 | 10:36:14 | | 1695 | 77578684
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx\UnSfx
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx\UnSfx\UnSfx.dpr | 10-12-2010 | 10:36:14 | | 281 | 9762f90d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx\UnSfx\UnSfx.res | 10-12-2010 | 10:36:14 | | 1712 | 653fa22d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx\UnSfx\Unit1.dfm | 10-12-2010 | 10:36:14 | | 3811 | ef272ab7
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Sfx\UnSfx\Unit1.pas | 10-12-2010 | 10:36:14 | | 8424 | 2cd05940
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\ZipDemo.dpr | 10-12-2010 | 10:36:14 | | 714 | 537f3836
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\ZipDemo.res | 10-12-2010 | 10:36:14 | | 1712 | 653fa22d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit1.dfm | 10-12-2010 | 10:36:14 | | 6743 | bf84ac2b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit1.pas | 10-12-2010 | 10:36:14 | | 17689 | eb714392
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit2.dfm | 10-12-2010 | 10:36:14 | | 2600 | db51b0b2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit2.pas | 10-12-2010 | 10:36:14 | | 1695 | 77578684
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit3.dfm | 10-12-2010 | 10:36:14 | | 1527 | 98512fd3
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit3.pas | 10-12-2010 | 10:36:14 | | 2675 | b1bf9aac
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit4.dfm | 10-12-2010 | 10:36:14 | | 1815 | 4e5c4302
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit4.pas | 10-12-2010 | 10:36:14 | | 4330 | 58a957fa
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit5.dfm | 10-12-2010 | 10:36:14 | | 3182 | 34400635
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit5.pas | 10-12-2010 | 10:36:14 | | 2174 | a9c63ed5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit6.dfm | 10-12-2010 | 10:36:14 | | 1462 | 2390e657
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\Zip\Unit6.pas | 10-12-2010 | 10:36:14 | | 2293 | c37c1d42
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipKey
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipKey\ZipKey.dpr | 10-12-2010 | 10:36:14 | | 236 | 503f606b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipKey\Unit1.pas | 10-12-2010 | 10:36:14 | | 14563 | 8752e8c8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipKey\Unit1.dfm | 10-12-2010 | 10:36:14 | | 3798 | 55797541
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\MainDemo.dpr | 10-12-2010 | 10:36:14 | | 3523 | f7897a36
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Main.dfm | 10-12-2010 | 10:36:14 | | 49346 | 71cf4d48
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Main.pas | 10-12-2010 | 10:36:14 | | 141879 | 19da701e
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Main.res | 10-12-2010 | 10:36:14 | | 4104 | 581d095c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit1.dfm | 10-12-2010 | 10:36:14 | | 15194 | 7105cc3b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit1.pas | 10-12-2010 | 10:36:14 | | 27776 | a0c3981c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit2.dfm | 10-12-2010 | 10:36:14 | | 5992 | 819c56fa
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit2.pas | 10-12-2010 | 10:36:14 | | 4245 | f694c03f
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit3.dfm | 10-12-2010 | 10:36:14 | | 3080 | 40666866
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit3.pas | 10-12-2010 | 10:36:14 | | 1917 | 22a3939c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit4.dfm | 10-12-2010 | 10:36:14 | | 5584 | cffd54d7
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit4.pas | 10-12-2010 | 10:36:14 | | 5808 | 4af9fb71
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit5.dfm | 10-12-2010 | 10:36:14 | | 1462 | 3e4a3915
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit5.pas | 10-12-2010 | 10:36:14 | | 2293 | acf02273
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit6.pas | 10-12-2010 | 10:36:14 | | 7738 | 60de01ac
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit6.dfm | 10-12-2010 | 10:36:14 | | 2369 | 5a36885a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit7.pas | 10-12-2010 | 10:36:14 | | 15223 | c8dc8e12
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit7.dfm | 10-12-2010 | 10:36:14 | | 2595 | c31d2527
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit8.pas | 10-12-2010 | 10:36:14 | | 20166 | 97e28d0c
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit8.dfm | 10-12-2010 | 10:36:14 | | 4511 | 623d3de9
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit9.pas | 10-12-2010 | 10:36:14 | | 470 | 49d0e8ab
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit9.dfm | 10-12-2010 | 10:36:14 | | 833 | ce241080
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit10.pas | 10-12-2010 | 10:36:14 | | 1337 | 79d85ae1
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit10.dfm | 10-12-2010 | 10:36:14 | | 811 | eaa85abe
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit11.pas | 10-12-2010 | 10:36:14 | | 7549 | 18a5ac60
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit11.dfm | 10-12-2010 | 10:36:14 | | 2293 | 9ce77449
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit12.pas | 10-12-2010 | 10:36:14 | | 3526 | 5b7eb5fc
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit12.dfm | 10-12-2010 | 10:36:14 | | 1826 | 43e65c4f
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit13.pas | 10-12-2010 | 10:36:14 | | 4849 | 4af51ab2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit13.dfm | 10-12-2010 | 10:36:14 | | 1815 | 4e5c4302
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit14.pas | 10-12-2010 | 10:36:14 | | 2175 | 7c45bc71
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\MainDemo\Unit14.dfm | 10-12-2010 | 10:36:14 | | 3182 | 34400635
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipVerify
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipVerify\ZipVerify.dpr | 10-12-2010 | 10:36:14 | | 239 | 6b4e4819
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipVerify\Unit1.dfm | 10-12-2010 | 10:36:14 | | 5983 | b06ab62e
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipVerify\Unit1.pas | 10-12-2010 | 10:36:14 | | 13279 | 3289006a
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UUCode
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UUCode\UUCode.dpr | 10-12-2010 | 10:36:14 | | 236 | 8c9fe57d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UUCode\Unit1.dfm | 10-12-2010 | 10:36:14 | | 9554 | 34d48575
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\UUCode\Unit1.pas | 10-12-2010 | 10:36:14 | | 16186 | d048d508
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ArchiveSplitter
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ArchiveSplitter\ArchiveSplitter.dpr | 10-12-2010 | 10:36:12 | | 341 | 79491baa
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ArchiveSplitter\Unit1.dfm | 10-12-2010 | 10:36:12 | | 3972 | 434b87d6
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ArchiveSplitter\Unit1.pas | 10-12-2010 | 10:36:12 | | 15130 | 997febcc
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ArchiveSplitter\Unit2.dfm | 10-12-2010 | 10:36:12 | | 5703 | 55b9ea08
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ArchiveSplitter\Unit2.pas | 10-12-2010 | 10:36:12 | | 11812 | 20912269
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\ZipEncrypt.dpr | 10-12-2010 | 10:36:14 | | 781 | ec1f7f6
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit1.dfm | 10-12-2010 | 10:36:14 | | 6733 | b2a339cd
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit1.pas | 10-12-2010 | 10:36:14 | | 20084 | a071ddc3
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit2.dfm | 10-12-2010 | 10:36:14 | | 1653 | aa26c79
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit2.pas | 10-12-2010 | 10:36:14 | | 2906 | edef35
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit3.dfm | 10-12-2010 | 10:36:14 | | 1832 | 68dba499
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit3.pas | 10-12-2010 | 10:36:14 | | 4308 | 6f6fb9b0
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit4.dfm | 10-12-2010 | 10:36:14 | | 3182 | 671e033
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit4.pas | 10-12-2010 | 10:36:14 | | 2174 | 130bda7b
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit5.dfm | 10-12-2010 | 10:36:14 | | 1462 | 2390e657
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit5.pas | 10-12-2010 | 10:36:14 | | 2293 | acf02273
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit6.dfm | 10-12-2010 | 10:36:14 | | 3196 | 2bd999f2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit6.pas | 10-12-2010 | 10:36:14 | | 4780 | 556e7156
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit7.dfm | 10-12-2010 | 10:36:14 | | 2293 | 9ce77449
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\ZipEncrypt\Unit7.pas | 10-12-2010 | 10:36:14 | | 7775 | 931620a9
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\ZipSplitter.dpr | 10-12-2010 | 10:36:12 | | 838 | e4656c55
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit1.dfm | 10-12-2010 | 10:36:12 | | 7161 | d4e19101
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit1.pas | 10-12-2010 | 10:36:12 | | 26245 | a64eb9aa
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit2.dfm | 10-12-2010 | 10:36:12 | | 2600 | cb2de5b2
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit2.pas | 10-12-2010 | 10:36:12 | | 1710 | e9589925
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit3.dfm | 10-12-2010 | 10:36:12 | | 7921 | 1fd9afe8
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit3.pas | 10-12-2010 | 10:36:12 | | 14627 | 95018027
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit4.dfm | 10-12-2010 | 10:36:12 | | 1462 | 3e4a3915
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit4.pas | 10-12-2010 | 10:36:12 | | 2254 | 3ae22f79
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit5.dfm | 10-12-2010 | 10:36:12 | | 2281 | b37da628
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit5.pas | 10-12-2010 | 10:36:12 | | 7092 | 794c29e5
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit6.dfm | 10-12-2010 | 10:36:12 | | 1683 | 38818d6a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit6.pas | 10-12-2010 | 10:36:12 | | 4481 | 679d645d
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit7.dfm | 10-12-2010 | 10:36:12 | | 3182 | c4a4bb46
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitter\Unit7.pas | 10-12-2010 | 10:36:12 | | 2174 | bf857c54
+Made Dir: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\ZipSplitGlue.dpr | 10-12-2010 | 10:36:12 | | 617 | e38e11ee
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit1.dfm | 10-12-2010 | 10:36:12 | | 2404 | c5c64660
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit1.pas | 10-12-2010 | 10:36:12 | | 9065 | 4feffa8a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit2.dfm | 10-12-2010 | 10:36:12 | | 1462 | 3e4a3915
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit2.pas | 10-12-2010 | 10:36:12 | | 2230 | a7e14593
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit3.dfm | 10-12-2010 | 10:36:12 | | 7964 | f7755818
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit3.pas | 10-12-2010 | 10:36:12 | | 15745 | 3fe03891
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit4.dfm | 10-12-2010 | 10:36:12 | | 1683 | 38818d6a
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit4.pas | 10-12-2010 | 10:36:12 | | 4516 | c9029232
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit5.dfm | 10-12-2010 | 10:36:12 | | 3182 | c4a4bb46
+File Copy: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\Demos\SplitVolumes\ZipSplitGlue\Unit5.pas | 10-12-2010 | 10:36:12 | | 2174 | a9c63ed5
+RegDB Key: Software\Borland\Delphi\7.0\Known Packages
+RegDB Val: ZipTV Compression Components
+RegDB Name: $(DELPHI)\bin\ztv70dt.bpl
+RegDB Root: 1
+RegDB Old: ZipTV Compression Components (design time)
+Shell Link: C:\Documents and Settings\user\Главное меню\Программы\ZipTV Components for Delphi 7\Demos.lnk
+Link Info: D:\Program Files\Borland\Delphi7\Bin\delphi32.exe | D:\PROGRA~1\Borland\Delphi7\Comps\FORS\ZipTV11\\Demos |  | 0 | 1 | 0 | D:\PROGRA~1\Borland\Delphi7\Comps\FORS\ZipTV11\\Demos\DemoGroup.bpg
+Shell Link: C:\Documents and Settings\All Users\Главное меню\Программы\ZipTV Components for Delphi 7\Uninstall ziptv.lnk
+Link Info: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\UNWISE.EXE |  | D:\PROGRA~1\Borland\Delphi7\Comps\FORS\ZipTV11\\unwise.exe | 0 | 1 | 0 | /W1 "D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\\INSTALL.LOG"
+Shell Link: C:\Documents and Settings\All Users\Главное меню\Программы\ZipTV Components for Delphi 7\Install ReadMe.lnk
+Link Info: D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\UNWISE.EXE |  | %SystemRoot%\system32\shell32.dll | -152 | 1 | 0 | /W2 "D:\Program Files\Borland\Delphi7\Comps\FORS\ZipTV11\\INSTALL.LOG"
+Delete in-use files: On
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\ZipTV Components for Delphi 7
+RegDB Val: v2011
+RegDB Name: DisplayVersion
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\ZipTV Components for Delphi 7
+RegDB Val: www.ziptv.com
+RegDB Name: HelpLink
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\ZipTV Components for Delphi 7
+RegDB Val: Microchip Data Systems
+RegDB Name: Publisher
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\ZipTV Components for Delphi 7
+RegDB Val: www.ziptv.com
+RegDB Name: URLInfoAbout
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\ZipTV Components for Delphi 7
+RegDB Val: Carl Bunton
+RegDB Name: Contact
+RegDB Root: 2
+RegDB Key: Software\Microsoft\Windows\CurrentVersion\Uninstall\ZipTV Components for Delphi 7
+RegDB Val: ZipTV Compression Components v2011
+RegDB Name: Comments
+RegDB Root: 2
+User Rights: Admin

@@ -1,0 +1,56 @@
+CREATE OR REPLACE FUNCTION GetMrgId(pID IN NUMBER) RETURN NUMBER IS
+  RESULT NUMBER;
+BEGIN
+  SELECT o.mrg_ID
+    INTO RESULT
+    FROM fdc_object o
+   WHERE o.id = pId;
+  RETURN(RESULT);
+EXCEPTION
+  WHEN no_data_found THEN
+    RETURN NULL;
+  WHEN OTHERS THEN
+    RAISE;   
+END GetMrgId;
+/
+
+CREATE OR REPLACE FUNCTION mrgGetTopParent(pTable IN mrg_table.table_name%TYPE) RETURN mrg_table.table_name%TYPE IS
+  RESULT mrg_table.table_name%TYPE;
+BEGIN
+  SELECT c.table_name 
+  INTO  RESULT
+    FROM mrg_columns c
+  WHERE c.r_table_name IS NULL
+  START WITH c.table_name = pTable AND c.column_name = 'ID'
+  CONNECT BY c.table_name||c.column_name = PRIOR c.r_table_name||'ID';
+  IF RESULT = pTable THEN
+    RESULT := NULL;
+  END IF;  
+  RETURN RESULT;
+EXCEPTION
+  WHEN no_data_found THEN
+    RETURN NULL;
+  WHEN OTHERS THEN
+    RAISE;   
+END mrgGetTopParent;
+/
+
+CREATE OR REPLACE FUNCTION mrgIsDocument(pTable IN mrg_table.table_name%TYPE) RETURN NUMBER IS
+  RESULT NUMBER;
+BEGIN
+  SELECT CASE WHEN instr( fdc_str_agg(c.r_table_name), 'FDC_DOCUMENT,')> 0 THEN 1 ELSE 0 END AS IsDocument
+   INTO  RESULT
+    FROM mrg_columns c
+    START WITH c.table_name = pTable AND c.column_name = 'ID'
+    CONNECT BY c.table_name||c.column_name = PRIOR c.r_table_name||'ID' ;
+  
+  RETURN RESULT;
+EXCEPTION
+  WHEN no_data_found THEN
+    RETURN 0;
+  WHEN OTHERS THEN
+    RAISE;   
+END mrgIsDocument;
+/
+
+exit

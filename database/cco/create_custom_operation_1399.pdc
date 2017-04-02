@@ -1,0 +1,4394 @@
+PROMPT План счетов по пр. 1399 от 03.08.2009... 
+PROMPT Регистрация функций параметров документов... 
+
+---- новые
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'ReservedPayment.Reuse' ),              'GET_DOC_PARAMS_RESERV_OP'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'NoticeSpecifyKindPay' ),              'GET_DOC_PARAMS_SPECIFY_KINDPAY'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'NoticeSpecifyKindPayCorr' ),              'GET_DOC_PARAMS_SPECIFY_KINDPAY'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'ConfirmSpecifyKindPay' ),              'GET_DOC_PARAMS_SPECIFY_KINDPAY'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'NoticeSpecifyKindPaySumm' ),              'GET_DOC_PARAMS_SPECIFY_KINDPAY'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'NoticeSpecifyKindPayCorrSumm' ),              'GET_DOC_PARAMS_SPECIFY_KINDPAY'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'ConfirmSpecifyKindPaySumm' ),              'GET_DOC_PARAMS_SPECIFY_KINDPAY'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocumentConfirmation.SpecifyKindPay' ),              'GET_DOC_PARAMS_CNFRM_SKINDPAY'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CashOrderCustoms' ),              'GET_DOC_PARAMS_PAYORDER'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CashOrderBank' ),              'GET_DOC_PARAMS_PAYORDER'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentDeductionKNP' ),              'GET_DOC_PARAMS_DED_KNP'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'ActDeductionPays' ),              'GET_DOC_PARAMS_ACT_WR_OFF'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentDeduction.NotDemanded' ),              'GET_DOC_PARAMS_PDEDUCT_NOTDEM'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'ActDeductionDeposit' ),              'GET_DOC_PARAMS_ACT_DDEPOSIT'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'ActDeductionOverPay' ),              'GET_DOC_PARAMS_ACT_DOVERPAY'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'NonIDCashOrder' ),              'GET_DOC_PARAMS_PO_NONID_ORDER'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'NonIDCustomCheque' ),              'GET_DOC_PARAMS_PO_NONID_CHEQUE'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+/*
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentOrderReuse' ),              'GET_DOC_PARAMS_PAY_ORDER_REUSE'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+*/
+
+/*
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'AdviceBack' ),              'GET_DOC_PARAMS_ADVICE'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+*/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocPackPayments' ),              'GET_DOC_PARAMS_REESTR_PD'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocPackReuse' ),              'GET_DOC_PARAMS_REESTR_REUSE'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DeclCharge.Cancel' ),              'GET_DOC_PARAMS_DCHARGE_CANCEL'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocumentConfirmation.DPReturns' ), 'GET_DOC_PARAMS_CNFRM_DPRETURNS'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentOrderRestUFK' ), 'GET_DOC_PAY_ORDER_CREDIT'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentOrderRestCustoms' ), 'GET_DOC_PAY_ORDER_CREDIT'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DeclCharge.Correct' ), 'GET_DOC_PARAMS_CHARGE_CORR'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocReuseY' ), 'GET_DOC_PARAMS_REUSE_CUSTOMS_Y'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'AdviceKNP' ),              'GET_DOC_PARAMS_ADVICE'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentDeductionKNPCorrect' ),              'GET_DOC_PARAMS_DED_KNP'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionPoSubject' ),              'GET_DOC_PARAMS_CORR_POSUBJECT'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionPOBack' ),              'GET_DOC_PARAMS_CORR_PO_BACK'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionGTDKNP' ),              'GET_DOC_PARAMS_CORR_GTKKNP'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionTPOKNP' ),              'GET_DOC_PARAMS_CORR_TPOKNP'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'Payment_Order_PayBackY' ),         'GET_DOC_PARAMS_RETURN_Y'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionGTDCCharge' ),         'GET_DOC_PARAMS_CANCEL_PAY_GTD'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionTPOCCharge' ),         'GET_DOC_PARAMS_CANCEL_PAY_TPO'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentOrderNonIDDest' ),       'GET_DOC_PARAMS_PONONID'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'Detail.CancelPay' ),       'GET_DOC_PARAMS_DETAIL_CP'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'GroundsRemoveDebts' ),       'GET_DOC_PARAMS_GRD'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DebtsMeasures' ),          'GET_DOC_PARAMS_DMEASURES'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'GroundRemoveFines' ),          'GET_DOC_PARAMS_GRF'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocumentConfirmation.Reuse' ),          'GET_DOC_PARAMS_CNFRM_REUSE'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+---- оставшиеся старые
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DeclCharge' ),              'GET_DOC_PARAMS_CHARGE'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DeclPayment' ),             'GET_DOC_PARAMS_DEDUCT'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CustomCheque' ),            'GET_DOC_PARAMS_PAYORDER'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CashlessPaymentOrder' ),    'GET_DOC_PARAMS_PAYORDER'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentOrderConfirm' ),     'GET_DOC_PARAMS_PO_C'          );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentOrderNonID' ),       'GET_DOC_PARAMS_PONONID'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecPaybackAdvance' ),       'GET_DOC_PARAMS_DECPAYBACK'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecPayback356' ),           'GET_DOC_PARAMS_DECPAYBACK'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecPaybackDeposit' ),       'GET_DOC_PARAMS_DECPAYBACK'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+/*- не разобранные -*/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'TR' ),                      'GET_DOC_PARAMS_TR'            );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+  
+  
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentOrderGTK' ),         'GET_DOC_PARAMS_PAYORDER'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PrepaymentOrder' ),         'GET_DOC_PARAMS_PAYORDER'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentFor' ),              'GET_DOC_PARAMS_PAYFOR'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+  
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CashOrder' ),               'GET_DOC_PARAMS_PAYORDER'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'Payback' ),                 'GET_DOC_PARAMS_PAYBACK'       );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PayDebt' ),                 'GET_DOC_PARAMS_DEDUCT'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+/*
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DeclPaymentBack' ),         'GET_DOC_PARAMS_DED_BACK'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+*/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentDeduction.Correct' ),'GET_DOC_PARAMS_DED_BACK'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PayPeriodic' ),             'GET_DOC_PARAMS_DEDUCT'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'BudgetPayment' ),           'GET_DOC_PARAMS_B_PAY'         );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecPaybackLevy' ),          'GET_DOC_PARAMS_DECPAYBACK'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+  
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecPaybackPay' ),           'GET_DOC_PARAMS_DECPAYBACK'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+  
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecPaybackPeriodic' ),      'GET_DOC_PARAMS_DECPAYBACK'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+  
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecisionPaybackOutback' ),  'GET_DOC_PARAMS_DECPAYBACK'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+  
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocReuse' ),                'GET_DOC_PARAMS_REUSE_CUSTOMS' );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+  
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'AdvicePay' ),               'GET_DOC_PARAMS_ADVICE'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'AdviceLevy' ),              'GET_DOC_PARAMS_ADVICE'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'AdvicePayPeriodic' ),       'GET_DOC_PARAMS_ADVICE_PP'     );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'NoticePay' ),               'GET_DOC_PARAMS_NOTICEPAY'     );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname( 'SubjectFeeFine' ),           'GET_DOC_PARAMS_CDECL'         );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname( 'FineDeduction' ),            'GET_DOC_PARAMS_DEDUCT'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+/*
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname( 'PaymentBack' ),              'GET_DOC_PARAMS_DEDUCT'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+*/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'Payment_Order_PayBack' ),   'GET_DOC_PARAMS_PO_PAYBACK'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+/*
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'PaymentDeductionConfirm' ), 'GET_DOC_PARAMS_DEDUCT_C'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+*/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecisionPaymentDeposit' ),  'GET_DOC_PARAMS_DECPAYDEP'     );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecisionPaymentPeriodic' ), 'GET_DOC_PARAMS_DECPAYDEP'     );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecisionPayment' ),         'GET_DOC_PARAMS_DECPAYDEP'     );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+/*
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocDeductionReuse' ),       'GET_DOC_PARAMS_DEDREUSE'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+*/
+
+/* 22.01.2010 SBakum закоментировано т.к. документ на текущий момент не проводится
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocPackReuseY' ),           'GET_DOC_PARAMS_REUSE_Y'       );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+*/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocumentConfirmation.BP' ), 'GET_DOC_PARAMS_BP_С'          );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+  
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecPaybackTimeOut' ),       'GET_DOC_PARAMS_DEC_PB_TO'     );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DocPackReturns' ),          'GET_DOC_PARAMS_PACKRETURN'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CancelDecisionPayback' ),   'GET_DOC_PARAMS_CANDECBACK'    );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecisionDebtsPays' ),       'GET_DOC_PARAMS_DECDEBT'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecisionDebtsDeposit' ),    'GET_DOC_PARAMS_DECDEBT'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'DecisionDebtsOverPay' ),    'GET_DOC_PARAMS_DECDEBT'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'AnnulTR' ),                 'GET_DOC_PARAMS_ANNULTR'      );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'AnnulTPO' ),                'GET_DOC_PARAMS_ANNULTPO'     );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionDetail.CD.PO' ),  'GET_DOC_PARAMS_CORRDTL_CD_PO');
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionPOSum' ),              'GET_DOC_PARAMS_CORR_PO_SUM'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionTPOSubject' ),              'GET_DOC_PARAMS_CORR_TPO_SUBJ'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+BEGIN
+  INSERT INTO fdc_doc_params_function ( doc_class_id, function_name )
+    VALUES ( fdc_object_type_get_bysysname ( 'CorrectionGTDSubject' ),              'GET_DOC_PARAMS_CORR_GTD_SUBJ'        );
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX THEN
+    NULL;
+END;
+/
+
+
+COMMIT;
+PROMPT Функции зарегистрированы.
+
+
+PROMPT Закрытие операций по предыдущему плану счетов...
+UPDATE fdc_nsi_dict d
+  SET d.edate     = to_date( '30092009', 'DDMMYYYY' )
+     ,d.datenddoc = to_date( '03082009', 'DDMMYYYY' )
+     ,d.numenddoc = '1399'
+  WHERE d.id IN ( SELECT ID FROM fdc_custom_operation_lst WHERE code NOT IN ( 'OP.0000', 'OP.0100' ) )
+    AND d.edate IS NULL
+    AND d.datbegdoc = to_date( '31102008', 'DDMMYYYY' )
+    AND d.numbegdoc = '1348';
+
+COMMIT;
+PROMPT Операции по предыдущему плану счетов закрыты.
+
+
+PROMPT Создание связей операций со счетами и классами документов...
+DECLARE
+  lv_OperID fdc_object.ID%TYPE;
+  lv_RelID  fdc_object.ID%TYPE;
+  
+  lv_DateBegin      DATE         := to_date( '01102009', 'DDMMYYYY' );
+  lv_DocDateBegin   DATE         := to_date( '03082009', 'DDMMYYYY' );
+  lv_DocNumberBegin VARCHAR2(50) := '1399';
+  lcustom_level number;
+  
+  FUNCTION GetOrCreateOperation (
+      pName IN fdc_object.name%TYPE
+     ,pCode IN fdc_dict.code%TYPE
+    ) RETURN fdc_object.id%TYPE IS
+    result fdc_object.id%TYPE := NULL;
+  BEGIN
+    result := p_nsi_dict.GetIDByCode(
+        pSysName => 'CustomOperation'
+       ,pCode    => pCode
+       ,pDate    => lv_DateBegin
+      );
+    
+    IF result IS NULL THEN
+      result := fdc_nsidict_add ( 
+          pObjTypeSysName => 'CustomOperation'
+         ,pName           => pName
+         ,pCode           => pCode
+         ,pSDate          => lv_DateBegin
+         ,pDatBegDoc      => lv_DocDateBegin
+         ,pNumBegDoc      => lv_DocNumberBegin
+        );
+    END IF;
+    
+    RETURN result;
+  END GetOrCreateOperation;
+  
+BEGIN
+  -- определение уровня ТО (2 - таможенный уровень)
+  lcustom_level := fdc_valuenumber_sys_get(psysname => 'Common.CustomsLevel');
+  -- Операция "Ввод начальных остатков"
+  /*lv_OperID := GetOrCreateOperation (
+      pName => 'Ввод начальных остатков по счетам'
+     ,pCode => 'OP.0000'
+    );
+    
+    -- Связь со счетами
+  FOR r IN ( SELECT a.id
+               FROM fdc_acc a
+               WHERE NOT EXISTS( SELECT 0 FROM fdc_acc ca WHERE ca.parent_id = a.id ) ) LOOP
+    lv_RelID := fdc_rel_oper_acc_add (
+        pOperationID => lv_OperID
+       ,pAccountID   => r.ID
+       ,pActionSign  => +1
+       ,pIsDebit     => 'Y'
+       ,pEnableFunc  => 'IS_ENABLE_DOC_OPER_IR'
+      );
+  END LOOP;
+    
+    -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'InitialRest' ) -- Начальные остатки
+    );*/
+
+    
+---------------------------------------------------------------------------------------------------------
+  -- Операция "Загрузка баланса подчинённого ТО"
+  lv_OperID := GetOrCreateOperation (
+      pName => 'Загрузка баланса подчинённого ТО'
+     ,pCode => 'OP.0100'
+    );
+    -- Связь с документами
+      -- Баланс подчинённого ТО
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DocChildsBalance' ) -- Баланс подчинённого ТО
+    );
+---------------------------------------------------------------------------------------------------------
+  -- Операция: проведение реестров уведомлений/подтверждений об уточнении вида и принадлежности платежа
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение реестров уведомлений/подтверждений об уточнении вида и принадлежности платежа'
+     ,pCode => 'OP.0001'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.02.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.02.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.03.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.02.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  --
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р12.20.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р12.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р12.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р12.30.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф12.20.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф12.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф12.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф12.30.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICE_KINDPAY'
+    );
+end if;
+	-- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'NoticeSpecifyKindPay' )
+    );
+    
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'NoticeSpecifyKindPayCorr' )
+    );
+    
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'ConfirmSpecifyKindPay' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'NoticeSpecifyKindPaySumm' )
+    );
+    
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'NoticeSpecifyKindPayCorrSumm' )
+    );
+    
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'ConfirmSpecifyKindPaySumm' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: получение подтверждения получения реестра уведомлений/подтверждений об уточнении вида и принадлежности платежа в вышестоящем ТО
+  lv_OperID := GetOrCreateOperation (
+      pName => 'получение подтверждения получения реестра уведомлений/подтверждений об уточнении вида и принадлежности платежа в вышестоящем ТО'
+     ,pCode => 'OP.0002'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.02.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.02.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.08', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.03.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.02.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.09', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р12.20.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р12.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р01.10.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р01.10.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р12.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р12.30.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф12.20.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф01.10.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф01.10.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф12.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф12.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CNFRM_NKINDPAY'
+    );
+end if;
+ 	-- Связь с документами
+	lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DocumentConfirmation.SpecifyKindPay' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Начисление (ГТД, ГТД КНП, ТПО КНП, ТПО (имущество), Штраф, ТПО, ТПО пени)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Начисление (ГТД, ГТД КНП, ТПО КНП, ТПО (имущество), Штраф, ТПО, ТПО пени)'
+     ,pCode => 'OP.0003'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '04.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DeclCharge' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Платёж по: ГТД/корректировка начислений по ГТД в большую сторону, ТПО (имущество)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Платёж по: ГТД/корректировка начислений по ГТД в большую сторону, ТПО (имущество)'
+     ,pCode => 'OP.0004'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '04.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.10', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DEDUCT'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DeclPayment' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PayPeriodic' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение ГТД КНП, ТПО КНП - списание
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение ГТД КНП, ТПО КНП - списание'
+     ,pCode => 'OP.0005'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.02.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAY_DEDUCT_KNP'
+    );
+
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.02.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAY_DEDUCT_KNP'
+    );
+
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentDeductionKNP' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Перевод неоплаченных ТПО в режим КНП
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Перевод неоплаченных ТПО в режим КНП'
+     ,pCode => 'OP.0006'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CorrectionTPOKNP' )
+    );
+ -------------------------------------------------------------------------------------- 
+ -- Операция: проведение ПКО (касса таможни)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение ПКО (касса таможни)'
+     ,pCode => 'OP.0007'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_CHASHORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_CHASHORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.02.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_CHASHORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_CHASHORDER'
+    );
+  -- только для 'NonIDCashOrder'
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_CHASHORDER'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CashOrderCustoms' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'NonIDCashOrder' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение КО (приписная касса)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение КО (приписная касса)'
+     ,pCode => 'OP.0008'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CashOrderBank' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение МК (микропроцессорная карта)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение МК (микропроцессорная карта)'
+     ,pCode => 'OP.0009'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CustomCheque' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'NonIDCustomCheque' )
+    );
+--------------------------------------------------------------------------------------   
+ -- Операция: проведение Платежное поручение по б/н
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Платежное поручение по б/н'
+     ,pCode => 'OP.0010'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.10.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.10.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYMENTORDER'
+    );
+end if;
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CashlessPaymentOrder' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentOrderNonID' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentOrderNonIDDest' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Подтверждение ПКО, КО, чека МК
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Подтверждение ПКО, КО, чека МК'
+     ,pCode => 'OP.0011'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYORDER_C'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYORDER_C'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYORDER_C'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYORDER_C'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentOrderConfirm' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Детализация отмены оплаты (аннулирования документа начисления)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Детализация отмены оплаты (аннулирования документа начисления)'
+     ,pCode => 'OP.0012'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'Detail.CancelPay' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Документ основание для снятия штрафа
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Документ основание для снятия штрафа'
+     ,pCode => 'OP.0013'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '04.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.09', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'GroundRemoveFines' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Решение на возврат авансовых платежей
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Решение на возврат авансовых платежей'
+     ,pCode => 'OP.0014'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecPaybackAdvance' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecPayback356' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Решение на возврат денежного залога
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Решение на возврат денежного залога'
+     ,pCode => 'OP.0015'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '07.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecPaybackDeposit' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Решение на возврат излишней уплаты/взыскания
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Решение на возврат излишней уплаты/взыскания'
+     ,pCode => 'OP.0016'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecPaybackLevy' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecPaybackPay' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecPaybackPeriodic' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Решение на возврат процентов за нарушение сроков возвратов
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Решение на возврат процентов за нарушение сроков возвратов'
+     ,pCode => 'OP.0017'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecPaybackTimeOut' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Решение на возврат денежных средств, вернувшихся на счет
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Решение на возврат денежных средств, вернувшихся на счет'
+     ,pCode => 'OP.0018'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecisionPaybackOutback' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Решение о зачете денежных средств между таможенными органами
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Решение о зачете денежных средств между таможенными органами'
+     ,pCode => 'OP.0019'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.06', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  -- ТО назначения
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.06', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р09.00.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.30.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р01.10.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.10.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.10.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.30.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS'
+    );
+end if;
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DocReuse' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Оплата задолженности платежными документами
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Оплата задолженности платежными документами'
+     ,pCode => 'OP.0020'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '07.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.10', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDEBT'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PayDebt' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Акт на списание (платежные документы)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Акт на списание (платежные документы)'
+     ,pCode => 'OP.0021'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'ActDeductionPays' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Акт на списание
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Акт на списание'
+     ,pCode => 'OP.0022'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '07.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PDEDUCT_NOTDEM'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentDeduction.NotDemanded' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Акт на списание (денежный залог)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Акт на списание (денежный залог)'
+     ,pCode => 'OP.0023'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'ActDeductionDeposit' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Акт на списание (излишняя уплата/взыскание)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Акт на списание (излишняя уплата/взыскание)'
+     ,pCode => 'OP.0024'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'ActDeductionOverPay' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Зачет денежных средств от другого таможенного органа
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Зачет денежных средств от другого таможенного органа'
+     ,pCode => 'OP.0025'
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Реестр возвратов
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Реестр возвратов'
+     ,pCode => 'OP.0026'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.03.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р09.00.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф09.00.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_PAYBACK'
+    );
+end if;
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'Payment_Order_PayBack' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Реестр подтвержденных возвратов
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Реестр подтвержденных возвратов'
+     ,pCode => 'OP.0027'
+    );
+  -- Связь со счетами
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DocPackReturnsY' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Отмена решения на возврат вышестоящим таможенным органом
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Отмена решения на возврат вышестоящим таможенным органом'
+     ,pCode => 'OP.0028'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.00.00.заб', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.00.00.заб', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.03.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.05', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.03.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '07.01.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р09.00.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф09.00.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANDECBACK'
+    );
+end if;
+ -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CancelDecisionPayback' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение ТР
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение ТР'
+     ,pCode => 'OP.0029'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '07.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'TR' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Решение о зачете денежного залога в счет будущих платежей 
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Решение о зачете денежного залога в счет будущих платежей'
+     ,pCode => 'OP.0030'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.05', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '07.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecisionPaymentDeposit' )
+    );
+ --------------------------------------------------------------------------------------   
+  -- Операция: проведение Решение о зачете излишней уплаты/взыскания  в счет будущих платежей
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Решение о зачете излишней уплаты/взыскания  в счет будущих платежей'
+     ,pCode => 'OP.0031'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecisionPayment' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DecisionPaymentPeriodic' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Корректировка начислений по ГТД в меньшую сторону
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Корректировка начислений по ГТД в меньшую сторону'
+     ,pCode => 'OP.0032'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'AdviceLevy' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'AdvicePay' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'AdvicePayPeriodic' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Требование (по ГТД, по ТПО, прочие списания – задолженность)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Требование (по ГТД, по ТПО, прочие списания – задолженность)'
+     ,pCode => 'OP.0033'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICEPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICEPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICEPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICEPAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_NOTICEPAY'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'NoticePay' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Аннулирование оплаченной ТПО
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Аннулирование оплаченной ТПО'
+     ,pCode => 'OP.0036'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_ANNULTPO'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_ANNULTPO'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_ANNULTPO'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_ANNULTPO'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'AnnulTPO' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Оплата штрафа
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Оплата штрафа'
+     ,pCode => 'OP.0037'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '04.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_FINEDEDUCTION'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_FINEDEDUCTION'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_FINEDEDUCTION'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_FINEDEDUCTION'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.10', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_FINEDEDUCTION'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_FINEDEDUCTION'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_FINEDEDUCTION'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_FINEDEDUCTION'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'FineDeduction' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Корректировка реестра подтверждений уплаты
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Корректировка реестра подтверждений уплаты'
+     ,pCode => 'OP.0038'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDED_CORR'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '12.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PAYDED_CORR'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentDeduction.Correct' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Отмена оплаты по ТПО
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Отмена оплаты по ТПО'
+     ,pCode => 'OP.0039'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '04.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CorrectionTPOCCharge' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Аннулирование ТР
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Аннулирование ТР'
+     ,pCode => 'OP.0040'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '07.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.05', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'AnnulTR' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Отмена оплаты по ГТД
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Отмена оплаты по ГТД'
+     ,pCode => 'OP.0041'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '04.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CANCEL_PAY'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CorrectionGTDCCharge' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Изменение декларанта в ГТД
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Изменение декларанта в ГТД'
+     ,pCode => 'OP.0042'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CorrectionGTDSubject' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Изменение декларанта в ТПО, ТПО (проценты), ТПО штраф, ТПО пени
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Изменение декларанта в ТПО, ТПО (проценты), ТПО штраф, ТПО пени'
+     ,pCode => 'OP.0043'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_CORRTPOSUBJECT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_CORRTPOSUBJECT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '04.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_CORRTPOSUBJECT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_CORRTPOSUBJECT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_CORRTPOSUBJECT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_CORRTPOSUBJECT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_CORRTPOSUBJECT'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_CORRTPOSUBJECT'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CorrectionTPOSubject' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Изменение плательщика в платежном поручении
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Изменение плательщика в платежном поручении'
+     ,pCode => 'OP.0044'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_COR_PO_SUBJ'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_COR_PO_SUBJ'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_COR_PO_SUBJ'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.02.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_COR_PO_SUBJ'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_COR_PO_SUBJ'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_COR_PO_SUBJ'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CorrectionPoSubject' )
+    );
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CorrectionPOBack' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Перевод неоплаченных ГТД в режим КНП
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Перевод неоплаченных ГТД в режим КНП'
+     ,pCode => 'OP.0045'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CorrectionGTDKNP' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Изменение суммы в платежном поручении
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Изменение суммы в платежном поручении'
+     ,pCode => 'OP.0046'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CORRECT_PO_SUM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CORRECT_PO_SUM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CORRECT_PO_SUM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.02.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CORRECT_PO_SUM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.03.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CORRECT_PO_SUM'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'CorrectionPOSum' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Реестр платежных документов
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Реестр платежных документов'
+     ,pCode => 'OP.0047'
+    );
+  -- Связь со счетами
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р01.10.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.10.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф01.10.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.10.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+end if;
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DocPackPayments' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Реестр зачетов
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Реестр зачетов'
+     ,pCode => 'OP.0048'
+    );
+  -- Связь со счетами
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DocPackReuse' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Отмена начислений по ГТД, ТПО, ТПО (имущество), ТПО (штраф), ТПО пени
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Отмена начислений по ГТД, ТПО, ТПО (имущество), ТПО (штраф), ТПО пени'
+     ,pCode => 'OP.0049'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '04.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DeclCharge.Cancel' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Подтверждение получения реестра заявок на возврат
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Подтверждение получения реестра заявок на возврат'
+     ,pCode => 'OP.0050'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.03.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.00.00.заб', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.00.00.заб', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DocumentConfirmation.DPReturns' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Платёжный документ переноса остатков УФК
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Платёжный документ переноса остатков УФК'
+     ,pCode => 'OP.0051'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+IF lcustom_level = p_Consts.cCustomLevel_RTU THEN
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р01.10.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.10.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.10.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+END IF;
+IF lcustom_level = p_Consts.cCustomLevel_FTS THEN
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф01.10.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.10.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.10.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.04', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_UFK'
+    );
+END IF;
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentOrderRestUFK' )
+    );
+ -------------------------------------------------------------------------------------- 
+  -- Операция: проведение Платёжный документ переноса остатков таможни
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Платёжный документ переноса остатков таможни'
+     ,pCode => 'OP.0052'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_PO_REST_CUS'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentOrderRestCustoms' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Корректировка начислений по ГТД, ГТД КНП в большую сторону
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Корректировка начислений по ГТД, ГТД КНП в большую сторону'
+     ,pCode => 'OP.0053'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.01.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '02.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '10.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DeclCharge.Correct' )
+    );
+ --------------------------------------------------------------------------------------   
+ -- Операция: проведение Отмена зачета между ТО
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Отмена зачета между ТО'
+     ,pCode => 'OP.0054'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.02.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.07', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.06', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.30.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р09.00.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р09.00.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р01.10.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  -- подтверждение зачёта только для зачётов с подчинённой таможни на своё РТУ
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.30.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.30.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  -- подтверждение зачёта только для зачётов с подчинённого ТО на ФТС
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.30.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CUS_Y'
+    );
+end if;
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DocReuseY' )
+    );
+ -------------------------------------------------------------------------------------- 
+ -- Операция: проведение Корректировка начислений по ГТД КНП в меньшую сторону (уведомление об излишней уплате)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Корректировка начислений по ГТД КНП в меньшую сторону (уведомление об излишней уплате)'
+     ,pCode => 'OP.0055'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'AdviceKNP' )
+    );
+ --------------------------------------------------------------------------------------
+ -- Операция: проведение Корректировка начислений по ГТД КНП в меньшую сторону (корректирующие списание)
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Корректировка начислений по ГТД КНП в меньшую сторону (корректирующие списание)'
+     ,pCode => 'OP.0056'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '08.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '05.02.00', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentDeductionKNPCorrect' )
+    );
+ --------------------------------------------------------------------------------------
+ -- Операция: проведение Перевод на другой ЛС
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Перевод на другой ЛС'
+     ,pCode => 'OP.0057'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.03', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'PaymentFor' )
+    );
+ --------------------------------------------------------------------------------------
+  -- Операция: проведение Подверждение возврата
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Подверждение возврата'
+     ,pCode => 'OP.0058'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.00.00.заб', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_RETURN_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.00.00.заб', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_RETURN_Y'
+    );
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р09.00.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_RETURN_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р01.10.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_RETURN_Y'
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф09.00.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_RETURN_Y'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф01.10.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_RETURN_Y'
+    );
+end if;
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'Payment_Order_PayBackY' )
+    );
+ --------------------------------------------------------------------------------------
+
+ --------------------------------------------------------------------------------------
+  -- Операция: Исключение задолженности из учёта
+  lv_OperID := GetOrCreateOperation (
+      pName => 'Исключение задолженности из учёта'
+     ,pCode => 'OP.0059'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.04', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.06', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => ''
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'GroundsRemoveDebts' )
+    );
+ --------------------------------------------------------------------------------------
+
+ --------------------------------------------------------------------------------------
+  -- Операция: Представление комиссии на признание задолженности безнадежной к взысканию
+  lv_OperID := GetOrCreateOperation (
+      pName => 'Представление комиссии на признание задолженности безнадежной к взысканию'
+     ,pCode => 'OP.0060'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.01.05', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DMEAS_B09'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.02.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DMEAS_B09'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.07', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DMEAS_B09'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.02.01', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DMEAS_B09'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DebtsMeasures' )
+    );
+ --------------------------------------------------------------------------------------
+
+ --------------------------------------------------------------------------------------
+  -- Операция: Решение о признании задолженности безнадежной к взысканию
+  lv_OperID := GetOrCreateOperation (
+      pName => 'Решение о признании задолженности безнадежной к взысканию'
+     ,pCode => 'OP.0061'
+    );
+  -- Связь со счетами
+    -- Подтверждено
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '03.02.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DMEAS_B10'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.02.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_DMEAS_B10'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DebtsMeasures' )
+    );
+ --------------------------------------------------------------------------------------
+
+ --------------------------------------------------------------------------------------
+  -- Операция: Снятие с учета штрафов без их оплаты
+  lv_OperID := GetOrCreateOperation (
+      pName => 'Снятие с учета штрафов без их оплаты'
+     ,pCode => 'OP.0063'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '04.01.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '11.01.06', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_CHARGE'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DeclCharge.Correct' )
+    );
+ --------------------------------------------------------------------------------------
+
+ --------------------------------------------------------------------------------------
+  -- Операция: Сторнирование излишней уплаты при слиянии таможен
+  lv_OperID := GetOrCreateOperation (
+      pName => 'Сторнирование излишней уплаты при слиянии таможен'
+     ,pCode => 'OP.0064'
+    );
+  -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '06.01.01', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'Y'
+    );
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'ReservedPayment.Reuse' )
+    );
+ --------------------------------------------------------------------------------------
+ -- Операция: проведение Подтверждение зачетов между таможенными органами
+  lv_OperID := GetOrCreateOperation (
+      pName => 'проведение Подтверждение зачетов между таможенными органами'
+     ,pCode => 'OP.0065'
+    );
+    -- Связь со счетами
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '09.02.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', '01.01.07', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+if (lcustom_level=1) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.30.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р09.00.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Р01.10.02', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+end if;
+if (lcustom_level=0) then
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.30.00', lv_DateBegin )
+     ,pActionSign  => -1
+     ,pIsDebit     => 'N'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.02', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+  lv_RelID := fdc_rel_oper_acc_add (
+      pOperationID => lv_OperID
+     ,pAccountID   => p_nsi_dict.GetIDByCode ( 'AccountNew', 'Ф06.20.03', lv_DateBegin )
+     ,pActionSign  => +1
+     ,pIsDebit     => 'Y'
+     ,pEnableFunc  => 'IS_EN_DOC_OPER_REUSE_CNFRM'
+    );
+end if;
+  -- Связь с документами
+  lv_RelID := fdc_rel_oper_doc_class_add (
+      pOperationID => lv_OperID
+     ,pDocClassID  => fdc_object_type_get_bysysname( 'DocumentConfirmation.Reuse' )
+    );
+ --------------------------------------------------------------------------------------
+END;
+/
+
+COMMIT;
+
+PROMPT Обновление метаданных подсистемы проводок завершено.

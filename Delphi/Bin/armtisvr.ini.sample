@@ -1,0 +1,89 @@
+[Connection]
+Port=211
+TimeOut=5
+
+[Queue]
+TimeOut=5
+
+[Logon]
+username=
+password=
+database=
+
+[otvet.dbf]
+item Name='G_NDOK'     field_type = 'C'  len = 26  end
+item Name='KEY'        field_type = 'C'  len = 3   end
+item Name='KODVAL'     field_type = 'C'  len = 3   end
+item Name='P_NDOK'     field_type = 'C'  len = 19  end
+item Name='N_NDOK'     field_type = 'C'  len = 23  end
+item Name='N_DDOK'     field_type = 'D'  len = 8   end
+item Name='SUMMA'      field_type = 'N'  len = 17  dec = 2  end
+item Name='SUMMA1'     field_type = 'N'  len = 17  dec = 2  end
+item Name='ID_NDOK'    field_type = 'C'  len = 4   end
+item Name='KEY_OWNER'  field_type = 'C'  len = 4   end
+item Name='N_POST'     field_type = 'C'  len = 8   end
+item Name='KINDVP'     field_type = 'C'  len = 30  end
+item Name='KEY_EX'     field_type = 'C'  len = 40  end
+item Name='KBK'        field_type = 'C'  len = 20  end
+item Name='ADVANCE'    field_type = 'C'  len = 1   end
+item Name='NTR'        field_type = 'C'  len = 26  end
+item Name='STATUS'     field_type = 'C'  len = 40  end
+item Name='PROCESS_ID' field_type = 'C'  len = 36  end
+item Name='V_REASON'   field_type = 'C'  len = 2   end
+item Name='V_DOC_NUM'  field_type = 'C'  len = 15  end
+item Name='V_DOC_DATE' field_type = 'D'  len = 8   end
+
+
+[otvet]
+object mdOtvetG_NDOK:     TStringField    FieldName='G_NDOK'     Size = 26  end
+object mdOtvetKEY:        TStringField    FieldName='KEY'        Size = 3   end
+object mdOtvetKODVAL:     TStringField    FieldName='KODVAL'     Size = 3   end
+object mdOtvetP_NDOK:     TStringField    FieldName='P_NDOK'     Size = 19  end
+object mdOtvetN_NDOK:     TStringField    FieldName='N_NDOK'     Size = 23  end
+object mdOtvetN_DDOK:     TDateTimeField  FieldName='N_DDOK'                end
+object mdOtvetSUMMA:      TFloatField     FieldName='SUMMA'                 end
+object mdOtvetSUMMA1:     TFloatField     FieldName='SUMMA1'                end
+object mdOtvetID_NDOK:    TStringField    FieldName='ID_NDOK'    Size = 4   end
+object mdOtvetKEY_OWNER:  TStringField    FieldName='KEY_OWNER'  Size = 4   end
+object mdOtvetN_POST:     TStringField    FieldName='N_POST'     Size = 8   end
+object mdOtvetKINDVP:     TStringField    FieldName='KINDVP'     Size = 30  end
+object mdOtvetKEY_EX:     TStringField    FieldName='KEY_EX'     Size = 40  end
+object mdOtvetKBK:        TStringField    FieldName='KBK'        Size = 20  end
+object mdOtvetADVANCE:    TStringField    FieldName='ADVANCE'    Size = 1   end
+object mdOtvetNTR:        TStringField    FieldName='NTR'        Size = 26  end
+object mdOtvetSTATUS:     TStringField    FieldName='STATUS'     Size = 40  end
+object mdOtvetPROCESS_ID: TStringField    FieldName='PROCESS_ID' Size = 36  end
+object mdOtvetV_REASON:   TStringField    FieldName='V_REASON'   Size = 2   end
+object mdOtvetV_DOC_NUM:  TStringField    FieldName='V_DOC_NUM'  Size = 15  end
+object mdOtvetV_DOC_DATE: TDateTimeField  FieldName='V_DOC_DATE'            end
+
+[dcl]
+DclHead.Dbf=dbf_dclhead_lst
+DclSumpp.Dbf=dbf_dclSumpp
+DclPlatR.Dbf=dbf_dclPlatR
+DclPlatV.Dbf=dbf_dclPlatV
+DclPredD.Dbf=dbf_dclPredD
+DclTechD.Dbf=dbf_dclTechD
+DclTovar.Dbf=dbf_dclTovar
+DclTrans.Dbf=dbf_dclTrans
+DclSlotM.Dbf=dbf_dclSlotm
+KtcHead.Dbf=dbf_KtcHead
+KtcPltIz.Dbf=dbf_KtcPltIz
+KtcTovIz.Dbf=dbf_KtcTovIz
+KtdHead.Dbf=dbf_ktdhead 
+KtdPlbIz.Dbf=dbf_ktdplbiz 
+KtdPltIz.Dbf=dbf_ktdpltiz 
+KtdSumPP.Dbf=dbf_ktdsumpp 
+KtdTovar.Dbf=dbf_ktdtovar 
+KtdTovG.Dbf=dbf_ktdtovg
+
+[dk]
+Dk1.Dbf=dbf_Dk1
+DkIsch.Dbf=dbf_DkIsch
+DkKUpl.Dbf=dbf_DkKUpl
+DkOpRp.Dbf=dbf_DkOpRp
+Dk_pp.Dbf=dbf_Dk_pp
+
+[Dk_pp.Dbf]
+fields=G071=G071;G072=G072;G073=G073;OKPO=OKPO;INN=INN;KPP=KPP;K92=K92;K93=K93;K94=K94;K95=K95;K96=K96;K_VAL=K_VAL;PRIZ=PRIZ;WHO=WHO;SP=SP;CRYPT=CRYPT;CODE=CODE;BANK_ID=BANK_ID;VP=VP;IRET=IRET;NBLKTC1=NBLKTC1;N_SV=N_SV;D_SV=D_SV;N_CNTR=N_CNTR;D_CNTR=D_CNTR;NTR=NTR;PROCESS_ID=PROCESS_ID;LNPINSP=LNPINSP
+

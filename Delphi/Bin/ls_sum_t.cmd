@@ -1,0 +1,1 @@
+md5sum --b iacc.exe Unlha32.dll unrar3.dll lgtdviewer.dll converter2.dll packer.dll capicom.dll Crypto.dll CryptoPro.dll verba.dll LoadApp.exe LoadApp.ini LoadApp_out.ini SecurityMonitor.exe armtisvr.exe crypt.exe iaccftp.exe tposerviceapp.exe ordersvr.exe > "..\..\Setup\LS-T\ls.md5"

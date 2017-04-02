@@ -1,0 +1,269 @@
+inherited DocPackReuseGridForm: TDocPackReuseGridForm
+  Caption = #1056#1077#1077#1089#1090#1088#1099' '#1079#1072#1095#1105#1090#1086#1074' '#1084#1077#1078#1076#1091' '#1090#1072#1084#1086#1078#1077#1085#1085#1099#1084#1080' '#1086#1088#1075#1072#1085#1072#1084#1080
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnlWorkspace: TPanel
+    inherited pnlSearchCriteria: TPanel
+      inherited lcSearchCriteria: TdxLayoutControl
+        inherited Label1: TLabel
+          Width = 29
+        end
+        inherited edtName: TcxTextEdit
+          Width = 184
+        end
+        inherited edtFromDate: TcxDateEdit
+          Width = 109
+        end
+        inherited edtToDate: TcxDateEdit
+          Width = 109
+        end
+        inherited edtNomer: TcxTextEdit
+          Width = 109
+        end
+      end
+    end
+    inherited pnlGrid: TPanel
+      inherited grdData: TcxGrid
+        inherited grdDataDBBandedTableView: TcxGridDBBandedTableView
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = ',0.00;-,0.00'
+              Kind = skSum
+              Column = grdDataDBBandedTableViewAMOUNT
+            end>
+          Styles.OnGetContentStyle = grdDataDBBandedTableViewStylesGetContentStyle
+          inherited grdDataDBBandedTableViewSTATE_NAME: TcxGridDBBandedColumn
+            Width = 92
+          end
+          inherited grdDataDBBandedTableViewDOC_DATE: TcxGridDBBandedColumn
+            Position.ColIndex = 7
+          end
+          inherited grdDataDBBandedTableViewDOC_NUMBER: TcxGridDBBandedColumn
+            Position.ColIndex = 8
+          end
+          inherited grdDataDBBandedTableViewIS_ACTIVE: TcxGridDBBandedColumn
+            Position.ColIndex = 9
+          end
+          inherited grdDataDBBandedTableViewACTIVATION_DATE: TcxGridDBBandedColumn
+            Position.ColIndex = 10
+          end
+          inherited grdDataDBBandedTableViewIS_RECIEVED: TcxGridDBBandedColumn
+            Position.ColIndex = 14
+          end
+          inherited grdDataDBBandedTableViewIS_TS: TcxGridDBBandedColumn
+            Visible = True
+          end
+          object grdDataDBBandedTableViewDATE_SEND: TcxGridDBBandedColumn
+            DataBinding.FieldName = 'DATE_SEND'
+            Position.BandIndex = 0
+            Position.ColIndex = 13
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewDESTINATION: TcxGridDBBandedColumn
+            Caption = #1050#1086#1090' '#1058#1054'-'#1087#1086#1083#1091#1095#1072#1090#1077#1083#1103
+            DataBinding.FieldName = 'DESTINATION'
+            Options.Editing = False
+            Position.BandIndex = 0
+            Position.ColIndex = 6
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewEXT_SOURCE: TcxGridDBBandedColumn
+            Caption = #1050#1086#1076' '#1058#1054'-'#1086#1090#1087#1088#1072#1074#1080#1090#1077#1083#1103
+            DataBinding.FieldName = 'EXT_SOURCE'
+            Position.BandIndex = 0
+            Position.ColIndex = 18
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewAMOUNT: TcxGridDBBandedColumn
+            DataBinding.FieldName = 'AMOUNT'
+            PropertiesClassName = 'TcxCurrencyEditProperties'
+            Properties.DisplayFormat = ',0.00;-,0.00'
+            Position.BandIndex = 0
+            Position.ColIndex = 15
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewCUSTOMS_SOURCE: TcxGridDBBandedColumn
+            Caption = #1058#1054'-'#1086#1090#1087#1088#1072#1074#1080#1090#1077#1083#1100
+            DataBinding.FieldName = 'CUSTOMS_SOURCE'
+            Width = 250
+            Position.BandIndex = 0
+            Position.ColIndex = 16
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewCUSTOMS_TARGET: TcxGridDBBandedColumn
+            Caption = #1058#1054'-'#1087#1086#1083#1091#1095#1072#1090#1077#1083#1100
+            DataBinding.FieldName = 'CUSTOMS_TARGET'
+            Width = 250
+            Position.BandIndex = 0
+            Position.ColIndex = 17
+            Position.RowIndex = 0
+          end
+        end
+      end
+    end
+  end
+  inherited ActionList: TActionList
+    inherited actAdd: TAction
+      Visible = True
+    end
+    object actCreateConfirmPacks: TAction
+      Category = 'Object'
+      Caption = #1057#1092#1086#1088#1084#1080#1088#1086#1074#1072#1090#1100
+      Hint = #1057#1092#1086#1088#1084#1080#1088#1086#1074#1072#1090#1100' '#1088#1077#1077#1089#1090#1088#1099' '#1076#1083#1103' '#1074#1089#1077#1093' '#1085#1077#1086#1090#1087#1088#1072#1074#1083#1077#1085#1085#1099#1093' '#1087#1077#1088#1077#1079#1072#1095#1077#1090#1086#1074
+      OnExecute = actCreateConfirmPacksExecute
+    end
+  end
+  inherited OfficeEditStyleController: TcxEditStyleController
+    Style.IsFontAssigned = True
+  end
+  inherited WebEditStyleController: TcxEditStyleController
+    Style.IsFontAssigned = True
+  end
+  inherited DefaultEditStyleController: TcxDefaultEditStyleController
+    Style.IsFontAssigned = True
+  end
+  inherited BarManager: TdxBarManager
+    Bars = <
+      item
+        Caption = #1057#1087#1080#1089#1086#1082' '#1086#1073#1098#1077#1082#1090#1086#1074
+        DockedDockingStyle = dsTop
+        DockedLeft = 0
+        DockedTop = 0
+        DockingStyle = dsTop
+        FloatLeft = 679
+        FloatTop = 322
+        FloatClientWidth = 58
+        FloatClientHeight = 182
+        ItemLinks = <
+          item
+            Item = btnSearchOk
+            Visible = True
+          end
+          item
+            Item = btnSearchCancel
+            Visible = True
+          end
+          item
+            BeginGroup = True
+            Item = btnAdd
+            Visible = True
+          end
+          item
+            Item = btnOpen
+            Visible = True
+          end
+          item
+            Item = btnRefresh
+            Visible = True
+          end
+          item
+            Item = btnSwitchSearchCriteria
+            Visible = True
+          end
+          item
+            Item = btnAutoFilter
+            Visible = True
+          end
+          item
+            BeginGroup = True
+            Item = btnDelete
+            Visible = True
+          end
+          item
+            BeginGroup = True
+            Item = btnCreateConfirmPacks
+            Visible = True
+          end
+          item
+            BeginGroup = True
+            Item = dxbcTO
+            Visible = True
+          end>
+        Name = 'barTools'
+        OneOnRow = True
+        Row = 0
+        UseOwnFont = False
+        Visible = True
+        WholeRow = True
+      end>
+    Categories.ItemsVisibles = (
+      2
+      2
+      2)
+    Categories.Visibles = (
+      True
+      True
+      True)
+    DockControlHeights = (
+      0
+      0
+      28
+      0)
+    object btnCreateConfirmPacks: TdxBarButton
+      Action = actCreateConfirmPacks
+      Category = 0
+    end
+  end
+  inherited dsData: TfdcQuery
+    SQL.Strings = (
+      'select t.*'
+      '      ,s.name AS state_name'
+      '      ,fdc_DocPack_Reuse_sum( t.id ) AS amount'
+      '      ,co.name AS customs_source'
+      '      ,ci.name AS customs_target'
+      '  from fdc_doc_pack_reuse_lst t'
+      '  LEFT OUTER JOIN fdc_state_lst s ON s.id = t.state_id'
+      
+        '  LEFT OUTER JOIN fdc_customs_lst co ON co.customs_code_8 = t.ex' +
+        't_source'
+      
+        '  LEFT OUTER JOIN fdc_customs_lst ci ON ci.customs_code_8 = t.de' +
+        'stination'
+      ' where (:Name is null or upper(t.NAME) like upper(:Name))'
+      
+        '   AND (:customs_code = '#39'00000000'#39' OR t.ext_source = :customs_co' +
+        'de)'
+      '/*$p#from_date#*/ and (t.doc_date >= :FROM_DATE)'
+      '/*$p#to_date#*/   and (t.doc_date <= :TO_DATE)'
+      '/*$p#doc_no#*/    and (t.DOC_NUMBER like :DOC_NO)')
+    SourceServerObject = 'FDC_DOC_PACK_REUSE_LST'
+    inherited dsDataDOC_DATE: TDateTimeField
+      DisplayLabel = #1044#1072#1090#1072' '#1088#1077#1077#1089#1090#1088#1072
+    end
+    inherited dsDataDOC_NUMBER: TStringField
+      DisplayLabel = #8470' '#1088#1077#1077#1089#1090#1088#1072
+    end
+    object dsDataDATE_SEND: TDateTimeField
+      DisplayLabel = #1044#1072#1090#1072' '#1086#1090#1087#1088#1072#1074#1082#1080
+      FieldName = 'DATE_SEND'
+    end
+    object dsDataDESTINATION: TStringField
+      DisplayLabel = #1055#1086#1083#1091#1095#1072#1090#1077#1083#1100' '#1088#1077#1077#1089#1090#1088#1072
+      DisplayWidth = 20
+      FieldName = 'DESTINATION'
+      Size = 8
+    end
+    object dsDataEXT_SOURCE: TStringField
+      FieldName = 'EXT_SOURCE'
+      Size = 8
+    end
+    object dsDataAMOUNT: TFloatField
+      DisplayLabel = #1057#1091#1084#1084#1072
+      FieldName = 'AMOUNT'
+    end
+    object dsDataCUSTOMS_SOURCE: TStringField
+      FieldName = 'CUSTOMS_SOURCE'
+      Size = 1500
+    end
+    object dsDataCUSTOMS_TARGET: TStringField
+      FieldName = 'CUSTOMS_TARGET'
+      Size = 1500
+    end
+  end
+  object pkgCommon: TOraclePackage
+    Session = MainData.Session
+    Cursor = crSQLWait
+    Left = 56
+    Top = 174
+  end
+end

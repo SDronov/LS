@@ -1,0 +1,55 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = SecurityMonitor.exe armtisvr.exe exchLS.dll crypt.exe IAccFTP.exe \
+  iacc.exe LoadApp.exe TpoServiceApp.exe iesvc.exe CheckCSApp.exe ordersvr.exe \
+  ordercl.dll
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+SecurityMonitor.exe: admin\SecurityMonitor.dpr
+  $(DCC)
+
+armtisvr.exe: aist\armtisvr.dpr
+  $(DCC)
+
+exchLS.dll: aist\DLL\exchLS.dpr
+  $(DCC)
+
+crypt.exe: crypt\crypt.dpr
+  $(DCC)
+
+IAccFTP.exe: FTP\IAccFTP.dpr
+  $(DCC)
+
+iacc.exe: Income-Accounts\iacc.dpr
+  $(DCC)
+
+LoadApp.exe: LoadApp\LoadApp.dpr
+  $(DCC)
+
+TpoServiceApp.exe: TPO_Service\TpoServiceApp.dpr
+  $(DCC)
+
+iesvc.exe: Income-Exchange\iesvc.dpr
+  $(DCC)
+
+CheckCSApp.exe: CheckCopyService\CheckCSApp.dpr
+  $(DCC)
+
+ordersvr.exe: order\ordersvr.dpr
+  $(DCC)
+
+ordercl.dll: order\DLL\ordercl.dpr
+  $(DCC)
+
+

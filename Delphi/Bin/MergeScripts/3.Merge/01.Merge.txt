@@ -1,0 +1,3 @@
+1.Ёкспорт таблиц из промежуточной схемы (PLSQL Developer -> Tools -> Export tables.. -> PL/SQL Developer method  -> —н€ть все галочки (можно оставить <Compress file> если место на винте ограничено ) )
+2.»мпорт таблиц в целевую схему (PLSQL Developer -> Tools -> Import tables.. -> PL/SQL Developer method ->
+   сн€ть все галочки, кроме пунктов:   <Disable triggers> и <Disable foreign key constraints> )

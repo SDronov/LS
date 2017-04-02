@@ -1,0 +1,61 @@
+package fdcCommonD7;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'FDC - Common library'}
+{$RUNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl,
+  rtl,
+  vcldb,
+  dbrtl,
+  bdertl,
+  vclx,
+  designide,
+  designdgm,
+  vcldesigner,
+//  Package1,
+  vcljpg;
+
+contains
+  fdcUtils in 'Source\fdcUtils.pas',
+  fdcConsts in 'Source\fdcConsts.pas',
+  fdcExceptions in 'Source\fdcExceptions.pas',
+  fdcLogger in 'Source\fdcLogger.pas',
+  fdcStrings in 'Source\fdcStrings.pas',
+  fdcMessages in 'Source\fdcMessages.pas' {fdcMessageForm},
+  fdcCrypt in 'Source\fdcCrypt.pas',
+  fdcTimer in 'Source\fdcTimer.pas',
+  fdcInspector in 'Source\fdcInspector.pas',
+  fdcInspectorFrm in 'Source\fdcInspectorFrm.pas' {fdcInspectorForm},
+  fdcQuery in 'Source\fdcQuery.pas',
+  fdcCustomDataset in 'Source\fdcCustomDataset.pas',
+  fdcOracleSession in 'Source\fdcOracleSession.pas',
+  fdcDBTreeView in 'Source\fdcDBTreeView.pas',
+  fdcStringsHolder in 'Source\fdcStringsHolder.pas',
+  fdcParamsHolder in 'Source\fdcParamsHolder.pas',
+  QueryList in 'Source\QueryList.pas';
+
+end.

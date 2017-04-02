@@ -1,0 +1,11 @@
+whenever sqlerror exit 1
+set serveroutput on
+set linesize 1000
+set heading off
+set newpage none
+
+define INSTALL_LOG_PATH='<#INSTALL_LOG_PATH>'
+define SERVER_NAME=<#SERVER_NAME>
+define VERO_USER=<#VERO_USER>
+define VERO_USER_PASSWORD=<#VERO_USER_PASSWORD>
+define VERO_USER_DEFAULT_TABLESPACE=<#VERO_USER_DEFAULT_TABLESPACE>

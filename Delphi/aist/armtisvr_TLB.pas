@@ -1,0 +1,151 @@
+unit armtisvr_TLB;
+
+// ************************************************************************ //
+// WARNING                                                                    
+// -------                                                                    
+// The types declared in this file were generated from data read from a       
+// Type Library. If this type library is explicitly or indirectly (via        
+// another type library referring to this type library) re-imported, or the   
+// 'Refresh' command of the Type Library Editor activated while editing the   
+// Type Library, the contents of this file will be regenerated and all        
+// manual modifications will be lost.                                         
+// ************************************************************************ //
+
+// PASTLWTR : 1.2
+// File generated on 24.01.2017 15:54:43 from Type Library described below.
+
+// ************************************************************************  //
+// Type Lib: D:\BUILD_LS\MOD\Delphi\aist\armtisvr.tlb (1)
+// LIBID: {331ED37B-6BCE-417D-9D91-AEB8F36222B0}
+// LCID: 0
+// Helpfile: 
+// HelpString: armtisvr Library
+// DepndLst: 
+//   (1) v1.0 Midas, (C:\Windows\SysWow64\midas.dll)
+//   (2) v2.0 stdole, (C:\Windows\SysWOW64\stdole2.tlb)
+// ************************************************************************ //
+{$TYPEDADDRESS OFF} // Unit must be compiled without type-checked pointers. 
+{$WARN SYMBOL_PLATFORM OFF}
+{$WRITEABLECONST ON}
+{$VARPROPSETTER ON}
+interface
+
+uses Windows, ActiveX, Classes, Graphics, Midas, StdVCL, Variants;
+  
+
+// *********************************************************************//
+// GUIDS declared in the TypeLibrary. Following prefixes are used:        
+//   Type Libraries     : LIBID_xxxx                                      
+//   CoClasses          : CLASS_xxxx                                      
+//   DISPInterfaces     : DIID_xxxx                                       
+//   Non-DISP interfaces: IID_xxxx                                        
+// *********************************************************************//
+const
+  // TypeLibrary Major and minor versions
+  armtisvrMajorVersion = 1;
+  armtisvrMinorVersion = 0;
+
+  LIBID_armtisvr: TGUID = '{331ED37B-6BCE-417D-9D91-AEB8F36222B0}';
+
+  IID_IRemDM: TGUID = '{CFDCB9B9-1EB2-4581-B45A-576B5BA4A6A4}';
+  CLASS_RemDM: TGUID = '{85D7F8C0-C05C-4CE1-B898-BB4D390C096D}';
+type
+
+// *********************************************************************//
+// Forward declaration of types defined in TypeLibrary                    
+// *********************************************************************//
+  IRemDM = interface;
+  IRemDMDisp = dispinterface;
+
+// *********************************************************************//
+// Declaration of CoClasses defined in Type Library                       
+// (NOTE: Here we map each CoClass to its Default Interface)              
+// *********************************************************************//
+  RemDM = IRemDM;
+
+
+// *********************************************************************//
+// Interface: IRemDM
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {CFDCB9B9-1EB2-4581-B45A-576B5BA4A6A4}
+// *********************************************************************//
+  IRemDM = interface(IAppServer)
+    ['{CFDCB9B9-1EB2-4581-B45A-576B5BA4A6A4}']
+    procedure Query_R; safecall;
+    procedure Query_E1; safecall;
+    procedure Query_O; safecall;
+    procedure Query_V; safecall;
+    procedure Query_E; safecall;
+    procedure QueryCommit; safecall;
+    procedure QueryRollback; safecall;
+    procedure ReadDataSet(const NameDataSet: WideString); safecall;
+    procedure SendFields(const NameDataSet: WideString; Size: Integer; Data: OleVariant); safecall;
+    procedure SetInfo(const Host: WideString; const IP: WideString; Port: Integer); safecall;
+    procedure GetLastError(var ErrCode: OleVariant); safecall;
+    procedure GetLastErrorMsg(var Size: OleVariant; var ErrMsg: OleVariant); safecall;
+    procedure Query_S; safecall;
+    procedure Query_T; safecall;
+  end;
+
+// *********************************************************************//
+// DispIntf:  IRemDMDisp
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {CFDCB9B9-1EB2-4581-B45A-576B5BA4A6A4}
+// *********************************************************************//
+  IRemDMDisp = dispinterface
+    ['{CFDCB9B9-1EB2-4581-B45A-576B5BA4A6A4}']
+    procedure Query_R; dispid 301;
+    procedure Query_E1; dispid 302;
+    procedure Query_O; dispid 303;
+    procedure Query_V; dispid 305;
+    procedure Query_E; dispid 304;
+    procedure QueryCommit; dispid 306;
+    procedure QueryRollback; dispid 307;
+    procedure ReadDataSet(const NameDataSet: WideString); dispid 308;
+    procedure SendFields(const NameDataSet: WideString; Size: Integer; Data: OleVariant); dispid 309;
+    procedure SetInfo(const Host: WideString; const IP: WideString; Port: Integer); dispid 310;
+    procedure GetLastError(var ErrCode: OleVariant); dispid 311;
+    procedure GetLastErrorMsg(var Size: OleVariant; var ErrMsg: OleVariant); dispid 312;
+    procedure Query_S; dispid 313;
+    procedure Query_T; dispid 314;
+    function AS_ApplyUpdates(const ProviderName: WideString; Delta: OleVariant; MaxErrors: Integer; 
+                             out ErrorCount: Integer; var OwnerData: OleVariant): OleVariant; dispid 20000000;
+    function AS_GetRecords(const ProviderName: WideString; Count: Integer; out RecsOut: Integer; 
+                           Options: Integer; const CommandText: WideString; var Params: OleVariant; 
+                           var OwnerData: OleVariant): OleVariant; dispid 20000001;
+    function AS_DataRequest(const ProviderName: WideString; Data: OleVariant): OleVariant; dispid 20000002;
+    function AS_GetProviderNames: OleVariant; dispid 20000003;
+    function AS_GetParams(const ProviderName: WideString; var OwnerData: OleVariant): OleVariant; dispid 20000004;
+    function AS_RowRequest(const ProviderName: WideString; Row: OleVariant; RequestType: Integer; 
+                           var OwnerData: OleVariant): OleVariant; dispid 20000005;
+    procedure AS_Execute(const ProviderName: WideString; const CommandText: WideString; 
+                         var Params: OleVariant; var OwnerData: OleVariant); dispid 20000006;
+  end;
+
+// *********************************************************************//
+// The Class CoRemDM provides a Create and CreateRemote method to          
+// create instances of the default interface IRemDM exposed by              
+// the CoClass RemDM. The functions are intended to be used by             
+// clients wishing to automate the CoClass objects exposed by the         
+// server of this typelibrary.                                            
+// *********************************************************************//
+  CoRemDM = class
+    class function Create: IRemDM;
+    class function CreateRemote(const MachineName: string): IRemDM;
+  end;
+
+implementation
+
+uses ComObj;
+
+class function CoRemDM.Create: IRemDM;
+begin
+  Result := CreateComObject(CLASS_RemDM) as IRemDM;
+end;
+
+class function CoRemDM.CreateRemote(const MachineName: string): IRemDM;
+begin
+  Result := CreateRemoteComObject(MachineName, CLASS_RemDM) as IRemDM;
+end;
+
+end.

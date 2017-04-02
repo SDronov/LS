@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>GetFileVersion</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+    <meta name="generator" content="Doc-O-Matic">
+    <link rel="STYLESHEET" href="default.css" type="text/css">
+
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="scripts.js"></SCRIPT>
+</head>
+<body class="Element57">
+<div class="Element92">
+<table class="Element92" border="0" bgcolor="#99CCFF" width="100%" cellspacing="0" cellpadding="0">
+<tr><td class="Element92" valign="middle" align="left" width="33%">
+<div class="Element1">
+Справка по библиотеке FDC Common</div>
+</td><td class="Element92" valign="middle" align="center" width="34%">
+<div class="Element2">
+<a href="content.html">Content</a> | <a href="idx.html">Index</a></div>
+</td><td class="Element92" valign="middle" align="right" width="33%">
+<div class="Element90">
+<a href="GetCurLangName.html">Previous</a> | <a href="GetSysDir.html">Next</a></div>
+</td></tr></table><div class="Element5">
+GetFileVersion</div>
+<div class="Element7">
+<a href="fdcUtils_pas.html">fdcUtils</a> | <a href="_GetFileVersion@PChar@array_of_string@array_of_PString_3_Example.html">Example</a></div>
+</div>
+<div class="Element58">
+<div class="Element101">
+<div class="Element100">
+<pre class="Element100"><strong>procedure</strong> GetFileVersion(AFileName: PChar; <strong>const</strong> AWhat: <strong>array</strong> <strong>of</strong> <strong>string</strong>; AVerInfo: <strong>array</strong> <strong>of</strong> PString);</pre></div>
+</div>
+<div class="Element14">
+File</div>
+<div class="Element11">
+<div class="Element10">
+<a href="fdcUtils_pas.html">fdcUtils</a></div>
+</div>
+<div class="Element254">
+Parameters</div>
+<div class="Element11">
+<div class="Element10">
+<div class="Element252">
+<table cellspacing="0" cellpadding="3" border="1">
+<tr>
+<td class="Element241" valign="top" width="50%">
+Parameters</td><td class="Element245" valign="top" width="50%">
+Description</td></tr><tr>
+<td class="Element243" valign="top" width="50%">
+AFileName: PChar</td><td class="Element247" valign="top" width="50%">
+Имя файла, информацию о версии которого необходимо получить</td></tr><tr>
+<td class="Element243" valign="top" width="50%">
+const AWhat: array of string</td><td class="Element247" valign="top" width="50%">
+Открытый (динамически формирующийся в момент вызова) массив строк-запросов по разделам версии. Допустимые строки-запросы:<p class="Element247">
+'CompanyName', 'FileDescription', 'FileVersion', 'InternalName', 'LegalCopyright', 'OriginalFilename', 'ProductName', 'ProductVersion'.</td></tr><tr>
+<td class="Element243" valign="top" width="50%">
+AVerInfo: array of PString</td><td class="Element247" valign="top" width="50%">
+Cтрока параметров запускаемой программы</td></tr></table></div>
+</div>
+</div>
+<div class="Element14">
+Description</div>
+<div class="Element11">
+<div class="Element10">
+Определение информации о версии исполняемого файла.</div>
+</div>
+<div class="Element14">
+Remarks</div>
+<div class="Element11">
+<div class="Element10">
+Сопоставление элементов AWhat и AVerInfo - позиционное: n-ый элемент aVerInfo - ответ на запрос в n-ом элементе AWhat. Если размеры в AWhat и aVerInfo различны, aVerInfo содержит ответы на первые n запросов из AWhat, где n = Min(размер AVerInfo, размер AWhat), при n &lt; размер AVerInfo, оставшиеся элементы массива инициализируются пустой строкой.</div>
+</div>
+<div class="Element14">
+Example</div>
+<div class="Element11">
+<div class="Element10">
+<div class="Element13">
+<div class="Element12">
+<pre class="Element12">  <strong>var</strong>
+    InternalName, FileVersion: string;
+  <strong>begin</strong>
+    GetFileVersion(PChar(Application.ExeName),
+      ['InternalName', 'FileVersion'],
+      [@InternalName, @FileVersion]);
+    Label1.Caption := InternalName + ' ' + FileVersion;
+  end;</pre></div>
+</div>
+</div>
+</div>
+<div class="Element14">
+Links</div>
+<div class="Element11">
+<div class="Element10">
+<a href="fdcUtils_pas.html">fdcUtils</a>, <a href="_GetFileVersion@PChar@array_of_string@array_of_PString_3_Example.html">Example</a></div>
+</div>
+<div class="Element62">
+<hr>Created with a demo version of <strong><a href="http://www.doc-o-matic.com">Doc-O-Matic</a></strong>. This version is supplied for evaluation purposes only, do not distribute this documentation. To obtain a commercial license please see <a href="http://www.doc-o-matic.com/purchase.html">http://www.doc-o-matic.com/purchase.html</a>.</div>
+</div><div class="Element93">
+<table class="Element93" border="0" width="100%" cellspacing="0" cellpadding="0">
+<tr><td class="Element93" valign="middle" align="center" width="100%">
+<div class="Element3">
+ФОРС - Центр разработки</div>
+</td></tr><tr><td class="Element93" valign="middle" align="center" width="100%">
+<div class="Element4">
+<a href="content.html">Content</a> | <a href="idx.html">Index</a></div>
+</td></tr></table></div>
+</body></html>

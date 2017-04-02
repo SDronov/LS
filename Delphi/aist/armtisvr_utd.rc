@@ -1,0 +1,27 @@
+1 VERSIONINFO
+FILEVERSION 1,0,0,296
+PRODUCTVERSION 1,0,0
+FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_APP
+FILESUBTYPE VFT2_UNKNOWN
+{
+BLOCK "StringFileInfo"
+{
+   BLOCK "041904E4"
+   {
+      VALUE "InternalName", "АС УТД - Интерфейс с КПС "Инспектор-ОТО"\000"
+      VALUE "FileDescription", "\000"
+      VALUE "FileVersion", "1.0.0.300\000"
+      VALUE "ProductVersion", "1.0.0\000"
+      VALUE "Comments", "\000"   
+      VALUE "OriginalFilename", "armtisvr.exe\000"
+      VALUE "ProductName", "АС УТД\000"
+      VALUE "LegalCopyright", "© ФОРС - Центр разработки\000"
+   }
+}
+
+BLOCK "VarFileInfo"
+{
+   VALUE "Translation", 0x0419 0x04E4
+}
+}

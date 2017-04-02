@@ -1,0 +1,60 @@
+package fdcObjectsD7;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'FDC - Object components'}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl,
+  rtl,
+  dbrtl,
+  vclx,
+  teedb,
+  tee,
+  dss,
+  vcldb,
+  bdertl,
+  dclocx,
+  designide,
+  dclstd,
+  designdgm,
+  vcldesigner,
+  dcldb,
+//  doa34d7,
+  doa40d7,
+  fdcCommonD7,
+  cxEditorsVCLD7,
+  cxLibraryVCLD7,
+  dxThemeD7,
+  cxDataD7,
+  vcljpg;
+
+contains
+  fdcObjectCore in 'Source\fdcObjectCore.pas',
+  fdcObjectsReg in 'Source\fdcObjectsReg.pas',
+  fdcObjectLinkEdit in 'Source\fdcObjectLinkEdit.pas',
+  fdcObjectServices in 'Source\fdcObjectServices.pas',
+  fdcObjectLookupEdit in 'Source\fdcObjectLookupEdit.pas';
+
+end.

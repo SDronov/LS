@@ -1,0 +1,194 @@
+{
+  Copyright © Fors Development Center.
+  All rights reserved.
+
+  $Source$
+  $Revision: 14300 $
+  $Author: adavletyarov $
+  $Date: 2012-02-06 20:40:16 +0400 (РџРЅ, 06 С„РµРІ 2012) $
+}
+unit DeclarantFrm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, SubjectFrm, cxDBEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
+  DB, FDCCustomDataset, fdcQuery, fdcParamsHolder, dxBar, ImgList, cxEdit,
+  cxLookAndFeels, cxContainer, dxLayoutLookAndFeels, ActnList, StdCtrls,
+  dxLayoutControl, cxMemo, cxTextEdit, cxPC, cxControls, cxStyles,
+  cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage, cxDBData,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGrid, cxLookupEdit, cxDBLookupEdit,
+  cxDBLookupComboBox, fdcObjectLookupEdit, cxCheckBox, ComCtrls;
+
+type
+  TDeclarantForm = class(TSubjectForm)
+    dsDataCATEGORY: TStringField;
+    dsDataCUSTOM_CODE: TStringField;
+    dsDataREG_DATE: TDateTimeField;
+    dsCheckAcc: TfdcQuery;
+    dxBarButton1: TdxBarButton;
+    acAddAccount: TAction;
+    acDelAccount: TAction;
+    acEditAccount: TAction;
+    acRefreshAccounts: TAction;
+    dxBarButton2: TdxBarButton;
+    dxBarButton3: TdxBarButton;
+    tsAccounts: TcxTabSheet;
+    dsDataIS_BIG: TFloatField;
+    dsDataIS_NSI: TFloatField;
+    dsDataPOST9: TStringField;
+    dsDataALFA2: TStringField;
+    lcMainItem1: TdxLayoutItem;
+    edtCategory: TcxDBTextEdit;
+    lcMainItem2: TdxLayoutItem;
+    edtRegDate: TcxDBDateEdit;
+    lcMainGroup2: TdxLayoutGroup;
+    lcMainItem4: TdxLayoutItem;
+    edtCustomCode: TcxDBMaskEdit;
+    lcMainGroup4: TdxLayoutGroup;
+    lcMainItem5: TdxLayoutItem;
+    cmbxCountryCode: TfdcObjectLookupEdit;
+    lcMainItem6: TdxLayoutItem;
+    edtPost9: TcxDBTextEdit;
+    lcMainItem7: TdxLayoutItem;
+    edtAlfa2: TcxDBTextEdit;
+    lcMainGroup6: TdxLayoutGroup;
+    lcMainGroup3: TdxLayoutGroup;
+    cxDBCheckBox1: TcxDBCheckBox;
+    cxDBCheckBox2: TcxDBCheckBox;
+    lcMainItem3: TdxLayoutItem;
+    lcMainItemELSDate: TdxLayoutItem;
+    dsDataRESIDENT: TStringField;
+    lcglcMainGroup1: TdxLayoutGroup;
+    dsDataIS_ELS: TStringField;
+    ELSDate: TcxDBDateEdit;
+    dsDataELS_DATE: TDateTimeField;
+    procedure tsAccountsShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure dsDataValidate(Sender: TField);
+    procedure dsDataAfterOpen(DataSet: TDataSet);
+    procedure cxDBCheckBox2PropertiesChange(Sender: TObject);
+    procedure cxDBCheckBox2Click(Sender: TObject);
+    procedure ELSDateEditing(Sender: TObject; var CanEdit: Boolean);
+  private
+    FAccountForm: TForm;
+  end;
+
+var
+  DeclarantForm: TDeclarantForm;
+
+implementation
+
+uses
+  MainDm, CheckUtils, IaccUtils, StrUtils, fdcMessages, fdcDbUtils,
+  DeclarantAccountFrm, DictDm;
+
+{$R *.dfm}
+
+{ TDeclarantForm }
+
+procedure TDeclarantForm.tsAccountsShow(Sender: TObject);
+begin
+  if not Assigned(FAccountForm) then
+    FAccountForm := ObjectServices.ShowForm('TDeclarantAccountGridForm', Params,
+      TWinControl(Sender));
+end;
+
+procedure TDeclarantForm.FormCreate(Sender: TObject);
+begin
+  inherited;
+  tsAccounts.PageIndex := 1;
+  pcMain.ActivePage := tabGeneral;
+end;
+
+procedure TDeclarantForm.dsDataValidate(Sender: TField);
+begin
+  if dsDataRESIDENT.AsString = 'Y' then
+    inherited;
+  // almost the same as on CustomsFrm
+  if AnsiSameText(Sender.FieldName, 'CUSTOM_CODE') and (Trim(Sender.Text) <> '')
+    and (Length(Sender.Text) <> 5) then
+      raise Exception.Create('Код таможни должен состоять из 5 символов');
+end;
+
+procedure TDeclarantForm.dsDataAfterOpen(DataSet: TDataSet);
+begin
+  tabFilial.TabVisible :=  (dsDataRESIDENT.AsString = 'Y')
+                            {and
+                           (dsDataPARENT_ID.Value = null)};
+  dsData.ReadOnly := dsDataIS_NSI.Value = 1;
+  lcMainItemELSDate.Visible := dsDataIS_ELS.AsString = 'Y';
+  if dsData.ReadOnly then
+  begin
+    edtName.Style.Color := clSilver; //clInactiveCaptionText;
+    edtOKPO.Style.Color := clSilver; //clInactiveCaptionText;
+    edtINN.Style.Color := clSilver; //clInactiveCaptionText;
+    edtOGRN.Style.Color := clSilver; //clInactiveCaptionText;
+    edtAddress.Style.Color := clSilver; //clInactiveCaptionText;
+    edtPhone.Style.Color := clSilver; //clInactiveCaptionText;
+    edtFax.Style.Color := clSilver; //clInactiveCaptionText;
+    edtTelegraph.Style.Color := clSilver; //clInactiveCaptionText;
+    edtTelex.Style.Color := clSilver; //clInactiveCaptionText;
+    edtSOATO.Style.Color := clSilver; //clInactiveCaptionText;
+    edtKPP.Style.Color := clSilver; //clInactiveCaptionText;
+    edtCustomCode.Style.Color := clSilver; //clInactiveCaptionText;
+    edtCategory.Style.Color := clSilver; //clInactiveCaptionText;
+    edtRegDate.Style.Color := clSilver; //clInactiveCaptionText;
+    cxDBTextEdit1.Style.Color := clSilver; //clInactiveCaptionText;
+    edtPost9.Style.Color := clSilver; //clInactiveCaptionText;
+    edtAlfa2.Style.Color := clSilver; //clInactiveCaptionText;
+    cmbxCountryCode.Style.Color := clSilver; //clInactiveCaptionText;
+    ELSDate.Style.Color := clSilver; //clInactiveCaptionText;
+  end;
+  inherited;
+end;
+
+procedure TDeclarantForm.cxDBCheckBox2PropertiesChange(Sender: TObject);
+begin
+  Modify(Sender);
+  inherited;
+
+end;
+
+procedure TDeclarantForm.cxDBCheckBox2Click(Sender: TObject);
+begin
+  inherited;
+  if not cxDBCheckBox2.Checked then
+   begin
+     ELSDate.Clear;
+      lcMainItemELSDate.Visible:=false;
+   end
+  else
+   begin
+    ELSDate.Date := Date;
+
+    lcMainItemELSDate.Visible:=true;
+   end;
+
+end;
+
+procedure TDeclarantForm.ELSDateEditing(Sender: TObject;
+  var CanEdit: Boolean);
+begin
+  if ELSDate.Date = -700000 then
+  begin
+   cxDBCheckBox2.Checked := false ;
+   lcMainItemELSDate.Visible:=false;
+  end
+  else
+  begin
+   cxDBCheckBox2.Checked := true;
+   lcMainItemELSDate.Visible:=true;
+   end;
+
+  inherited;
+
+end;
+
+initialization
+   RegisterClass(TDeclarantForm);
+
+end.
+

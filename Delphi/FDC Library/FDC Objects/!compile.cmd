@@ -1,0 +1,1 @@
+dcc32.exe fdcObjectsD7.dpk -B -H- -W- -N".\out" -LE".\out" -LN".\out" -L -U%LIB7%;%RES7% -R%RES7%

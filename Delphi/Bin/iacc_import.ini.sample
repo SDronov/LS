@@ -1,0 +1,61 @@
+[banklist]
+
+[tbrok]
+
+[valname]
+
+[valuta]
+
+[ktam]
+
+[reg_ti]
+
+[pays]
+
+[tamplat]
+
+[kateg]
+
+[tpo]
+generate_update=1
+primary_key_cond=tpo_number = :tpo_number
+
+[tpo_doc]
+generate_update=1
+primary_key_cond=num_tpo =:num_tpo and nrow = :nrow
+
+[tpo_itp]
+generate_update=1
+primary_key_cond=num_tpo = :num_tpo and calcul = :calcul and cod_plat = :cod_plat
+
+[tpo_tdo]
+generate_update=1
+primary_key_cond=num_tpo and :num_tpo and num_dtpo = :num_dtpo and pos_dtpo = :pos_dtpo
+
+[pltperio]
+generate_update=1
+primary_key_cond=num_tpo = :num_tpo and num_dtpo = :num_dtpo and pos_dtpo = :pos_dtpo
+
+[tpo_dop]
+generate_update=1
+primary_key_cond=num_tpo = :num_tpo and num_dtpo = :num_dtpo
+
+[goods]
+generate_update=1
+primary_key_cond=num_tpo = :num_tpo and (num_dtpo = :num_dtpo or num_dtpo is null and :num_dtpo is null) and (pos_dtpo = :pos_dtpo or pos_dtpo is null and :pos_dtpo is null) and (pr_sbr = :pr_sbr or pr_sbr is null and :pr_sbr is null) and cod_plat = :cod_plat
+
+[tpo_aud]
+generate_update=1
+primary_key_cond=num_tpo = :num_tpo
+
+[fizlic]
+generate_update=1
+primary_key_cond=num_doc = :num_doc and ser_doc = :ser_doc and cod_doc = :cod_doc
+
+[okpo]
+generate_update=1
+primary_key_cond=cod = :cod and inn = :inn
+
+[tpo_tdop]
+generate_update=1
+primary_key_cond=num_tpo =:num_tpo and (num_dtpo = :num_dtpo or num_dtpo is null and :num_dtpo is null) and (pos_dtpo = :pos_dtpo or pos_dtpo is null and :pos_dtpo is null)

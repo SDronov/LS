@@ -1,0 +1,353 @@
+---------------------------------------------------
+-- Export file for user DOXOD_LS                 --
+-- Created by anaumenkov on 26.08.2010, 17:35:22 --
+---------------------------------------------------
+
+
+prompt
+prompt Creating type FDC_BALANS_REC_T
+prompt ==============================
+prompt
+create or replace type fdc_balans_rec_t is object(
+    item_no varchar2(255),
+    parent_item varchar2(255),
+    item varchar2(255),
+    sort_item varchar2(255),
+    caption varchar2(255),
+    code varchar2(255),
+    window_type varchar2(255),
+    bsumma number,
+    isumma number,
+    osumma number,
+    esumma number)
+/
+
+prompt
+prompt Creating type FDC_BALANS_REC_LIST_T
+prompt ===================================
+prompt
+create or replace type fdc_balans_rec_list_t is table of fdc_balans_rec_t
+/
+
+prompt
+prompt Creating type FDC_CUSTOMSCODE_DECLNO
+prompt ====================================
+prompt
+CREATE OR REPLACE TYPE "FDC_CUSTOMSCODE_DECLNO"                                                                                                                                                   is object (
+  customs_code varchar2(8),
+  decl_no varchar2(10)
+)
+/
+
+prompt
+prompt Creating type FDC_CUSTOMSCODE_DECLNO_T
+prompt ======================================
+prompt
+CREATE OR REPLACE TYPE "FDC_CUSTOMSCODE_DECLNO_T"                                                                          AS TABLE OF FDC_CUSTOMSCODE_DECLNO
+/
+
+prompt
+prompt Creating type FDC_DOC_PARAMS
+prompt ============================
+prompt
+create or replace type fdc_doc_params
+is object (
+    subject_id      NUMBER(15),
+    custom_id       NUMBER(15),
+    payment_type_id NUMBER(15),
+    kbk_source_id   NUMBER(15),
+    kbk_id          NUMBER(15),
+    currency_id     NUMBER(15),
+    doc_sum         NUMBER(36,4),
+    exch_rate       NUMBER(36,4),
+    sum_rur         NUMBER(36,4)
+  )
+/
+
+prompt
+prompt Creating type FDC_DOC_PARAMS_T
+prompt ==============================
+prompt
+CREATE OR REPLACE TYPE fdc_doc_params_t AS TABLE OF fdc_doc_params
+/
+
+prompt
+prompt Creating type FDC_STRING_TABLE
+prompt ==============================
+prompt
+CREATE OR REPLACE TYPE "FDC_STRING_TABLE"                                                                                                                                                                                                                                                                                                     as table of
+  --
+  --   Copyright © Fors Development Center
+  --   All rights reserved
+  --
+  --   $Revision: 4517 $   $Author: FORS\anaumenkov $  $Date: 2008-03-05 13:11:35 +0300 (РЎСЂ, 05 РјР°СЂ 2008) $
+  --
+
+  -- Attributes
+varchar2(4000)
+/
+
+prompt
+prompt Creating type FDC_GOODS_AGG_TYPE
+prompt ================================
+prompt
+CREATE OR REPLACE TYPE fdc_goods_agg_type AS OBJECT
+(
+  -- Тип используемый для аггрегации кодов товаров.
+  -- Аггрегируются только уникальные коды.
+  -- %Author   Науменков А.В.
+  -- %Created  09.01.2008
+  -- %Modified
+
+  goods     fdc_string_table,
+  delimeter VARCHAR2(10),
+
+
+  STATIC FUNCTION ODCIAggregateInitialize (
+      pCtx IN OUT fdc_goods_agg_type
+    ) RETURN NUMBER,
+
+
+  MEMBER FUNCTION ODCIAggregateIterate (
+      SELF       IN OUT fdc_goods_agg_type
+     ,pValue     IN     VARCHAR2
+    ) RETURN NUMBER,
+
+
+  MEMBER FUNCTION ODCIAggregateMerge (
+      SELF   IN OUT fdc_goods_agg_type
+     ,pCtx   IN     fdc_goods_agg_type
+    ) RETURN NUMBER,
+
+
+  MEMBER FUNCTION ODCIAggregateTerminate (
+      SELF   IN  fdc_goods_agg_type
+     ,pValue OUT VARCHAR2
+     ,pFlags IN  NUMBER
+    ) RETURN NUMBER
+)
+/
+
+prompt
+prompt Creating type FDC_PERIODIC_MONTH_PAYMENT
+prompt ========================================
+prompt
+CREATE OR REPLACE TYPE "FDC_PERIODIC_MONTH_PAYMENT"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         IS OBJECT (
+     month     date,
+     summa     NUMBER(22,2),
+     is_payed  number(1),
+     currency_id number(15)
+)
+/
+
+prompt
+prompt Creating type FDC_PERIODIC_MONTH_PAYMENT_T
+prompt ==========================================
+prompt
+CREATE OR REPLACE TYPE "FDC_PERIODIC_MONTH_PAYMENT_T"                                                                                                                                                   AS TABLE OF FDC_PERIODIC_MONTH_PAYMENT
+/
+
+prompt
+prompt Creating type FDC_STR_AGG_TYPE
+prompt ==============================
+prompt
+CREATE OR REPLACE TYPE fdc_str_agg_type AS OBJECT
+(
+  -- Тип используемый в функции аггрегации строк
+  -- %Author   Науменков А.В.
+  -- %Created  09.01.2008
+  -- %Modified
+
+  total_str VARCHAR2(32767),
+  delimeter VARCHAR2(10),
+
+
+  STATIC FUNCTION ODCIAggregateInitialize (
+      pCtx IN OUT fdc_str_agg_type
+    ) RETURN NUMBER,
+
+
+  MEMBER FUNCTION ODCIAggregateIterate (
+      SELF       IN OUT fdc_str_agg_type
+     ,pValue     IN     VARCHAR2
+    ) RETURN NUMBER,
+
+
+  MEMBER FUNCTION ODCIAggregateMerge (
+      SELF   IN OUT fdc_str_agg_type
+     ,pCtx   IN     fdc_str_agg_type
+    ) RETURN NUMBER,
+
+
+  MEMBER FUNCTION ODCIAggregateTerminate (
+      SELF   IN  fdc_str_agg_type
+     ,pValue OUT VARCHAR2
+     ,pFlags IN  NUMBER
+    ) RETURN NUMBER
+)
+/
+
+prompt
+prompt Creating type FDC_TPO_OTVET_ERROR
+prompt =================================
+prompt
+CREATE OR REPLACE TYPE FDC_TPO_OTVET_ERROR IS OBJECT (
+  Tpo_Number VARCHAR2(10)
+ ,IsLoaded   NUMBER(1)
+ ,ErrorCode  NUMBER(5)
+ ,ErrorText  VARCHAR2(1000)
+)
+/
+
+prompt
+prompt Creating type FDC_TPO_OTVET_ERROR_TABLE
+prompt =======================================
+prompt
+CREATE OR REPLACE TYPE FDC_TPO_OTVET_ERROR_TABLE AS TABLE OF FDC_TPO_OTVET_ERROR
+/
+
+prompt
+prompt Creating type T_ID_T
+prompt ====================
+prompt
+create or replace type t_id_t as TABLE OF number
+/
+
+prompt
+prompt Creating type body FDC_GOODS_AGG_TYPE
+prompt =====================================
+prompt
+CREATE OR REPLACE TYPE BODY fdc_goods_agg_type IS
+
+  STATIC FUNCTION ODCIAggregateInitialize (
+      pCtx IN OUT fdc_goods_agg_type
+    ) RETURN NUMBER IS
+  BEGIN
+    pCtx := fdc_goods_agg_type( fdc_string_table(), CHR(10) );
+    RETURN ODCIConst.Success;
+  END ODCIAggregateInitialize;
+
+
+  MEMBER FUNCTION ODCIAggregateIterate (
+      SELF       IN OUT fdc_goods_agg_type
+     ,pValue     IN     VARCHAR2
+    ) RETURN NUMBER IS
+    lv_Value VARCHAR2(4000) := pValue;
+  BEGIN
+    IF self.goods.COUNT > 0 THEN
+      FOR i IN self.goods.FIRST .. self.goods.LAST LOOP
+        IF self.goods(i) = pValue THEN
+          lv_Value := NULL;
+          EXIT;
+        END IF;
+      END LOOP;
+    END IF;
+
+    IF lv_Value IS NOT NULL THEN
+      self.goods.EXTEND;
+      self.goods(self.goods.LAST) := lv_Value;
+    END IF;
+
+    RETURN ODCIConst.Success;
+  END ODCIAggregateIterate;
+
+
+  MEMBER FUNCTION ODCIAggregateMerge (
+      SELF   IN OUT fdc_goods_agg_type
+     ,pCtx   IN     fdc_goods_agg_type
+    ) RETURN NUMBER IS
+    lv_Value VARCHAR2(4000);
+  BEGIN
+    FOR i IN pCtx.goods.FIRST .. pCtx.goods.LAST LOOP
+      lv_Value := pCtx.goods(i);
+      FOR j IN SELF.goods.FIRST .. SELF.goods.LAST LOOP
+        IF SELF.goods(j) = pCtx.goods(i) THEN
+          lv_Value := NULL;
+          EXIT;
+        END IF;
+      END LOOP;
+
+      IF lv_Value IS NOT NULL THEN
+        SELF.goods.EXTEND;
+        SELF.goods(SELF.goods.LAST) := lv_Value;
+      END IF;
+    END LOOP;
+
+    RETURN ODCIConst.Success;
+  END ODCIAggregateMerge;
+
+
+  MEMBER FUNCTION ODCIAggregateTerminate (
+      SELF   IN  fdc_goods_agg_type
+     ,pValue OUT VARCHAR2
+     ,pFlags IN  NUMBER
+    ) RETURN NUMBER IS
+  BEGIN
+    pValue := NULL;
+
+    IF SELF.goods.COUNT > 0 THEN
+      FOR i IN SELF.goods.FIRST .. SELF.goods.LAST LOOP
+        pValue := pValue || SELF.delimeter || SELF.goods(i);
+      END LOOP;
+    END IF;
+
+    IF pValue IS NOT NULL THEN
+      pValue := SUBSTR( pValue, length( SELF.delimeter ) + 1 );
+    END IF;
+
+    RETURN ODCIConst.Success;
+  END ODCIAggregateTerminate;
+
+END;
+/
+
+prompt
+prompt Creating type body FDC_STR_AGG_TYPE
+prompt ===================================
+prompt
+CREATE OR REPLACE TYPE BODY fdc_str_agg_type IS
+
+  STATIC FUNCTION ODCIAggregateInitialize (
+      pCtx IN OUT fdc_str_agg_type
+    ) RETURN NUMBER IS
+  BEGIN
+    pCtx := fdc_str_agg_type( NULL, ', ' );
+    RETURN ODCIConst.Success;
+  END ODCIAggregateInitialize;
+
+
+  MEMBER FUNCTION ODCIAggregateIterate (
+      SELF       IN OUT fdc_str_agg_type
+     ,pValue     IN     VARCHAR2
+    ) RETURN NUMBER IS
+  BEGIN
+    SELF.total_str := /*SUBSTR(*/ SELF.total_str || SELF.delimeter || pValue/*, 1, 32767 )*/;
+    RETURN ODCIConst.Success;
+  END ODCIAggregateIterate;
+
+
+  MEMBER FUNCTION ODCIAggregateMerge (
+      SELF   IN OUT fdc_str_agg_type
+     ,pCtx   IN     fdc_str_agg_type
+    ) RETURN NUMBER IS
+  BEGIN
+    SELF.total_str := /*SUBSTR(*/ SELF.total_str || pCtx.total_str/*, 1, 32767 )*/;
+    RETURN ODCIConst.Success;
+  END ODCIAggregateMerge;
+
+
+  MEMBER FUNCTION ODCIAggregateTerminate (
+      SELF   IN  fdc_str_agg_type
+     ,pValue OUT VARCHAR2
+     ,pFlags IN  NUMBER
+    ) RETURN NUMBER IS
+  BEGIN
+    pValue := LTrim( SELF.total_str, SELF.delimeter );
+    RETURN ODCIConst.Success;
+  END ODCIAggregateTerminate;
+
+END;
+/
+
+exit
+

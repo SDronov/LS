@@ -1,0 +1,9 @@
+userid=vero_test/vero_test@vega92.fors.ru
+fromuser=VERO_ETALON
+touser=vero_test
+file=Scripts\VERO.dmp
+ignore=y
+rows=y
+grants=n
+log=.\Log\03_Import.log
+

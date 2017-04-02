@@ -1,0 +1,16 @@
+prompt Удалить все задания...
+prompt 
+
+BEGIN
+  FOR r IN ( SELECT job
+               FROM User_Jobs ) LOOP
+    dbms_job.remove( r.job );
+  END LOOP;
+END;
+/
+COMMIT;
+
+prompt Выполнено.
+prompt 
+
+exit

@@ -1,0 +1,1 @@
+dcc32.exe TpoServiceApp.dpr -B -H- -W- -LE"..\Bin" -U%LIB7%;%RES7% -R%RES7%

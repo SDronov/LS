@@ -1,0 +1,181 @@
+<?xml version = '1.0' encoding = 'windows-1251'?>
+
+<scheme>
+<structure>
+    <PackageReturns internal="HDRT.DBF">
+        <PayBackOrder internal="PAYT.DBF">
+            <PayOrder internal="PAYT.DBF">
+                <attribute name="Subject"/>
+                <attribute name="INN"/>
+                <attribute name="KPP"/>
+            </PayOrder>
+            <attribute name="NLS" internal="NLS"/>
+            <attribute name="NREF" internal="NREF"/>
+            <attribute name="DocNum" internal="NUM_DOC"/>
+            <attribute name="DocDate" internal="DAT_DOC"/>
+            <attribute name="DocSUM" internal="SUM_DOC"/>
+            <attribute name="DocCurrent"/>
+            <attribute name="DestSub"/>
+            <attribute name="INN" internal="INN_K"/>
+            <attribute name="KPP" internal="KPP_K"/>
+            <attribute name="DestSub" internal="NAME_K"/>
+        </PayBackOrder>
+        <attribute name="NLS" internal="NLS"/>
+        <attribute name="packageDate" internal="DAT_V"/>
+        <attribute name="packageNum" internal="NUM_V"/>
+        <attribute name="CustomSource" internal="KODT_V"/>
+        <attribute name="DocCount" internal="K_PD_PR"/>
+        <attribute name="DocSum" internal="DB_DT"/>
+    </PackReturns>
+    
+	<DocPackBudgetPay internal="HDRT.DBF">
+        <PayOrder internal="PAYT.DBF">
+            <attribute name="Name" internal=""/>
+            <attribute name="Descript" internal="INFO1"/>
+            <attribute name="KBK" internal="BUDKOD"/>
+            <attribute name="Name_k" internal="NAME_K"/>
+            <attribute name="INN_K" internal="INN_K"/>
+            <attribute name="KPP_K" internal="KPP_K"/>
+            <attribute name="BIC_K" internal="BICK"/>
+            <attribute name="Account_K" internal=""/>
+            <attribute name="NLS" internal="SCHK"/>
+            <attribute name="DocDate" internal="DAT_DOC"/>
+            <attribute name="DocNumber" internal="NUM_DOC"/>
+            <attribute name="ExecDate" internal="DAT_BNK"/>
+            <attribute name="PayerName" internal=""/>
+            <attribute name="PayerINN" internal="INN_P"/>
+            <attribute name="PayerKPP" internal="KPP_P"/>
+            <attribute name="SUMMA" internal="SUM_DOC"/>
+            <attribute name="CurrencyCode" internal=""/>
+            <attribute name="DocNumber2" internal=""/>
+            <attribute name="DocDate2" internal=""/>
+            <attribute name="CARDNUM" internal=""/>
+            <attribute name="Note" internal=""/>
+            <attribute name="EXT_SOURCE" internal=""/>
+            <attribute name="EXT_TYPESYSNAME" internal=""/>
+            <attribute name="EXT_ID" internal=""/>
+        </PayOrder>
+        <attribute name="NLS" internal="NLS"/>
+        <attribute name="PackDate" internal="DAT_V"/>
+        <attribute name="PackNum" internal="NUM_V"/>
+        <attribute name="PackName" internal=""/>
+        <attribute name="PackDescript" internal=""/>
+        <attribute name="CurrencyCode" internal=""/>
+        <attribute name="EXT_SOURCE" internal=""/>
+        <attribute name="EXT_TYPESYSNAME" internal=""/>
+        <attribute name="EXT_ID" internal=""/>
+    </DocPackBudgetPay>
+
+	<DocPackReuse internal="HDRT.DBF">
+        <ReuseDoc internal="FDC_BP_R.DBF">
+            <PayOrder internal="FDC_BP_R.DBF">
+                <attribute name="Name"/>
+                <attribute name="Descript"/>
+                <attribute name="DocDate"/>
+                <attribute name="DocNumber"/>
+                <attribute name="ExecDate"/>
+                <attribute name="PayerINN"/>
+                <attribute name="PayerKPP"/>
+                <attribute name="NREF" internal="REFER"/>
+                <attribute name="DocSUMMA"/>
+                <attribute name="SUMMA" internal="AMOUNT"/>
+                <attribute name="NLS"/>
+                <attribute name="DocNumber2"/>
+                <attribute name="DocDate2"/>
+                <attribute name="CARDNUM"/>
+                <attribute name="Note"/>
+                <attribute name="EXT_SOURCE"/>
+                <attribute name="EXT_TYPESYSNAME"/>
+                <attribute name="EXT_ID"/>
+            </PayOrder>
+            <attribute name="CustomsSource" internal="OLD_CUST"/>
+            <attribute name="CustomsDest" internal="NEW_CUST"/>
+            <attribute name="DocNum" internal="NUM_DOC"/>
+            <attribute name="DocDate" internal="DAT_DOC"/>
+            <attribute name="SubjectINN" internal=""/>
+            <attribute name="SubjectKPP" internal=""/>
+            <attribute name="CurrencyCode" internal=""/>
+            <attribute name="SignDate" internal=""/>
+            <attribute name="SignedBy" internal=""/>
+            <attribute name="EXT_SOURCE" internal=""/>
+            <attribute name="EXT_TYPESYSNAME" internal=""/>
+            <attribute name="EXT_ID" internal=""/>
+        </ReuseDoc>
+        <attribute name="PackDate" internal="DAT_V"/>
+        <attribute name="PackNum" internal="NUM_V"/>
+        <attribute name="Destination" internal=""/>
+        <attribute name="PackName" internal=""/>
+        <attribute name="PackDescript" internal=""/>
+        <attribute name="NLS" internal="NLS"/>
+        <attribute name="EXT_SOURCE" internal=""/>
+        <attribute name="EXT_TYPESYSNAME" internal=""/>
+        <attribute name="EXT_ID" internal=""/>
+	</DocPackReuse>
+</structure>
+
+<internal>
+<HDRT.DBF>
+    <BIC type="C"/>
+    <DAT_V type="D"/>
+    <DAT_VL type="D"/>
+    <NLS type="C"/>
+    <KOD_W type="C"/>
+    <I_KR type="F"/>
+    <DB_KR type="F"/>
+    <DB_DT type="F"/>
+    <O_KR type="F"/>
+    <K_PD_RS type="N"/>
+    <K_PD_PR type="N"/>
+    <NUM_V type="C"/>
+    <KODT_V type="C"/>
+    <PAYT.DBF>
+        <NREF type="C"/>
+        <NLS type="C"/>
+        <BIC type="C"/>
+        <Z_TPL type="C"/>
+        <P_KOR type="N"/>
+        <DAT_DOC type="D"/>
+        <DAT_BNK type="D"/>
+        <DAT_INBNK type="D"/>
+        <SUM_DOC type="F"/>
+        <KODV type="C"/>
+        <NUM_DOC type="C"/>
+        <INN_K type="C"/>
+        <NAME_K type="C"/>
+        <SCHK type="C"/>
+        <KSCHK type="C"/>
+        <BICK type="C"/>
+        <INFO1 type="C"/>
+        <INFO2 type="C"/>
+        <INFO3 type="C"/>
+        <INFO4 type="C"/>
+        <NAIM_BK type="C"/>
+        <KODT type="C"/>
+        <T_PL type="C"/>
+        <GR_PAY type="C"/>
+        <BUDKOD type="C"/>
+        <KDO_VP type="C"/>
+        <SWIFTK type="C"/>
+        <ADDR_BK type="C"/>
+        <ADDR_K type="C"/>
+        <KPP_K type="C"/>
+        <KPP_P type="C"/>
+        <INN_P type="C"/>
+        <OKATO type="C"/>
+        <NOM_RASPOR type="C"/>
+        <DAT_RASPOR type="D"/>
+    </PAYT.DBF>
+    <FDC_BP_R.DBF>
+        <INIT_ID type="N"/>
+        <INIT_D type="N"/>
+        <OLD_CUST type="C"/>
+        <NEW_CUST type="C"/>
+        <AMOUNT type="F"/>
+        <STATE type="C"/>
+        <REFER type="C"/>
+        <REQUESTREF type="C"/>
+    </FDC_BP_R.DBF>
+</HDRT.DBF>
+</internal>
+
+</scheme>

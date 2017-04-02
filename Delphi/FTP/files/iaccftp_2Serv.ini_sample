@@ -1,0 +1,289 @@
+; ================================
+; ===   IaccFtpService v4.00   ===
+; ================================
+
+[Common]
+;путь в рабочий каталог
+;здесь необходимо указать путь к общему каталогу, куда производится приём файлов запросов,
+;где происходит обработка данных и от куда происходит отправка файлов ответов
+;WorkDirPath=C:\new_FTP\Files\FTP
+WorkDirPath=
+
+; имя LOG - файла
+;LogFileName=iaccftp.log
+LogFileName=
+
+;максимальный размер LOG - файла, килобайт.
+;При превышении этого размера, будет создан новый экземпляр LOG - файла
+;MaxLogSize=
+MaxLogSize=250
+
+;Длительность хранения архивных файлов, дней
+ArchivePeriod=14
+
+;Путь к файлу информации о структуре загружаемых таблиц, необходимой для
+;создания файлов ответов при приеме чеков
+;NsiImportFile=C:\Working\NsiImport\nsi_import.ini
+NsiImportFile=
+
+;  количество платёжных систем с которыми осуществляется взаимодействие
+;ServiceCount=1
+ServiceCount=2
+
+;  интервал опроса ftp - серверов, секунд
+PeriodSeconds=60
+
+[DataBase]
+;  подключение к базе данных
+;  сервер
+;DBName=db_server
+DBName=
+
+;  имя пользователя
+;DBUserName=user
+DBUserName=
+
+;  пароль
+;DBPassword=password
+DBPassword=
+
+;рабочая схема - необязательный параметр; необходим при несовпадении имени пользователя и
+;рабочей схемы
+;DBSchema=work_schema
+DBSchema=
+
+; 0 - пароль не зашифрован
+; 1 - пароль зашифрован
+DBCrypt=0
+
+;***************  [Service.0]  **************
+
+[Service.0]
+;Наименование сервиса
+;ServiceName=Первый сервис
+ServiceName=
+
+;  === Локальные каталоги ===
+;Пути в Локальных каталогах могут быть как абсолютными, так и относительными
+;(относительно WorkDirPath)
+
+;  каталог, куда загружаются файлы с запросами.
+;DownLoadDir=Service_1\Downloads
+;DownLoadDir=.\Service_1\Downloads
+DownLoadDir=
+
+; Каталог в который копируются файлы с ошибочными запросами
+;ErrorFileDir=Service_1\Errors
+;ErrorFileDir=.\Service_1\Errors
+ErrorFileDir=
+
+; Каталог в котором формируются файлы ответа
+;AnswerDir=Service_1\Answers
+;AnswerDir=  .\Service_1\Answers
+AnswerDir=
+
+; Архивный каталог, куда копируются файлы запросов, загруженные с FTP -  сервера
+;ArchDownDir=Service_1\Arch_Downloads
+ArchDownDir=
+
+; Архивный каталог, куда копируются файлы ответов, успешно отправленные на FTP -  сервер
+;  при DeleteFilesAfterImport <> 1
+;ArchAnswDir=Service_1\Arch_Answers
+ArchAnswDir=
+
+;  === Каталоги на удаленном FTP сервере ===
+
+;  каталог на удаленном ftp сервере, из которого загружаются файлы с транзакциями
+;SourceDir=IN
+SourceDir=
+
+;  каталог на удаленном ftp сервере, в который отправляются файлы ответа
+;DestDir=OUT
+DestDir=
+
+;  маска загружаемых с FTP файлов
+;FileMask=TK*.REQ
+;FileMask=LS*.req.zip
+FileMask=
+
+;  маска выгружаемых файлов на FTP
+;AnswerMask=TK*.ANS
+;AnswerMask=LS*.ANS.ZIP
+AnswerMask=
+
+;  максимальное количество единовременно загружаемых файлов с FTP - сервера
+;  по умолчанию = 100,   максимальное значение = 500
+MaxTransactionCount = 10
+
+;  ===     Ключи      ===
+;  0 - ничего не удалять (по умолчанию)
+;  2 - Файлы транзакций которые были успешно импортированы переносятся
+       в архивную папку заданную в ключе ArcDir и удаляются из DownLoadDir.
+DeleteFilesAfterImport=0
+
+;  1 - если Файл находится в списке неудачно загруженных транзакций,
+;      то при удачной загрузке удалить его из каталога ErrorFileDir
+;  0 - если Файл находится в списке неудачно загруженных транзакций,
+;      то при удачной загрузке НЕ удалять этот файл из каталога ErrorFileDir
+DeleteOldErrFiles=0
+
+;  0 - если файл ftp:SourceDir\file1.req уже загружался, то повторная загрузка запрещена
+;  1 - повторная загрузка и обработка разрешена
+OverWriteExists=1
+
+;  1 - удалять файлы с FTP после их загрузки с сервера
+;  0 - ничего не удалять
+DeleteFtpFiles=1
+
+
+[Service.0.FTP]
+;  0 - активный режим
+;  1 - пассивный режим
+Passive=0
+
+;  Имя FTP-сервера
+;Host=127.0.0.1
+Host=
+
+;  порт (по умолчанию 21)
+Port=21
+
+;  имя пользователя на FTP
+;UserName=user_1
+UserName=
+
+;  пароль
+;FTPPassword=1
+FTPPassword=
+
+;  интервал по прошествии которого принудительно закрывается фтп соединение
+;  Если в логах будет появляться сообщение 'Принудительное завершение соединения с FTP',
+;  то попробуйте увеличить данный интервал
+FtpTimeOut=50
+
+;  0 - пароль не зашифрован
+;  1 - пароль зашифрован
+FTPCrpypt=0
+
+[Service.0.PROXY]
+;  0 - без прокси (все остальные параметры игнорируются и прокси не используется)
+;  1 - Коммандой USER user@hostname
+;  2 - Коммандой SITE (со входом в систему)
+;  3 - Коммандой OPEN
+;  4 - коммандой USER uesr@firewalluser@hostname / PASS pass@firewallpass
+;  5 - Прозрачный
+ProxyType=0
+
+;ProxyHost=
+;ProxyPort=
+;ProxyUserName=
+;ProxyPassword=
+;ProxyCrypt=
+
+
+;***************  [Service.1]  **************
+
+[Service.1]
+;Наименование сервиса
+;ServiceName=Второй сервис
+ServiceName=
+
+;  === Локальные каталоги ===
+;ErrorFileDir=Service_2\Errors
+ErrorFileDir=
+
+;DownLoadDir=Service_2\Downloads
+DownLoadDir=
+
+;AnswerDir=Service_2\Answers
+AnswerDir=
+
+;ArchDownDir=Service_2\Arch_Downloads
+ArchDownDir=
+
+;ArchAnswDir=Service_2\Arch_Answers
+ArchAnswDir=
+
+;  === FTP - Каталоги ===
+; каталог на ftp, в котором находяться файлы с транзакциями
+;SourceDir=IN
+SourceDir=
+
+; каталог на удаленном ftp сервере, в который выгружаются файлы ответа
+;DestDir=OUT
+DestDir=
+
+;  маска загружаемых с FTP файлов
+;FileMask=LS*.REQ.ZIP
+FileMask=
+
+;  маска выгружаемых файлов на FTP
+;AnswerMask=LS*.ANS.ZIP
+AnswerMask=
+
+
+;  максимальный размер загружаемого списка файлов с FTP - сервера
+;  по умолчанию = 100,   максимальное значение = 500
+MaxTransactionCount = 25
+
+;  ===     Ключи      ===
+;  0 - ничего не удалять (по умолчанию)
+;  1 - удалить скачанные файлы из DownLoadDir после импорта, БЕЗ копирования в архив.
+;  2 - Файлы транзакций которые были успешно импортированы переносятся
+       в архивную папку заданную в ключе ArcDir и удаляются из DownLoadDir.
+DeleteFilesAfterImport=0
+
+;  1 - если Файл находится в списке неудачно загруженных транзакций,
+;      то при удачной загрузке удалить его из каталога ErrorFileDir
+;  0 - если Файл находится в списке неудачно загруженных транзакций,
+;      то при удачной загрузке НЕ удалять этот файл из каталога ErrorFileDir
+DeleteOldErrFiles=1
+
+;  0 - если файл ftp:SourceDir\file1.req уже загружался, то повторная загрузка запрещена
+;  1 - повторная загрузка и обработка разрешена
+OverWriteExists=1
+
+;  1 - удалять файлы с FTP после их загрузки с сервера
+;  0 - ничего не удалять
+DeleteFtpFiles=1
+
+[Service.1.FTP]
+;  0 - активный режим
+;  1 - пассивный режим
+Passive=0
+
+;  Имя FTP-сервера
+;Host=127.0.0.1
+Host=
+;  порт (по умолчанию 21)
+Port=21
+
+;  имя пользователя на FTP
+;UserName=user_2
+UserName=
+
+;  пароль
+;FTPPassword=2
+FTPPassword=
+
+;  интервал по прошествии которого принудительно закрывается фтп соединение
+FtpTimeOut=50
+;  0 - пароль не зашифрован
+;  1 - пароль зашифрован
+
+FTPCrpypt=0
+
+[Service.1.PROXY]
+;  0 - без прокси (все остальные параметры игнорируются и прокси не используется)
+;  1 - Коммандой USER user@hostname
+;  2 - Коммандой SITE (со входом в систему)
+;  3 - Коммандой OPEN
+;  4 - коммандой USER uesr@firewalluser@hostname / PASS pass@firewallpass
+;  5 - Прозрачный
+ProxyType=0
+
+;ProxyHost=
+;ProxyPort=
+;ProxyUserName=
+;ProxyPassword=
+;ProxyCrypt=

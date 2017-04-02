@@ -1,0 +1,802 @@
+DEFINE dst = DOXOD_LS_2
+SET SERVEROUTPUT ON SIZE 1000000;
+declare
+   vMrg_Id     number;
+   vErrMsg     VARCHAR2(2000);
+  
+  Function fdcGetMrgId (pOldId in integer) return integer is
+  result integer;
+  begin
+     select Mrg_ID into result from fdc_object where id = pOldId;
+     return result;
+  end fdcGetMrgId;
+  
+  FUNCTION Declarant_Add
+  (
+    pName       IN VARCHAR2
+   ,pAddress    IN VARCHAR2 := NULL
+   ,pFullName   IN VARCHAR2 := NULL
+   ,pOKPO       IN VARCHAR2 := NULL
+   ,pINN        IN VARCHAR2 := NULL
+   ,pOGRN       IN VARCHAR2 := NULL
+   ,pSOATO      IN VARCHAR2 := NULL
+   ,pKPP        IN VARCHAR2 := NULL
+   ,pPhone      IN VARCHAR2 := NULL
+   ,pFax        IN VARCHAR2 := NULL
+   ,pTelex      IN VARCHAR2 := NULL
+   ,pTelegraph  IN VARCHAR2 := NULL
+   ,pCategory   IN VARCHAR2 := NULL
+   ,pCustomCode IN VARCHAR2 := NULL
+   ,pRegDate    IN DATE     := NULL
+   ,pPost9      IN VARCHAR2 := NULL
+   ,pAlfa2      IN VARCHAR2 := NULL
+  ) RETURN INTEGER IS
+    vId INTEGER;
+  BEGIN
+    BEGIN
+      IF Length(pInn) = 12 THEN
+        SELECT id
+          INTO vId
+          FROM &&dst..fdc_subject_lst t
+         WHERE t.INN = pInn
+           AND TRIM(LEADING '0' FROM t.KPP) IS NULL;
+      ELSE
+        SELECT id
+          INTO vId
+          FROM &&dst..fdc_subject_lst t
+         WHERE t.INN = pInn
+           AND nvl(t.KPP, '-') = nvl(pKPP, '-');
+      END IF;
+    EXCEPTION
+      WHEN no_data_found THEN
+        BEGIN
+          vId := &&dst..p_nsi_Subject.Add(
+                                   pObjTypeSysName => 'Declarant'
+                                  ,pName           => pName
+                                  ,pAddress        => pAddress
+                                  ,pFullName       => pFullName
+                                  ,pOKPO           => pOKPO
+                                  ,pINN            => pINN
+                                  ,pSOATO          => pSOATO
+                                  ,pKPP            => TRIM(pKPP)
+                                  ,pOGRN           => pOGRN
+                                  ,pPhone          => pPhone
+                                  ,pFax            => pFax
+                                  ,pTelex          => pTelex
+                                  ,pTelegraph      => pTelegraph);
+          INSERT INTO &&dst..fdc_declarant
+            (ID, CATEGORY, CUSTOM_CODE, REG_DATE, POST9, ALFA2)
+          VALUES
+            (vId, pCategory, pCustomCode, pRegDate, pPost9, pAlfa2);
+        END;
+      WHEN OTHERS THEN
+        RAISE;
+    END;
+    RETURN vId;
+  END Declarant_Add;
+  
+  
+begin
+-- Справочники НСИ
+for nsi in (select t.* from fdc_nsi_dict_lst t,fdc_object o
+            where 
+                o.id = t.id      and                 
+                o.mrg_id is null and
+                not typesysname in ('TaskGroup','Dict.AccessAction','AccountNew',
+                                    'NSIREPORT.TURNOVER',/*'Dict.SoftCode',*/'Dict.InterDocType',
+                                    'DictPathDocpack','FDC_NSI_REPORT','CustomOperation','NSIREPORT.ACC'))
+loop
+     SAVEPOINT NsiUpd;
+     begin
+       select id into vMrg_Id 
+       from &&dst..fdc_nsi_dict_lst d  
+       where
+            typesysname = nsi.typesysname
+        and d.SDATE = nsi.sdate
+       -- and nvl(d.EDATE,trunc(sysdate)) = nvl(nsi.edate,trunc(sysdate))
+        and d.CODE  = nsi.code;
+             
+       update fdc_object
+          set mrg_id    = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = nsi.id;
+   exception
+--     when no_data_found then
+--          raise_application_error(-20005, 'Не найден элемент справочника [' ||nsi.typesysname||
+--                                          '] с кодом [' ||nsi.code|| '] Необходимо обновить справочник' );
+     when others then
+          vErrMsg := SQLERRM;
+          ROLLBACK TO NsiUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = nsi.id;
+   end;      
+end loop;
+commit;         
+-- Справочники 
+for dict in (select t.* from fdc_dict_lst t,fdc_object o
+            where 
+                o.id = t.id      and                 
+                o.mrg_id is null and
+                not typesysname in ('TaskGroup','Dict.AccessAction','AccountNew',
+                                    'NSIREPORT.TURNOVER',/*'Dict.SoftCode',*/'Dict.InterDocType',
+                                    'DictPathDocpack','FDC_NSI_REPORT','CustomOperation','NSIREPORT.ACC'))
+loop
+     SAVEPOINT DictUpd;
+     begin
+       select id into vMrg_Id 
+       from &&dst..fdc_dict_lst d 
+       where
+            typesysname      = dict.typesysname
+        and d.CODE           = dict.code
+        and nvl(d.CODE2,'-') = nvl(dict.code2,'-');
+             
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = dict.id;
+   exception
+     when no_data_found then
+          vMrg_Id := &&dst..fdc_dict_add(
+                              pobject_type_sysname => dict.typesysname,
+                              powner_object_id     => dict.owner_object_id,
+                              pname                => dict.name,
+                              pshortname           => dict.shortname,
+                              pcode                => dict.code,
+                              pcode2               => dict.code2,
+                              pdescript            => dict.descript,
+                              psysname             => dict.sysname);
+          update fdc_object
+              set mrg_id = vMrg_Id
+                 ,mrg_error = null
+                 ,mrg_DoExp = 0 
+          where 
+               id = dict.id;
+     when others then
+          vErrMsg := SQLERRM;
+          ROLLBACK TO DictUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = dict.id;
+   end;      
+end loop;
+commit;
+-- Субьекты
+for sub in (select t.* from fdc_subject_lst t,fdc_object o 
+            where t.id = o.id 
+              and o.mrg_id is null 
+              AND ( (t.typesysname = 'Customs') OR
+                    EXISTS ( SELECT 1 
+                             FROM  ( SELECT subject_id
+                                       FROM fdc_correction_gtd_subject 
+                                     UNION 
+                                     SELECT subject_id
+                                       FROM fdc_correction_tpo_subject
+                                     UNION 
+                                     SELECT subject_id
+                                       FROM fdc_correction_po_subject
+                                     UNION 
+                                     SELECT old_subject_id AS subject_id
+                                       FROM fdc_correction_po_subject  
+                                     UNION 
+                                     SELECT subject_id
+                                       FROM fdc_correction_po_back
+                                     UNION 
+                                     SELECT old_subject_id AS subject_id
+                                       FROM fdc_correction_po_back 
+                                     UNION 
+                                     SELECT payer_id AS subject_id
+                                       FROM fdc_payment_order 
+                                     UNION
+                                     SELECT recipient_id AS subject_id
+                                       FROM fdc_payment_order
+                                     UNION 
+                                     SELECT subject_id 
+                                       FROM fdc_doc_charge 
+                                     UNION
+                                     SELECT carrier_id AS subject_id 
+                                       FROM fdc_tr 
+                                     UNION
+                                     SELECT carrier_id AS subject_id 
+                                       FROM fdc_tpo 
+                                     UNION
+                                     SELECT BROKER_ID AS subject_id 
+                                       FROM fdc_broker_contract 
+                                     UNION
+                                     SELECT SUBJECT_ID
+                                       FROM fdc_broker_contract
+                                     UNION
+                                     SELECT SUBJECT_ID
+                                       FROM  fdc_bp_licence
+                                     UNION 
+                                     SELECT broker_id AS subject_id
+                                       FROM  fdc_bp_licence_broker
+                                   ) q1
+                             WHERE q1.subject_id = t.id
+                           ) 
+                 )
+          )       
+loop
+     SAVEPOINT SubUpd;
+     begin
+       vMrg_Id := null;
+       if sub.typesysname = 'Bank' then
+         declare
+           vBic varchar2(12);
+         begin
+           select b.bic into vBic from fdc_bank b where b.id = sub.id;
+           select id into vMrg_Id 
+           from &&dst..fdc_bank_lst ba 
+           where
+                ba.bic  = vBic;
+         end;
+       end if;          
+       if sub.typesysname = 'Customs' then
+         declare
+           vCode varchar2(12);
+         begin
+           select c.customs_code_8 into vCode from fdc_customs_lst c where c.id = sub.id;
+           select id into vMrg_Id 
+           from &&dst..fdc_customs_lst cu 
+           where
+                cu.customs_code_8  = vCode;
+         end;
+       end if;          
+       if vMrg_Id is null Then
+       if sub.inn is not null then
+         select id into vMrg_Id 
+         from &&dst..fdc_subject_lst d 
+         where
+              typesysname      = sub.typesysname
+          and d.inn            = sub.inn
+          and nvl(d.kpp,'-') = nvl(sub.kpp,'-');
+        else
+         select id into vMrg_Id 
+         from &&dst..fdc_subject_lst d 
+         where
+              typesysname      = sub.typesysname
+          and d.name           = sub.name;
+        end if;
+       end if;      
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = sub.id;
+   exception
+     when no_data_found then
+          SAVEPOINT SubAdd;
+          begin
+            if sub.typesysname = 'Person' then
+            declare
+              vRow fdc_person_lst%rowtype;
+            begin
+            select * into vRow from fdc_person_lst where id = sub.id;
+            vMrg_Id := &&dst..fdc_person_add(
+                              plast_name      => vRow.last_name,
+                              pfirst_name     => vRow.first_name,
+                              pmiddle_name    => vRow.middle_name,
+                              pcountry_code   => vRow.country_code,
+                              pdoc_type       => vRow.doc_type,
+                              pser_no         => vRow.ser_no,
+                              pdoc_no         => vRow.doc_no,
+                              pissued_by      => vRow.issued_by,
+                              pissued_date    => vRow.issued_date,
+                              paddress        => vRow.address,
+                              pinn            => vRow.inn);
+            end;
+            elsif sub.typesysname = 'Declarant' then                  
+            declare
+              vRow fdc_declarant_lst%rowtype;
+            begin
+            select * into vRow from fdc_declarant_lst where id = sub.id;
+            vMrg_Id := Declarant_Add(
+                                         pname        =>  vRow.name,
+                                         paddress     =>  vRow.address,
+                                         pfullname    =>  vRow.full_name,
+                                         pokpo        =>  vRow.okpo,
+                                         pinn         =>  vRow.inn,
+                                         pogrn        =>  vRow.ogrn,
+                                         psoato       =>  vRow.soato,
+                                         pkpp         =>  vRow.kpp,
+                                         pphone       =>  vRow.phone,
+                                         pfax         =>  vRow.fax,
+                                         ptelex       =>  vRow.telex,
+                                         ptelegraph   =>  vRow.telegraph,
+                                         pcategory    =>  vRow.category,
+                                         pcustomcode  =>  vRow.custom_code,
+                                         pregdate     =>  vRow.reg_date,
+                                         ppost9       =>  vRow.post9,
+                                         palfa2       =>  vRow.alfa2);
+            end;
+            elsif sub.typesysname = 'Bank' then                  
+            declare
+              vRow fdc_bank_lst%rowtype;
+            begin
+            select * into vRow from fdc_bank_lst where id = sub.id;
+            vMrg_Id := &&dst..fdc_bank_add(     
+                                         pname        => vRow.name,
+                                         paddress     => vRow.address,
+                                         pfullname    => vRow.full_name,
+                                         pokpo        => vRow.okpo,
+                                         pinn         => vRow.inn,
+                                         pogrn        => vRow.ogrn,
+                                         psoato       => vRow.soato,
+                                         pkpp         => vRow.kpp,
+                                         pphone       => vRow.phone,
+                                         pfax         => vRow.fax,
+                                         ptelex       => vRow.telex,
+                                         pteletype    => vRow.teletype,
+                                         pbic         => vRow.bic,
+                                         prurlicdate  => vRow.rur_lic_date,
+                                         pvallicdate  => vRow.val_lic_date,
+                                         pchiefname   => vRow.chief_name,
+                                         pchiefaccname => vRow.chief_acc_name,
+                                         pcorraccount  => vRow.corr_account);
+            end;
+            elsif sub.typesysname = 'Broker' then                  
+            declare
+              vRow fdc_broker_lst%rowtype;
+            begin
+            select * into vRow from fdc_broker_lst where id = sub.id;
+            vMrg_Id := &&dst..fdc_broker_add(   
+                                         pname         => vRow.name,
+                                         plicenceno    => vRow.license_no,
+                                         pbegdate      => vRow.beg_date,
+                                         penddate      => vRow.end_date,
+                                         paddress      => vRow.address,
+                                         pokpo         => vRow.okpo,
+                                         pinn          => vRow.inn,
+                                         pogrn         => vRow.ogrn,
+                                         psoato        => vRow.soato,
+                                         pkpp          => vRow.kpp,
+                                         pphone        => vRow.phone,
+                                         pfax          => vRow.fax,
+                                         ptelex        => vRow.telex,
+                                         pteletype     => vRow.teletype,
+                                         pbskoltoi     => vRow.bskoltoi,
+                                         pbskoltoii    => vRow.bskoltoii);
+            end;
+            end if; 
+                              
+            update fdc_object
+                set mrg_id = vMrg_Id
+                   ,mrg_error = null
+                   ,mrg_DoExp = 0 
+            where 
+                 id = sub.id;
+          exception
+          when others then
+            dbms_output.put_line('Не прошла обработка субъекта ID:'||sub.id);
+            vErrMsg := SQLERRM;
+            ROLLBACK TO SubAdd;
+            UPDATE fdc_object t
+               SET t.mrg_error = vErrMsg
+             WHERE t.id = sub.id;
+          end; 
+     when others then
+          dbms_output.put_line('Не прошла обработка субъекта ID:'||sub.id);
+
+          vErrMsg := SQLERRM;
+          ROLLBACK TO SubUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = sub.id;
+   end;      
+end loop;
+commit;
+--Распоряжения КНП 
+for Lic in (select l.* from fdc_bp_licence_lst l,fdc_object o where o.id = l.id and o.mrg_id is null)  
+loop
+     SAVEPOINT LicUpd;
+     begin
+       declare
+         vSubjId INTEGER;
+       begin
+         vSubjId := fdcGetMrgId(lic.subject_id);
+         select id into vMrg_Id 
+         from &&dst..fdc_bp_licence_lst l 
+         where
+              l.doc_date   = lic.doc_date
+          and l.doc_no     = lic.doc_no
+          and l.subject_id = vSubjId;
+       end;      
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = lic.id;
+   exception
+     when no_data_found then
+          vMrg_Id := &&dst..fdc_bp_licence_add(
+                                pdocno                => lic.doc_no,
+                                pdate                 => lic.doc_date,
+                                psubjid               => fdcGetMrgId(lic.subject_id),
+                                pfromdate             => lic.from_date,
+                                ptodate               => lic.to_date,
+                                pagrmtno              => lic.agrmt_no,
+                                pagrmdate             => lic.agrmt_date,
+                                pdescript             => lic.descript,
+                                plevelmark            => lic.level_mark);
+          update fdc_object
+              set mrg_id = vMrg_Id
+                 ,mrg_error = null
+                 ,mrg_DoExp = 0 
+          where 
+               id = lic.id;
+     when others then
+          dbms_output.put_line('Не прошла обработка распоряжения КНП ID:'||lic.id);
+
+          vErrMsg := SQLERRM;
+          ROLLBACK TO LicUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = lic.id;
+   end;      
+end loop; 
+commit; 
+--Брокерский договор 
+for Brd in (select l.* from FDC_BROKER_CONTRACT_LST l,fdc_object o where o.id = l.id and o.mrg_id is null)  
+loop
+     SAVEPOINT BrdUpd;
+     begin
+       declare
+         vSubjId INTEGER;
+         vBrId   INTEGER;
+       begin
+         vSubjId := fdcGetMrgId(brd.subject_id);
+         vBrId   := fdcGetMrgId(brd.broker_id);
+         select id into vMrg_Id 
+         from &&dst..FDC_BROKER_CONTRACT_LST d 
+         where
+              d.CONTRACT_DATE   = brd.CONTRACT_DATE
+          and d.CONTRACT_NO     = brd.CONTRACT_NO
+          and d.subject_id      = vSubjId
+          and d.broker_id       = vBrId;
+       end;      
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = brd.id;
+   exception
+     when no_data_found then
+       begin
+          vMrg_Id := &&dst..p_broker_contract.add(
+                                   pbrokerid      => fdcGetMrgId(brd.broker_id),
+                                   psubjectid     => fdcGetMrgId(brd.subject_id),
+                                   pcontractno    => brd.contract_no,
+                                   pcontractdate  => brd.contract_date,
+                                   pbegindate     => brd.begin_date,
+                                   penddate       => brd.end_date,
+                                   pisauthorize   => brd.is_authorize);
+          update fdc_object
+              set mrg_id = vMrg_Id
+                 ,mrg_error = null
+                 ,mrg_DoExp = 0 
+          where 
+               id = brd.id;
+       exception
+         when others then
+          dbms_output.put_line('Не прошла обработка брокерского договора ID:'||brd.id);
+          vErrMsg := SQLERRM;
+          ROLLBACK TO BrdUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = brd.id;
+       end;
+     when others then
+          dbms_output.put_line('Не прошла обработка брокерского договора ID:'||brd.id);
+          vErrMsg := SQLERRM;
+          ROLLBACK TO BrdUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = brd.id;
+   end;      
+end loop; 
+commit;     
+-- Статусы
+for St in (select l.* from FDC_STATE_LST l,fdc_object o where o.id = l.id and o.mrg_id is null)  
+loop
+     SAVEPOINT StUpd;
+     begin
+         select id into vMrg_Id 
+         from &&dst..FDC_STATE_LST s 
+         where
+              s.sysname = st.sysname;
+
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = st.id;
+   exception
+     when no_data_found then
+          raise_application_error(-20005,'Не найден статус('||St.sysname||')' );
+     when others then
+          raise;
+   end;      
+end loop; 
+commit;     
+-- FDC_KIND
+for St in (select l.* 
+            from fdc_kind_lst l,fdc_object o 
+            where o.id = l.id and 
+                  o.mrg_id is NULL AND 
+                  l.SysName NOT LIKE 'BigPayer%')  
+loop
+     SAVEPOINT StUpd;
+     begin
+         select id into vMrg_Id 
+         from &&dst..fdc_kind_lst s 
+         where
+              s.sysname = st.sysname;
+       update fdc_kind
+          set mrg_id = vMrg_Id
+             ,mrg_error = NULL
+       where id = st.id;
+         
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = st.id;
+   exception
+     when no_data_found then
+          raise_application_error(-20005,'Не найдена метка('||St.typesysname||')' );
+     when others then
+          raise;
+   end;      
+end loop; 
+commit;     
+/*   Это таблица связей, она здесь не нужна! 
+-- FDC_OBJ_KIND
+for St in (select o.*, l.kind_id, k.mrg_id AS mrg_kind_id 
+            from fdc_obj_kind l,fdc_object o, fdc_kind k 
+            where o.id = l.object_id and 
+                  o.mrg_id is NULL AND
+                  k.id = l.kind_id AND
+                  k.mgr_id IS NOT null
+                  o.ext_typesysname = 'ObjectType' -- только для метаданных
+         )  
+loop
+     SAVEPOINT StUpd;
+     begin
+       select s.object_id id into vMrg_Id 
+         from &&dst..fdc_obj_kind s, &&dst..fdc_object ob  
+         WHERE ob.id = s.object_id AND
+              s.sysname = st.sysname;
+
+       update fdc_obj_kind
+          set mrg_object_id = vMrg_Id
+             ,mrg_error = NULL
+       where 
+           object_id = st.id;
+                  
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = st.id;
+   exception
+     when no_data_found then
+          raise_application_error(-20005,'Не найдена метка('||St.typesysname||')' );
+     when others then
+          raise;
+   end;      
+end loop; 
+commit;   */  
+
+--FDC_BANK_FOR_CASH
+for St in (select l.* from fdc_Bank_for_cash l,fdc_object o where o.id = l.id and o.mrg_id is null)  
+loop
+     SAVEPOINT StUpd;
+     begin
+         declare
+         vBankId INTEGER:= fdcGetMrgId(st.bank_id);
+         begin
+         select id into vMrg_Id 
+         from &&dst..fdc_Bank_for_cash s 
+         where
+              s.bank_id = vBankId;
+         end;  
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = st.id;
+   exception
+     when no_data_found then
+          vMrg_Id := &&dst..p_nsi_bank_for_cash.add(
+                                     pbankid              => fdcGetMrgId(st.bank_id),
+                                     ppaymenttoorderratio => st.payment_to_order_ratio,
+                                     pfileformatcode      => st.file_format_code);
+          update fdc_object
+              set mrg_id = vMrg_Id
+                 ,mrg_error = null
+                 ,mrg_DoExp = 0 
+          where 
+               id = st.id;
+     when others then
+          dbms_output.put_line('Не прошла обработка кассы банка ID:'||st.id);
+
+          vErrMsg := SQLERRM;
+          ROLLBACK TO StUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = st.id;
+   end;      
+end loop; 
+commit;     
+-- Касса таможни
+UPDATE fdc_object o
+  SET o.mrg_id = o.id, o.mrg_doexp = 0
+  WHERE o.sysname = 'CustomCashDesk';
+-- Добавить кассы банков
+FOR bcd IN ( SELECT o.*  
+             FROM fdc_object o, fdc_object_type t 
+             WHERE t.id = o.object_type_id 
+               AND t.sysname = 'BankCashDesk'
+               AND o.mrg_id IS NULL ) LOOP
+  vMrg_Id := &&dst..fdc_CashDesk_Add( pObject_Type_SysName => 'BankCashDesk', 
+                                      pName => bcd.name, 
+                                      pOwner_Object_ID => fdcGetMrgId(bcd.owner_object_id)
+                                     );
+   UPDATE fdc_object
+     SET mrg_id = vMrg_Id
+        ,mrg_error = null
+        ,mrg_DoExp = 0 
+   WHERE id = bcd.id;                                      
+END LOOP;
+COMMIT;
+--FDC_CURRENCY_USABLE_LST
+for St in (select l.* from FDC_CURRENCY_USABLE_LST l,fdc_object o where o.id = l.id and o.mrg_id is null)  
+loop
+     SAVEPOINT StUpd;
+     begin
+         select id into vMrg_Id 
+         from &&dst..FDC_CURRENCY_USABLE_LST s 
+         where
+              s.code = st.code;
+
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = st.id;
+   exception
+     when no_data_found then
+          vMrg_Id := &&dst..p_nsi_currency.add(
+                                pname                  => st.name,
+                                pdescript              => st.descript,
+                                pcode                  => st.code,
+                                pacode                 => st.acode,
+                                poldcode               => st.old_code);
+           &&dst..p_nsi_currency.register_as_usable(
+                                pcurrencyid => vMrg_Id,
+                                praise_if_registered => 0);
+          update fdc_object
+              set mrg_id = vMrg_Id
+                 ,mrg_error = null
+                 ,mrg_DoExp = 0 
+          where 
+               id = st.id;
+     when others then
+          dbms_output.put_line('Не прошла обработка валюты ID:'||st.id);
+
+          vErrMsg := SQLERRM;
+          ROLLBACK TO StUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = st.id;
+   end;      
+end loop; 
+commit;     
+-- Валюта
+for St in (select l.* from FDC_NSI_CURRENCY_LST l,fdc_object o where o.id = l.id and o.mrg_id is null)  
+loop
+     SAVEPOINT StUpd;
+     begin
+         select id into vMrg_Id 
+         from &&dst..FDC_NSI_CURRENCY s 
+         where
+              s.code = st.code;
+
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = st.id;
+   exception
+     when no_data_found then
+          vMrg_Id := &&dst..p_nsi_currency.add(
+                                pname                  => st.name,
+                                pdescript              => st.descript,
+                                pcode                  => st.code,
+                                pacode                 => st.acode,
+                                poldcode               => st.old_code);
+          update fdc_object
+              set mrg_id = vMrg_Id
+                 ,mrg_error = null
+                 ,mrg_DoExp = 0 
+          where 
+               id = st.id;
+     when others then
+          dbms_output.put_line('Не прошла обработка валюты ID:'||st.id);
+
+          vErrMsg := SQLERRM;
+          ROLLBACK TO StUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = st.id;
+   end;      
+end loop; 
+commit;
+--FDC_DECLARANT_ACCOUNT     
+for St in (select l.* 
+            from FDC_DECLARANT_ACCOUNT l,fdc_object o, fdc_object o1 
+            where o.id = l.id and o.mrg_id is NULL AND o1.id = l.DECLARANT_ID AND o1.mrg_id IS NOT NULL )  
+loop
+     SAVEPOINT StUpd;
+     begin
+         declare
+           vDeclarantId INTEGER:= fdcGetMrgId(st.declarant_id);
+         begin
+         select id into vMrg_Id 
+         from &&dst..FDC_DECLARANT_ACCOUNT s 
+         where
+              s.declarant_id = vDeclarantId
+          and nvl(s.bank_okpo,'-')    = nvl(st.bank_okpo,'-')
+          and nvl(s.pay_account,'-')  = nvl(st.pay_account,'-')
+          and nvl(s.corr_account,'-') = nvl(st.corr_account,'-');
+         end;
+       update fdc_object
+          set mrg_id = vMrg_Id
+             ,mrg_error = null
+             ,mrg_DoExp = 0 
+       where 
+           id = st.id;
+   exception
+     when no_data_found then
+          vMrg_Id := &&dst..fdc_declarant_account_add(
+                                       pdeclarantid         => fdcGetMrgId(st.declarant_id),
+                                       pbankokpo            => st.bank_okpo,
+                                       paccountcurrtype     => st.account_curr_type,
+                                       ppayaccount          => st.pay_account,
+                                       pcorraccount         => st.corr_account);
+          update fdc_object
+              set mrg_id = vMrg_Id
+                 ,mrg_error = null
+                 ,mrg_DoExp = 0 
+          where 
+               id = st.id;
+     when others then
+          dbms_output.put_line('Не прошла обработка счета ID:'||st.id);
+
+          vErrMsg := SQLERRM;
+          ROLLBACK TO StUpd;
+          UPDATE fdc_object t
+             SET t.mrg_error = vErrMsg
+           WHERE t.id = st.id;
+   end;      
+end loop; 
+commit;
+end;         
+/      
+ 
+
+exit
+       

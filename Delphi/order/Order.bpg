@@ -1,0 +1,29 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = ordersvr.exe ordercl.dll ordertst.exe TpoServiceApp.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+ordersvr.exe: ordersvr.dpr
+  $(DCC)
+
+ordercl.dll: DLL\ordercl.dpr
+  $(DCC)
+
+ordertst.exe: TestApp\ordertst.dpr
+  $(DCC)
+
+TpoServiceApp.exe: ..\TPO_Service\TpoServiceApp.dpr
+  $(DCC)
+
+

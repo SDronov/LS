@@ -1,0 +1,583 @@
+inherited InteractLogGridForm: TInteractLogGridForm
+  Left = 512
+  Top = 195
+  Width = 772
+  Height = 499
+  Caption = #1046#1091#1088#1085#1072#1083' '#1074#1079#1072#1080#1084#1086#1076#1077#1081#1089#1090#1074#1080#1103
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited StatusBar: TdxStatusBar
+    Top = 447
+    Width = 764
+    inherited StatusBarContainer2: TdxStatusBarContainerControl
+      Width = 459
+      inherited pnlMaxRecordCoundExceeded: TPanel
+        Width = 459
+      end
+      inherited pnlProgress: TPanel
+        Width = 459
+        inherited lblProgress: TcxLabel
+          Width = 459
+        end
+      end
+    end
+    inherited StatusBarContainer3: TdxStatusBarContainerControl
+      Left = 672
+    end
+  end
+  inherited dxBarDockControl1: TdxBarDockControl
+    Top = 444
+    Width = 764
+  end
+  inherited pnlWorkspace: TPanel
+    Width = 764
+    Height = 418
+    inherited splSearchCriteria: TSplitter
+      Height = 307
+    end
+    object splDetail: TSplitter [1]
+      Left = 0
+      Top = 307
+      Width = 764
+      Height = 5
+      Cursor = crVSplit
+      Align = alBottom
+      Color = 15313283
+      ParentColor = False
+    end
+    inherited pnlSearchCriteria: TPanel
+      Height = 307
+      inherited lcSearchCriteria: TdxLayoutControl
+        Height = 287
+        inherited btnSearch: TcxButton
+          Top = 255
+          TabOrder = 9
+        end
+        object edtType: TcxComboBox [2]
+          Left = 77
+          Top = 48
+          ParentFont = False
+          Properties.DropDownListStyle = lsFixedList
+          Properties.Items.Strings = (
+            #1042#1089#1077
+            #1042#1093#1086#1076#1103#1097#1080#1077
+            #1048#1089#1093#1086#1076#1103#1097#1080#1077)
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          Style.ButtonStyle = btsHotFlat
+          Style.PopupBorderStyle = epbsSingle
+          TabOrder = 1
+          Text = #1042#1089#1077
+          Width = 98
+        end
+        object edtCode: TcxTextEdit [3]
+          Left = 77
+          Top = 72
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          TabOrder = 2
+          Width = 98
+        end
+        object edtGuid: TcxTextEdit [4]
+          Left = 77
+          Top = 96
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          TabOrder = 3
+          Width = 98
+        end
+        object edtSender: TcxTextEdit [5]
+          Left = 77
+          Top = 168
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          TabOrder = 6
+          Width = 98
+        end
+        object edtReceiver: TcxTextEdit [6]
+          Left = 77
+          Top = 144
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          TabOrder = 5
+          Width = 98
+        end
+        object edtRecipientTo: TcxTextEdit [7]
+          Left = 77
+          Top = 120
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          TabOrder = 4
+          Width = 98
+        end
+        object edtBeginDate: TcxDateEdit [8]
+          Left = 77
+          Top = 192
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          Style.ButtonStyle = btsHotFlat
+          Style.PopupBorderStyle = epbsSingle
+          TabOrder = 7
+          Width = 98
+        end
+        object edtEndDate: TcxDateEdit [9]
+          Left = 77
+          Top = 216
+          ParentFont = False
+          Style.BorderColor = clWindowFrame
+          Style.BorderStyle = ebsSingle
+          Style.HotTrack = False
+          Style.ButtonStyle = btsHotFlat
+          Style.PopupBorderStyle = epbsSingle
+          TabOrder = 8
+          Width = 98
+        end
+        inherited lcSearchCriteriaGroup_Root: TdxLayoutGroup
+          object lciType: TdxLayoutItem [1]
+            Caption = #1058#1080#1087
+            Control = edtType
+            ControlOptions.ShowBorder = False
+          end
+          object lciCode: TdxLayoutItem [2]
+            Caption = #1050#1086#1076
+            Control = edtCode
+            ControlOptions.ShowBorder = False
+          end
+          object lciGuid: TdxLayoutItem [3]
+            Caption = 'GUID'
+            Control = edtGuid
+            ControlOptions.ShowBorder = False
+          end
+          object lciRecipientTo: TdxLayoutItem [4]
+            Caption = #1040#1076#1088#1077#1089#1072#1090
+            Control = edtRecipientTo
+            ControlOptions.ShowBorder = False
+          end
+          object lciReceiver: TdxLayoutItem [5]
+            Caption = #1055#1086#1083#1091#1095#1072#1090#1077#1083#1100
+            Control = edtReceiver
+            ControlOptions.ShowBorder = False
+          end
+          object lciSender: TdxLayoutItem [6]
+            Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1077#1083#1100
+            Control = edtSender
+            ControlOptions.ShowBorder = False
+          end
+          object lciBeginDate: TdxLayoutItem [7]
+            Caption = #1055#1077#1088#1080#1086#1076' '#1089
+            Control = edtBeginDate
+            ControlOptions.ShowBorder = False
+          end
+          object lciEndDate: TdxLayoutItem [8]
+            Caption = #1055#1077#1088#1080#1086#1076' '#1087#1086
+            Control = edtEndDate
+            ControlOptions.ShowBorder = False
+          end
+        end
+      end
+    end
+    inherited pnlGrid: TPanel
+      Width = 559
+      Height = 307
+      inherited grdData: TcxGrid
+        Width = 559
+        Height = 307
+        inherited grdDataDBBandedTableView: TcxGridDBBandedTableView
+          OnCanSelectRecord = grdDataDBBandedTableViewCanSelectRecord
+          OnSelectionChanged = grdDataDBBandedTableViewSelectionChanged
+          inherited grdDataDBBandedTableViewTYPENAME: TcxGridDBBandedColumn
+            Visible = False
+          end
+          inherited grdDataDBBandedTableViewNAME: TcxGridDBBandedColumn
+            Visible = False
+            Hidden = True
+          end
+          object grdDataDBBandedTableViewCode: TcxGridDBBandedColumn
+            Caption = #1050#1086#1076' '#1089#1086#1086#1073#1097#1077#1085#1080#1103
+            DataBinding.FieldName = 'CODE'
+            Width = 85
+            Position.BandIndex = 0
+            Position.ColIndex = 5
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewType: TcxGridDBBandedColumn
+            Caption = #1058#1080#1087
+            DataBinding.FieldName = 'TYPE'
+            Width = 96
+            Position.BandIndex = 0
+            Position.ColIndex = 6
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewState: TcxGridDBBandedColumn
+            Caption = #1057#1086#1089#1090#1086#1103#1085#1080#1077
+            DataBinding.FieldName = 'STATE'
+            Width = 135
+            Position.BandIndex = 0
+            Position.ColIndex = 7
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewENVID: TcxGridDBBandedColumn
+            Caption = 'GUID '#1082#1086#1085#1074#1077#1088#1090#1072
+            DataBinding.FieldName = 'ENVID'
+            Width = 230
+            Position.BandIndex = 0
+            Position.ColIndex = 8
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewSENDER: TcxGridDBBandedColumn
+            Caption = #1058#1072#1084#1086#1078#1085#1103'-'#1086#1090#1087#1088#1072#1074#1080#1090#1077#1083#1100
+            DataBinding.FieldName = 'SENDER'
+            Position.BandIndex = 0
+            Position.ColIndex = 9
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewRECEIVER: TcxGridDBBandedColumn
+            Caption = #1058#1072#1084#1086#1078#1085#1103'-'#1087#1086#1083#1091#1095#1072#1090#1077#1083#1100
+            DataBinding.FieldName = 'RECEIVER'
+            Position.BandIndex = 0
+            Position.ColIndex = 10
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewRECIPIENT_TO: TcxGridDBBandedColumn
+            Caption = #1058#1072#1084#1086#1078#1085#1103'-'#1072#1076#1088#1077#1089#1072#1090
+            DataBinding.FieldName = 'RECIPIENT_TO'
+            Position.BandIndex = 0
+            Position.ColIndex = 11
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewFORMDATE: TcxGridDBBandedColumn
+            Caption = #1044#1072#1090#1072' '#1092#1086#1088#1084#1080#1088#1086#1074#1072#1085#1080#1103'/'#1079#1072#1075#1088#1091#1079#1082#1080
+            DataBinding.FieldName = 'FORMDATE'
+            Position.BandIndex = 0
+            Position.ColIndex = 12
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewFIRSTSENDDATE: TcxGridDBBandedColumn
+            Caption = #1044#1072#1090#1072' '#1087#1077#1088#1074#1086#1081' '#1086#1090#1087#1088#1072#1074#1082#1080
+            DataBinding.FieldName = 'FIRSTSENDDATE'
+            Position.BandIndex = 0
+            Position.ColIndex = 13
+            Position.RowIndex = 0
+          end
+          object grdDataDBBandedTableViewLASTSENDDATE: TcxGridDBBandedColumn
+            Caption = #1044#1072#1090#1072' '#1087#1086#1089#1083#1077#1076#1085#1077#1081' '#1086#1090#1087#1088#1072#1074#1082#1080
+            DataBinding.FieldName = 'LASTSENDDATE'
+            Position.BandIndex = 0
+            Position.ColIndex = 14
+            Position.RowIndex = 0
+          end
+        end
+      end
+    end
+    object pnlDetail: TPanel
+      Left = 0
+      Top = 312
+      Width = 764
+      Height = 106
+      Align = alBottom
+      BevelOuter = bvNone
+      BiDiMode = bdLeftToRight
+      Caption = 'pnlDetail'
+      ParentBiDiMode = False
+      TabOrder = 2
+      object grdDetail: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 764
+        Height = 106
+        Align = alClient
+        TabOrder = 0
+        object grdDetailDBTableView1: TcxGridDBTableView
+          DragMode = dmAutomatic
+          NavigatorButtons.ConfirmDelete = False
+          DataController.DataSource = srcDetail
+          DataController.KeyFieldNames = 'ID'
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Deleting = False
+          OptionsData.DeletingConfirmation = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsView.GroupByBox = False
+          OptionsView.HeaderAutoHeight = True
+          OptionsView.HeaderEndEllipsis = True
+          object grdDetailDBTableView1ID: TcxGridDBColumn
+            DataBinding.FieldName = 'ID'
+            Visible = False
+            Hidden = True
+          end
+          object grdDetailDBTableView1NAME: TcxGridDBColumn
+            Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+            DataBinding.FieldName = 'NAME'
+            MinWidth = 100
+            Width = 200
+          end
+          object grdDetailDBTableView1OBJECT_ID: TcxGridDBColumn
+            DataBinding.FieldName = 'OBJECT_ID'
+            Visible = False
+            Hidden = True
+          end
+          object grdDetailDBTableView1document_object_name: TcxGridDBColumn
+            Caption = #1057#1074#1103#1079#1072#1085#1085#1099#1081' '#1076#1086#1082#1091#1084#1077#1085#1090
+            DataBinding.FieldName = 'document_object_name'
+            MinWidth = 200
+            Width = 250
+          end
+        end
+        object grdDetailLevel1: TcxGridLevel
+          GridView = grdDetailDBTableView1
+        end
+      end
+    end
+  end
+  inherited ActionList: TActionList
+    inherited actOpen: TAction
+      Visible = False
+    end
+    inherited actAdd: TAction
+      Visible = False
+    end
+    inherited actDelete: TAction
+      Visible = False
+    end
+  end
+  inherited OfficeEditStyleController: TcxEditStyleController
+    Style.IsFontAssigned = True
+  end
+  inherited WebEditStyleController: TcxEditStyleController
+    Style.IsFontAssigned = True
+  end
+  inherited DefaultEditStyleController: TcxDefaultEditStyleController
+    Style.IsFontAssigned = True
+  end
+  inherited BarManager: TdxBarManager
+    Categories.ItemsVisibles = (
+      2
+      2
+      2)
+    Categories.Visibles = (
+      True
+      True
+      True)
+    DockControlHeights = (
+      0
+      0
+      26
+      0)
+  end
+  inherited dsData: TfdcQuery
+    SQL.Strings = (
+      'select * from ('
+      'select *'
+      '  from ASBC_INTERACT_LOG_LST t'
+      ' where (:Name is null or upper(NAME) like upper(:Name))'
+      '      '
+      '   and (nvl(:NTYPE, -1) = -1 or t.NTYPE = :NTYPE)'
+      '   and (:CODE is null or upper(t.CODE) like upper(:CODE))'
+      '   and (:ENVID is null or upper(t.ENVID) like upper(:ENVID))'
+      '   and (:SENDER is null or upper(t.SENDER) like upper(:SENDER))'
+      
+        '   and (:RECEIVER is null or upper(t.RECEIVER) like upper(:RECEI' +
+        'VER))'
+      
+        '   and (:RECIPIENT_TO is null or upper(t.RECIPIENT_TO) like uppe' +
+        'r(:RECIPIENT_TO))'
+      '   AND (:BEGIN_DATE is null OR T.FORMDATE >= :BEGIN_DATE)'
+      '   AND (:END_DATE is null OR T.FORMDATE <= :END_DATE + 1)'
+      ') where rownum <= :MaxRecordCount')
+    SourceServerObject = 'ASBC_INTERACT_LOG_LST'
+    AfterClose = dsDataAfterClose
+    BeforeRefresh = dsDataBeforeRefresh
+    AfterRefresh = dsDataAfterRefresh
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'Name'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'Name'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftInteger
+        Name = 'NTYPE'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftInteger
+        Name = 'NTYPE'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'CODE'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'CODE'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'ENVID'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'ENVID'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'SENDER'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'SENDER'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'RECEIVER'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'RECEIVER'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'RECIPIENT_TO'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftString
+        Name = 'RECIPIENT_TO'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftDate
+        Name = 'BEGIN_DATE'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftDate
+        Name = 'BEGIN_DATE'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftDate
+        Name = 'END_DATE'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftDate
+        Name = 'END_DATE'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'MaxRecordCount'
+        ParamType = ptUnknown
+      end>
+    object dsDataCODE: TStringField
+      FieldName = 'CODE'
+      Size = 30
+    end
+    object dsDataTYPE: TStringField
+      FieldName = 'TYPE'
+      Size = 100
+    end
+    object dsDataSTATE: TStringField
+      FieldName = 'STATE'
+      Size = 100
+    end
+    object dsDataENVID: TStringField
+      FieldName = 'ENVID'
+      Size = 40
+    end
+    object dsDataSENDER: TStringField
+      FieldName = 'SENDER'
+      Size = 8
+    end
+    object dsDataRECEIVER: TStringField
+      FieldName = 'RECEIVER'
+      Size = 8
+    end
+    object dsDataRECIPIENT_TO: TStringField
+      FieldName = 'RECIPIENT_TO'
+      Size = 8
+    end
+    object dsDataFIRSTSENDDATE: TDateTimeField
+      FieldName = 'FIRSTSENDDATE'
+    end
+    object dsDataFORMDATE: TDateTimeField
+      FieldName = 'FORMDATE'
+    end
+    object dsDataLASTSENDDATE: TDateTimeField
+      FieldName = 'LASTSENDDATE'
+    end
+    object dsDataAUTHID: TStringField
+      FieldName = 'AUTHID'
+      Size = 30
+    end
+  end
+  object dsDetail: TfdcQuery
+    ReadOnly = False
+    SQL.Strings = (
+      'select *'
+      '  from ASBC_INTERACT_LOG_DOCS_LST'
+      'where owner_object_id = :PRN')
+    SourceServerObject = 'ASBC_INTERACT_LOG_DOCS_LST'
+    AfterOpen = dsDetailAfterOpen
+    AfterClose = dsDetailAfterClose
+    BeforeRefresh = dsDetailBeforeRefresh
+    AfterRefresh = dsDetailAfterRefresh
+    Left = 376
+    Top = 232
+    ParamData = <
+      item
+        DataType = ftFloat
+        Name = 'PRN'
+        ParamType = ptUnknown
+      end>
+    object dsDetailID: TIntegerField
+      FieldName = 'ID'
+    end
+    object dsDetailNAME: TStringField
+      FieldName = 'NAME'
+      Size = 1000
+    end
+    object dsDetailOBJECT_ID: TIntegerField
+      FieldName = 'OBJECT_ID'
+    end
+    object dsDetaildocument_object_name: TStringField
+      FieldName = 'document_object_name'
+      Size = 1000
+    end
+  end
+  object srcDetail: TDataSource
+    DataSet = dsDetail
+    Left = 384
+    Top = 240
+  end
+end
