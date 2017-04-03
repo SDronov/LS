@@ -4,7 +4,7 @@ set heading off
 set headsep off
 set feedback off
 set termout off
-set pagesize 100
+set pagesize 1000
 set newpage none
 set serveroutput on
 connect &&1
